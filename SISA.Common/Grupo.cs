@@ -21,6 +21,13 @@ namespace SISA.Common
             this.administrador_id = administrador_id;
         }
 
+        public Grupo(string nombre, string descripcion, int administrador_id)
+        {
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.administrador_id = administrador_id;
+        }
+
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }

@@ -32,6 +32,16 @@ namespace SISA.Common
             this.fecha_estado = fecha_estado;
         }
 
+        public Sancion(int grupo_id, int usuario_creador_id, int usuario_sancionado_id, string motivo, int estado, DateTime fecha_estado)
+        {
+            this.grupo_id = grupo_id;
+            this.usuario_creador_id = usuario_creador_id;
+            this.usuario_sancionado_id = usuario_sancionado_id;
+            this.motivo = motivo;
+            this.estado = estado;
+            this.fecha_estado = fecha_estado;
+        }
+
         public int Id { get => id; set => id = value; }
         public int Grupo_id { get => grupo_id; set => grupo_id = value; }
         public int Usuario_creador_id { get => usuario_creador_id; set => usuario_creador_id = value; }
