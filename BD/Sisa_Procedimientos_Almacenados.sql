@@ -23,11 +23,17 @@ BEGIN
 END
 
 CREATE PROCEDURE Get_Administrador_Grupo @v_Grupo_id int
+AS
 BEGIN
     SELECT administrador_id FROM Grupos
     WHERE Grupos.id = @v_Grupo_id
 END
 
-
+CREATE PROCEDURE Get_Usuario @v_Usuario varchar(50), @v_Password varchar(50)
+AS
+BEGIN
+    SELECT 1 FROM Usuarios AS U
+    WHERE U.usuario = @v_Usuario AND U.password = @v_Password
+END
 
         
