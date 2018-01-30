@@ -1,0 +1,9 @@
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.csprojResolveAssemblyReference.cache
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.Business.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.Business.pdb
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.Common.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.DataAccess.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.Common.pdb
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\bin\Debug\SISA.DataAccess.pdb
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.pdb
