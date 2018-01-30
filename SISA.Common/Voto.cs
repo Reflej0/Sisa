@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SISA.Common
 {
-    class Voto
+    public class Voto
     {
         private int id;
         private int usuario_id;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SISA.Common
 {
-    class Grupo_Usuario
+    public class Grupo_Usuario
     {
         private int id;
         private int grupo_id;

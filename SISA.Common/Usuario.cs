@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace SISA.Common
 {
-    class Usuario
+    public class Usuario
     {
         private int id;
         private string email;
         private string password;
         private string usuario;
+
+        public Usuario(int id, string usuario, string password, string email)
+        {
+            this.id = id;
+            this.usuario = usuario;
+            this.password = password;
+            this.email = email;
+        }
 
         public int Id { get => id; set => id = value; }
         public string Email { get => email; set => email = value; }
