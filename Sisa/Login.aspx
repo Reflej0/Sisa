@@ -12,8 +12,17 @@
 </head>
 <body>
     <div class="container">
-        <img class="img-circle" src="img/logo2.jpg"/>
+        <div class="justify-content-center align-content-center">
+            <img class="img-circle col-md-2" src="img/logo2.jpg"/>
+            <div class="form-group">
+                <br />
+                <input type="text" class="form-control" placeholder="Usuario" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Contraseña" />
+            </div>
+            <button type="button" class="btn btn-primary">Ingresar</button>
+        </div>
     </div>
-
 </body>
 </html>
