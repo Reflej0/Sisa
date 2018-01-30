@@ -7,6 +7,7 @@ using SISA.Common;
 
 namespace SISA.DataAccess.Interfaces
 {
+    //Métodos para interactuar con la base de datos.
     public interface IDataAccess
     {
         //Métodos de la interfaz, a heredar por la clase DataAccess.
@@ -24,5 +25,9 @@ namespace SISA.DataAccess.Interfaces
         List<Sancion> Get_Sancion_Usuario(Usuario u);
         //Método para obtener el administrador de un determinado grupo.
         Usuario Get_Administrador_Grupo(Grupo g);
+        //Método para crear un nuevo grupo.
+        string Set_Grupo(Grupo g);
+        //Método para crear un nuevo usuario.
+        string Set_Usuario(Usuario u);
     }
 }

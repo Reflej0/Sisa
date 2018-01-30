@@ -1,0 +1,7 @@
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.pdb
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.pdb
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.dll
+C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.pdb
