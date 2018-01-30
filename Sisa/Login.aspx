@@ -9,20 +9,44 @@
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
+    <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container">
-        <div class="justify-content-center align-content-center">
-            <img class="img-circle col-md-2" src="img/logo2.jpg"/>
-            <div class="form-group">
-                <br />
-                <input type="text" class="form-control" placeholder="Usuario" />
+    <div class="contenido">
+        <div class="container">
+            <div class="justify-content-center align-content-center">
+                <img class="img-circle col-md-2" src="img/logo2.jpg"/>
+                <div class="form-group">
+                    <br />
+                    <input type="text" class="form-control" id="user" placeholder="Usuario" />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Contraseña" />
+                </div>
+                <button type="button" class="btn btn-primary" id="loginButton">Ingresar</button>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="Contraseña" />
-            </div>
-            <button type="button" class="btn btn-primary">Ingresar</button>
         </div>
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#loginButton').click(function () {
+        var data = {};
+        data.user = $('#user').val();
+        data.pass = $('#password').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Login',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.d);
+            }
+        });
+    });
+
+</script>
