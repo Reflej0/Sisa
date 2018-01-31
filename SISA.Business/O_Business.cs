@@ -49,5 +49,12 @@ namespace Business
             return grupos; // Retorno.
         }
 
+        public bool Get_Usuario(string user, string email)
+        {
+            //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
+            O_DataAccess temp = new O_DataAccess("workstation id = reflejox.mssql.somee.com; packet size = 4096; user id = Reflejo_SQLLogin_1; pwd = ta7b53bvam; data source = reflejox.mssql.somee.com; persist security info = False; initial catalog = reflejox");
+            return temp.Get_Usuario(user, email);
+        }
+
     }
 }

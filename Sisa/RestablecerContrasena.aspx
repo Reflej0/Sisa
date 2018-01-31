@@ -20,10 +20,31 @@
                 <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
             </div>
             <div class="form-group">
-                <input type="text" class="form-control no-border-radius" id="E-Mail" placeholder="E-Mail" />
+                <input type="text" class="form-control no-border-radius" id="email" placeholder="E-Mail" />
             </div>
-        <button type="button" class="btn no-border-radius" id="RestablecerButton">Restablecer</button>
+        <button type="button" class="btn no-border-radius" id="restablecerButton">Restablecer</button>
         <div class="error text-center" id="errorDiv"></div>
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#restablecerButton').click(function () {
+        var user = $('#user').val();
+        var email = $('#email').val();
+
+        //Voy a validar que exista el usuario para el que quiere restablecer la contraseña.
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Usuario',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.d);
+            }
+        });
+    });
+
+</script>

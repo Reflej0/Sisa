@@ -29,6 +29,15 @@ BEGIN
     WHERE Grupos.id = @v_Grupo_id
 END
 
+CREATE PROCEDURE Get_Grupos_Usuarios @v_Usuario_id int
+AS
+BEGIN
+    SELECT G.id, G.nombre, G.descripcion, G.administrador_id FROM Grupos AS G
+    INNER JOIN Grupos_usuarios AS GU
+    ON G.id = GU.grupo_id
+    WHERE GU.usuario_id = @v_Usuario_id
+END
+
 CREATE PROCEDURE Get_Usuario @v_Usuario varchar(50), @v_Password varchar(50)
 AS
 BEGIN
@@ -54,4 +63,9 @@ BEGIN
     INSERT INTO Sanciones(grupo_id, usuario_creador_id, usuario_sancionado_id, motivo, estado, fecha_creacion) VALUES (@v_Grupo_id, @v_Usuario_creador_id, @v_Usuario_sancionado_id, @v_Motivo, @v_Estado, @v_Fecha_creacion)
 END
 
-        
+CREATE PROCEDURE Get_Usuario_Email @v_Usuario varchar(50), @v_Email varchar(50)
+AS
+BEGIN
+    SELECT 1 FROM Usuarios AS U
+    WHERE U.usuario = @v_Usuario AND U.email = @v_Email
+END

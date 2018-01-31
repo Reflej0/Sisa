@@ -57,5 +57,15 @@ namespace Sisa.Services
             O_Business = new O_Business(); // Inicializo el objeto global.
             return O_Business.Set_Grupo(nombre, descripcion, administrador_id); // Devuelvo el OBJETO persona a la vista HTML.
         }
+
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        //WebMethod para realizar el login.
+        public bool Get_Usuario(string user, string email)
+        {
+            bool resp = O_Business.Get_Usuario(user, email); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+
+            //Si devuelve true, es porque existe el usuario.
+            return resp;
+        }
     }
 }

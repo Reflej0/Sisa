@@ -310,5 +310,33 @@ namespace SISA.DataAccess
                 return e.ToString();
             }
         }
+
+        public bool Get_Usuario(string usuario, string email)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Usuario_Email", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
+            cmd.Parameters.AddWithValue("@v_Password", email);
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
+                    {
+                        this.CloseConnection(); // Cierro la conexión.
+                        return true;
+                    }
+                    this.CloseConnection(); // Cierro la conexión.
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }
