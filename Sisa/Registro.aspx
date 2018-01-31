@@ -51,8 +51,7 @@
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    alert(response.d);
-                    //window.location = 'Login.aspx'
+                    window.location = 'Login.aspx'
                 }
             });
         }
