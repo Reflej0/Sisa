@@ -13,6 +13,7 @@ namespace SISA.Common
         private string password;
         private string usuario;
 
+        //Cuando busco objetos tipo Usuario de la BD tiene el ID.
         public Usuario(int id, string usuario, string password, string email)
         {
             this.id = id;
@@ -20,12 +21,16 @@ namespace SISA.Common
             this.password = password;
             this.email = email;
         }
-
+        //Cuando manejo objetos tipo Usuario que todavía no tienen  el ID. 
         public Usuario(string usuario, string password, string email)
         {
             this.usuario = usuario;
             this.password = password;
             this.email = email;
+        }
+        //Por defecto.
+        public Usuario()
+        {
         }
 
         public int Id { get => id; set => id = value; }

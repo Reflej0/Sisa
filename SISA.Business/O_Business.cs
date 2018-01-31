@@ -40,6 +40,14 @@ namespace Business
             O_DataAccess temp = new O_DataAccess("workstation id = reflejox.mssql.somee.com; packet size = 4096; user id = Reflejo_SQLLogin_1; pwd = ta7b53bvam; data source = reflejox.mssql.somee.com; persist security info = False; initial catalog = reflejox");
             return temp.Login(user, pass);
         }
+        //Método que es llamado desde el WebMethod y devuelve una lista de objetos tipos grupos, como se va a manejar en la vista!?
+        public List<Grupo> Get_Grupos_Usuarios(int usuario_id)
+        {
+            Usuario u = new Usuario(); // Creo un objeto usuario.
+            u.Id = usuario_id; // Le asigno solamente el id.
+            List<Grupo> grupos = this.bd.Get_Grupos_Usuario(u); // Llamo al método que se encarga de devolverme los grupos a los cuales el usuario esta asignado.
+            return grupos; // Retorno.
+        }
 
     }
 }

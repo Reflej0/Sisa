@@ -162,6 +162,36 @@ namespace SISA.DataAccess
             }
             return null; // En el raro caso que el Grupo no tenga Administrador_id.
         }
+        //Método para listar los grupos de un usuario determinado.
+        public List<Grupo> Get_Grupos_Usuario(Usuario u)
+        {
+            List<Grupo> Grupos = new List<Grupo>(); // Listado de grupos a devolver.
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Grupos_Usuarios", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del usuario.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(4));
+                            Grupos.Add(g);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Grupos; // Devuelvo los Grupos
+        }
         //Método para crear un nuevo grupo.
         public string Set_Grupo(Grupo g)
         {
@@ -229,7 +259,7 @@ namespace SISA.DataAccess
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

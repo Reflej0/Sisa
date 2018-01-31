@@ -25,6 +25,8 @@ namespace SISA.DataAccess.Interfaces
         List<Sancion> Get_Sancion_Usuario(Usuario u);
         //Método para obtener el administrador de un determinado grupo.
         Usuario Get_Administrador_Grupo(Grupo g);
+        //Método para listar los grupos de un usuario determinado.
+        List<Grupo> Get_Grupos_Usuario(Usuario u);
         //Método para crear un nuevo grupo.
         string Set_Grupo(Grupo g);
         //Método para crear un nuevo usuario.

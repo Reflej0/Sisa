@@ -44,7 +44,7 @@
             success: function (response) {
                 //Si pudo loguear
                 if (response.d) {
-                    //Redirecciono
+                    window.location.href = "RestablecerContrasena.aspx";
                 } else {
                     $('#errorDiv').text("Las credenciales son incorrectas.");
                     $('#errorDiv').show();
