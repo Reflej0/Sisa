@@ -27,6 +27,7 @@
             </div>
         </div>
     </div>
+    <div class="error" id="errorDiv"></div>
 </body>
 </html>
 
@@ -44,9 +45,13 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
-                //El Alert devuelve "Usuario logeado" o "Credenciales incorrectas".
-                //Habría que redireccionar a otro HTML/ASPX si el Usuario esta logeado.
-                alert(response.d);
+                //Si pudo loguear
+                if (response.d){
+                    //Redirecciono
+                } else {
+                    $('#errorDiv').text("Las credenciales son incorrectas.");
+                    $('#errorDiv').show();
+                }
             }
         });
     });

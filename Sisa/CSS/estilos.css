@@ -4,3 +4,9 @@
     margin-left: 20%;
     padding: 5%;
 }
+
+.error {
+    color: red;
+    font-weight: bold;
+    display: none;
+}

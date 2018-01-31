@@ -21,25 +21,31 @@ namespace Sisa.Services
     public class Service : System.Web.Services.WebService
     {
         public O_Business O_Business = null; // Creo un objeto global (en común a todos los webmethod).
+
         [WebMethod(CacheDuration = 1, BufferResponse = false)]
         //WebMethod para realizar el login.
-        public string Login(string user, string pass)
+        public bool Login(string user, string pass)
         {
             string e_pass = Seguridad.Encrypt(pass); // Encripto la password desde este punto antes de que viaje.
-            string resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
-            if (resp == "Usuario logeado")
+            bool resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+
+            //Si devuelve true, es porque puede loguear.
+            if (resp)
             {
                 //Variables de Sesión https://msdn.microsoft.com/en-us/library/ms178581.aspx
                 Session["Usuario_Logeado"] = user;
             }
+
             return resp;  // El string retornado indicará logeado o no logeado.
         }
+        
         //WebMethod para crear un nuevo usuario.
         public string Set_Usuario(string usuario, string password, string email)
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
             return O_Business.Set_Usuario(usuario, password, email); // Devuelvo el string del estado de la operación.
         }
+        
         //WebMethod para crear un nuevo grupo.
         [WebMethod]
         public string Set_Grupo(string nombre, string descripcion, int administrador_id)
