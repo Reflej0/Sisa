@@ -46,13 +46,8 @@
             data: JSON.stringify(data),
             success: function (response) {
                 //Si pudo loguear
-<<<<<<< HEAD
                 if (response.d) {
                     window.location.href = "RestablecerContrasena.aspx";
-=======
-                if (response.d){
-                    //Redirecciono
->>>>>>> cf1c725ec11a0cf6dd625b88ae8f3b7e38aa0df2
                 } else {
                     $('#errorDiv').text("Las credenciales son incorrectas.");
                     $('#errorDiv').show();
