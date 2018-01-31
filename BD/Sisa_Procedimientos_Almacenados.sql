@@ -36,7 +36,7 @@ BEGIN
     WHERE U.usuario = @v_Usuario AND U.password = @v_Password
 END
 
-CREATE PROCEDURE Set_Usuario @v_Id int, @v_Usuario varchar(255), @v_Password varchar(255), @v_Email varchar(255)
+CREATE PROCEDURE Set_Usuario @v_Usuario varchar(255), @v_Password varchar(255), @v_Email varchar(255)
 AS
 BEGIN
     INSERT INTO Usuarios(usuario, password, email) VALUES (@v_Usuario, @v_Password, @v_Email)
