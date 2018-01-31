@@ -26,7 +26,7 @@
         <div class="error text-center" id="errorDiv"></div>
         <br />
         <hr class="linea-separadora">
-        <p class="text-center">¿No tenés cuenta? <a href="">Registrate</a></p>
+        <p class="text-center"><a href="">Registrate</a> para comenzar a sancionar gente</p>
     </div>
 </body>
 </html>
