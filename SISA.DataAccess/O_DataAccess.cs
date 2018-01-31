@@ -231,7 +231,7 @@ namespace SISA.DataAccess
             }
             catch (Exception e)
             {
-                return e.ToString();
+                return false;
             }
         }
     }

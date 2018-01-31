@@ -26,8 +26,9 @@
                 <button type="button" class="btn btn-primary" id="loginButton">Ingresar</button>
             </div>
         </div>
+
+        <div class="error" id="errorDiv"></div>
     </div>
-    <div class="error" id="errorDiv"></div>
 </body>
 </html>
 
