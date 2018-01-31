@@ -1,0 +1,9 @@
+MS SQL Server address: 	reflejox.mssql.somee.com
+Login name: 	Reflejo_SQLLogin_1
+Login password: 	ta7b53bvam
+
+https://somee.com/DOKA/DOLogin.aspx
+Reflejo
+POIU1234
+
+ir a Database y manejar todo por script.

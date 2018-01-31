@@ -207,12 +207,12 @@ namespace SISA.DataAccess
             }
         }
         //Método estático ya que en el momento del login todavía no hay una instancia de Business, DataAccess, etc.
-        public string Login(string usuario, string pass)
+        public bool Login(string usuario, string pass)
         {
             this.OpenConnection(); // Primero abro la conexión.
-
             SqlCommand cmd = new SqlCommand("Get_Usuario", cnn);
             cmd.CommandType = CommandType.StoredProcedure;
+
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
             cmd.Parameters.AddWithValue("@v_Password", pass);
@@ -220,22 +220,18 @@ namespace SISA.DataAccess
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    /*El procedimiento almacenado devuelve 1 en caso de encontrar la combinación
-                    * Usuario - Contraseña, de lo contrario no devuelve nada.
-                    */
-                    if (reader.HasRows)
+                    if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
                     {
-                        return "Usuario logeado";
+                        this.CloseConnection(); // Cierro la conexión.
+                        return true;
                     }
-                    else
-                    {
-                        return "Creedenciales incorrectas";
-                    }
+                    this.CloseConnection(); // Cierro la conexión.
+                    return false;
                 }
             }
             catch (Exception e)
             {
-                return e.ToString();
+                return false;
             }
         }
         //Método para agregar un usuario a un determinado grupo.
