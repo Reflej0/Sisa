@@ -11,23 +11,19 @@
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
-<body>
-    <div class="contenido">
-        <div class="container">
-            <div class="justify-content-center align-content-center">
-                <img class="mx-auto d-block col-md-2" src="img/logo2.jpg"/>
-                <div class="form-group">
-                    <br />
-                    <input type="text" class="form-control" id="user" placeholder="Usuario" />
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="password" placeholder="Contraseña" />
-                </div>
-                <button type="button" class="btn btn-primary mx-auto d-block" id="loginButton">Ingresar</button>
+<body class="container-fluid fondo-coloreado">
+    <!-- Contenido -->
+    <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
+        <img id="loginLogo" class="d-block mx-auto" src="img/logo2.jpg"/>
+            <div class="form-group">
+                <br />
+                <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
             </div>
-        </div>
-
-        <div class="error" id="errorDiv"></div>
+            <div class="form-group">
+                <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
+            </div>
+        <button type="button" class="btn no-border-radius" id="loginButton">Ingresar</button>
+        <div class="error text-center" id="errorDiv"></div>
     </div>
 </body>
 </html>
@@ -47,7 +43,7 @@
             data: JSON.stringify(data),
             success: function (response) {
                 //Si pudo loguear
-                if (response.d){
+                if (response.d) {
                     //Redirecciono
                 } else {
                     $('#errorDiv').text("Las credenciales son incorrectas.");
