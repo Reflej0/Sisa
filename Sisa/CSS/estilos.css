@@ -2,7 +2,7 @@
     border-radius: 0px;
 }
 
-.contenido {
+.contenido{
     margin-top: 5%;
     margin-right: 20%;
     margin-left: 20%;
@@ -19,11 +19,15 @@
     background-color: #f6b315;
 }
 
+.linea-separadora {
+    margin-top: 30px;
+}
+
 /* ESTILOS DEL LOGIN */
 .contenido-login {
     margin-top: 100px;
     padding-top: 50px;
-    padding-bottom: 35px;
+    padding-bottom: 20px;
     padding-left: 25px;
     padding-right: 25px;
     background-color: white;
@@ -37,11 +41,10 @@
     width: 100%;
     background-color: #f6b315;
 }
-
-    #loginButton:hover {
-        background-color: #dda113;
-        color: white;
-    }
+#loginButton:hover {
+    background-color: #dda113;
+    color: white;
+}
 
 @media (max-width: 768px) {
     .contenido-login {
