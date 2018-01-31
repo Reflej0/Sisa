@@ -44,6 +44,8 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
+                //El Alert devuelve "Usuario logeado" o "Credenciales incorrectas".
+                //Habría que redireccionar a otro HTML/ASPX si el Usuario esta logeado.
                 alert(response.d);
             }
         });

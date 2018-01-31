@@ -15,10 +15,6 @@ namespace SISA.Common
         private string motivo;
         private int estado;
         private DateTime fecha_estado;
-        private int v1;
-        private string v2;
-        private string v3;
-        private string v4;
 
 
         public Sancion(int id, int grupo_id, int usuario_creador_id, int usuario_sancionado_id, string motivo, int estado, DateTime fecha_estado)

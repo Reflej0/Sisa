@@ -2,3 +2,7 @@ C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Common\bin\Debug\SI
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\bin\Debug\SISA.Common.dll
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb

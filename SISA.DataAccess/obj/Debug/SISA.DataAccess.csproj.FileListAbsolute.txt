@@ -5,3 +5,10 @@ C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debu
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.pdb
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.dll
 C:\Users\gyl\documents\visual studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.pdb
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.dll
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.pdb
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.dll
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.pdb
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.dll
+C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.pdb
