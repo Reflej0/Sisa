@@ -22,12 +22,12 @@ namespace Sisa.Services
     {
         public O_Business O_Business = null; // Creo un objeto global (en común a todos los webmethod).
 
-        [WebMethod(CacheDuration = 1, BufferResponse = false)]
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //WebMethod para realizar el login.
         public bool Login(string user, string pass)
         {
             string e_pass = Seguridad.Encrypt(pass); // Encripto la password desde este punto antes de que viaje.
-            bool resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+            bool resp = O_Business.Login(user, pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
 
             //Si devuelve true, es porque puede loguear.
             if (resp)
