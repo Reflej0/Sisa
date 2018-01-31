@@ -238,5 +238,51 @@ namespace SISA.DataAccess
                 return e.ToString();
             }
         }
+        //Método para agregar un usuario a un determinado grupo.
+        public string Set_Usuario_Grupo(Usuario u, Grupo g)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+
+            SqlCommand cmd = new SqlCommand("Set_Usuario_Grupo", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); ;
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id);
+            try
+            {
+                int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                this.CloseConnection(); // Cierro la conexión.
+                return u._Usuario + "Agregado a " + g.Nombre;
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
+
+        public string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+
+            SqlCommand cmd = new SqlCommand("Set_Sancion", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); ;
+            cmd.Parameters.AddWithValue("@v_Usuario_creador_id", sancionador.Id);
+            cmd.Parameters.AddWithValue("@v_Usuario_sancionado_id", sancionado.Id);
+            cmd.Parameters.AddWithValue("@v_Motivo", s.Motivo);
+            cmd.Parameters.AddWithValue("@v_Estado", s.Estado);
+            cmd.Parameters.AddWithValue("@v_Fecha_creacion", s.Fecha_estado);
+            try
+            {
+                int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                this.CloseConnection(); // Cierro la conexión.
+                return "Sancion agregada a:" + sancionado._Usuario;
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
     }
 }

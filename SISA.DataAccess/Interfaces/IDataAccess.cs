@@ -29,5 +29,9 @@ namespace SISA.DataAccess.Interfaces
         string Set_Grupo(Grupo g);
         //Método para crear un nuevo usuario.
         string Set_Usuario(Usuario u);
+        //Método para agregar un usuario a un grupo.
+        string Set_Usuario_Grupo(Usuario u, Grupo g);
+        //Método para agregar una sanción a un usuario.
+        string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s);
     }
 }
