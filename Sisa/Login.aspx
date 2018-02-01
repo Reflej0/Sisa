@@ -49,7 +49,7 @@
                 //Se chequea así ya que si no logeo correctamente response.d es NULL.
                 if (response.d != -1) {
                     //Redireccionar a index o mi perfil.
-                    //window.location.href = "RestablecerContrasena.aspx";
+                    window.location.href = "Home.aspx";
                 } else {
                     $('#errorDiv').text("Las credenciales son incorrectas.");
                     $('#errorDiv').show();

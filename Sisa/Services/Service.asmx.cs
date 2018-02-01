@@ -33,10 +33,10 @@ namespace Sisa.Services
             if (resp > 0)
             {
                 //Variables de Sesión https://msdn.microsoft.com/en-us/library/ms178581.aspx
-                Session["Usuario_id"] = user;
+                Session["Usuario_id"] = resp;
             }
 
-            return resp;  // El string retornado indicará logeado o no logeado.
+            return resp;  // El número retornado indicará logeado o no logeado.
         }
         //Método para deslogear.
         public void Logout()
