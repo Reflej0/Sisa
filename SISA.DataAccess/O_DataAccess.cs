@@ -237,7 +237,7 @@ namespace SISA.DataAccess
             }
         }
         //Método estático ya que en el momento del login todavía no hay una instancia de Business, DataAccess, etc.
-        public bool Login(string usuario, string pass)
+        public int Login(string usuario, string pass)
         {
             this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Get_Usuario", cnn);
@@ -252,16 +252,17 @@ namespace SISA.DataAccess
                 {
                     if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
                     {
+                        int usuario_id = reader.GetInt32(0); // Devuelvo el id_usuario porque con esto se maneja todo después.
                         this.CloseConnection(); // Cierro la conexión.
-                        return true;
+                        return usuario_id;
                     }
                     this.CloseConnection(); // Cierro la conexión.
-                    return false;
+                    return -1; // Usuario no encontrado.
                 }
             }
             catch (Exception)
             {
-                return false;
+                return -2; // -2 para excepciones.
             }
         }
         //Método para agregar un usuario a un determinado grupo.
