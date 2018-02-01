@@ -38,6 +38,11 @@ namespace Sisa.Services
 
             return resp;  // El string retornado indicará logeado o no logeado.
         }
+        //Método para deslogear.
+        public void Logout()
+        {
+            Session["Usuario_id"] = null;
+        }
 
         //WebMethod para crear un nuevo usuario.
         [WebMethod(CacheDuration = 1, BufferResponse = false)]
@@ -66,6 +71,16 @@ namespace Sisa.Services
 
             //Si devuelve true, es porque existe el usuario.
             return resp;
+        }
+        //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra los grupos asociados.
+        public List<Grupo> Get_Grupos_Usuarios()
+        {
+            return O_Business.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
+        }
+        //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra las sanciones.
+        public List<Sancion> Get_Sancion_Usuario()
+        {
+            return O_Business.Get_Sancion_Usuario(Convert.ToInt32(Session["Usuario_id"]));
         }
     }
 }

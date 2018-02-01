@@ -41,7 +41,7 @@ namespace Business
             return temp.Login(user, pass);
         }
         //Método que es llamado desde el WebMethod y devuelve una lista de objetos tipos grupos, como se va a manejar en la vista!?
-        public List<Grupo> Get_Grupos_Usuarios(int usuario_id)
+        public List<Grupo> Get_Grupos_Usuario(int usuario_id)
         {
             Usuario u = new Usuario(); // Creo un objeto usuario.
             u.Id = usuario_id; // Le asigno solamente el id.
