@@ -34,7 +34,7 @@ namespace Business
             return respuesta;
         }
         //Método encargado de gestionar el login.
-        public static bool Login(string user, string pass)
+        public static int Login(string user, string pass)
         {
             //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
             O_DataAccess temp = new O_DataAccess("workstation id = reflejox.mssql.somee.com; packet size = 4096; user id = Reflejo_SQLLogin_1; pwd = ta7b53bvam; data source = reflejox.mssql.somee.com; persist security info = False; initial catalog = reflejox");
