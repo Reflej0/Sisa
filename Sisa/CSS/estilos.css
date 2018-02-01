@@ -37,11 +37,11 @@
     max-width: 75px;
 }
 
-.btn-general {
+#loginButton {
     width: 100%;
     background-color: #f6b315;
 }
-.btn-general:hover {
+#loginButton:hover {
     background-color: #dda113;
     color: white;
 }
@@ -50,4 +50,10 @@
     .contenido-login {
         margin-top: 25px;
     }
+}
+
+#homeLogo {
+    max-width: 123525px;
+    height: 198px;
+    width: 153px;
 }
