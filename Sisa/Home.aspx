@@ -32,7 +32,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a  href="www.google.com.ar">
+                            <a id="Grupos">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Grupos
                             </a>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a  href="www.google.com.ar">
+                            <a id="Sanciones">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Sanciones
                             </a>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a  href="www.google.com.ar">
+                            <a id="Salir">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Salir
                             </a>
@@ -93,4 +93,83 @@
     </div>
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#Grupos').click(function () {
+        var data = {};
+        data.user = $('#user').val();
+        data.pass = $('#password').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Grupos_Usuarios',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+                var o = JSON.parse(response.d);
+                alert(o[0].nombre);
+                //Se chequea así ya que si no logeo correctamente response.d es NULL.
+                if (response.d != -1) {
+                    //Redireccionar a index o mi perfil.
+                    //window.location.href = "RestablecerContrasena.aspx";
+                } else {
+                    $('#errorDiv').text("Las credenciales son incorrectas.");
+                    $('#errorDiv').show();
+                }
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    $('#Sanciones').click(function () {
+        var data = {};
+        data.user = $('#user').val();
+        data.pass = $('#password').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Sancion_Usuario',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.d);
+                //Se chequea así ya que si no logeo correctamente response.d es NULL.
+                if (response.d != -1) {
+                    //Redireccionar a index o mi perfil.
+                    //window.location.href = "RestablecerContrasena.aspx";
+                } else {
+                    $('#errorDiv').text("Las credenciales son incorrectas.");
+                    $('#errorDiv').show();
+                }
+            }
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    $('#Salir').click(function () {
+        var data = {};
+        data.user = $('#user').val();
+        data.pass = $('#password').val();
+
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+            }
+        });
+    });
+
+</script>
 
