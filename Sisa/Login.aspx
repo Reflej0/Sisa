@@ -22,7 +22,7 @@
             <div class="form-group">
                 <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
             </div>
-        <button type="button" class="btn no-border-radius" id="loginButton">Ingresar</button>
+        <button type="button" class="btn no-border-radius btn-general" id="loginButton">Ingresar</button>
         <div class="error text-center" id="errorDiv"></div>
         <br />
         <hr class="linea-separadora" />

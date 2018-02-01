@@ -22,7 +22,7 @@
             <div class="form-group">
                 <input type="text" class="form-control no-border-radius" id="email" placeholder="E-Mail" />
             </div>
-        <button type="button" class="btn no-border-radius" id="restablecerButton">Restablecer</button>
+        <button type="button" class="btn no-border-radius btn-general" id="restablecerButton">Restablecer</button>
         <div class="error text-center" id="errorDiv"></div>
     </div>
 </body>
