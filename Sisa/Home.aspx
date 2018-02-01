@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Sisa.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Sisa.Home" %>
 
 <!DOCTYPE html>
 
@@ -13,7 +13,69 @@
 </head>
 <body class="container-fluid fondo-coloreado">
     <!-- Contenido -->
-    <img id="homeLogo" class="d-block mx-auto" src="img/logo2.jpg" alt="Logo"/>
+    <div id="header">
+
+        <h1> Header </h1>
+
+    </div>
+    <br />
+    
+    <hr/>
+    <hr/>
+    <br />
+
+    <div id="main">
+        <div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="www.google.com.ar">
+                                <span class="glyphicon glyphicon-folder-close"></span>
+                                Grupos
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="www.google.com.ar">
+                                <span class="glyphicon glyphicon-folder-close"></span>
+                                Sanciones
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a  href="www.google.com.ar">
+                                <span class="glyphicon glyphicon-folder-close"></span>
+                                Salir
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9" id="pantalla">
+            <div class="well">
+                <h1>	HOME!				</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <div id="footer">
+        footer
+    </div>
+
+    <!-- <img id="homeLogo" class="d-block mx-auto" src="img/logo2.jpg" alt="Logo"/>-->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         
             <div class="form-group">

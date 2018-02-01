@@ -16,3 +16,13 @@ C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Business\bin\Deb
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.csprojResolveAssemblyReference.cache
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.dll
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Business\obj\Debug\SISA.Business.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.Business.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.Business.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.Common.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.DataAccess.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.Common.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.DataAccess.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.csprojResolveAssemblyReference.cache
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.csproj.CoreCompileInputs.cache
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.pdb

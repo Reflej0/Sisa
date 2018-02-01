@@ -6,3 +6,9 @@ C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\bin\Debug
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
 C:\Users\Juanjo\Documents\Visual Studio 2017\Projects\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\bin\Debug\SISA.Common.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.csprojResolveAssemblyReference.cache
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.csproj.CoreCompileInputs.cache
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
+C:\Users\Guido\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb

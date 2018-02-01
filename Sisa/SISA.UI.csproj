@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,6 +73,7 @@
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\estilos.css" />
+    <Content Include="Home.aspx" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
     <Content Include="JS\bootstrap.bundle.js" />
@@ -105,6 +107,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
