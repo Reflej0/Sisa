@@ -41,7 +41,7 @@ END
 CREATE PROCEDURE Get_Usuario @v_Usuario varchar(50), @v_Password varchar(50)
 AS
 BEGIN
-    SELECT 1 FROM Usuarios AS U
+    SELECT U.id FROM Usuarios AS U
     WHERE U.usuario = @v_Usuario AND U.password = @v_Password
 END
 
