@@ -252,9 +252,12 @@ namespace SISA.DataAccess
                 {
                     if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
                     {
-                        int usuario_id = reader.GetInt32(0); // Devuelvo el id_usuario porque con esto se maneja todo después.
-                        this.CloseConnection(); // Cierro la conexión.
-                        return usuario_id;
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            int usuario_id = reader.GetInt32(0); // Devuelvo el id_usuario porque con esto se maneja todo después.
+                            this.CloseConnection(); // Cierro la conexión.
+                            return usuario_id;
+                        }
                     }
                     this.CloseConnection(); // Cierro la conexión.
                     return -1; // Usuario no encontrado.
