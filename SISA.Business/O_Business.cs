@@ -19,21 +19,21 @@ namespace Business
         {
             bd = new O_DataAccess("workstation id = reflejox.mssql.somee.com; packet size = 4096; user id = Reflejo_SQLLogin_1; pwd = ta7b53bvam; data source = reflejox.mssql.somee.com; persist security info = False; initial catalog = reflejox");
         }
-        //Método que es llamado desde el WebMethod, el string password ya esta encriptado.
+        //Método para crear un nuevo usuario.
         public string Set_Usuario(string usuario, string password, string email)
         {
             Usuario u = new Usuario(usuario, password, email);
             string respuesta = this.bd.Set_Usuario(u);
             return respuesta;
         }
-        //Método que es llamado desde el WebMethod.
+        //Método para crear un nuevo grupo.
         public string Set_Grupo(string nombre, string descripcion, int administrador_id)
         {
             Grupo g = new Grupo(nombre, descripcion, administrador_id);
             string respuesta = this.bd.Set_Grupo(g);
             return respuesta;
         }
-        //Método estático ya que en el momento del login todavía no hay una instancia de Business, DataAccess, etc.
+        //Método encargado de gestionar el login.
         public static bool Login(string user, string pass)
         {
             //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
@@ -55,6 +55,38 @@ namespace Business
             O_DataAccess temp = new O_DataAccess("workstation id = reflejox.mssql.somee.com; packet size = 4096; user id = Reflejo_SQLLogin_1; pwd = ta7b53bvam; data source = reflejox.mssql.somee.com; persist security info = False; initial catalog = reflejox");
             return temp.Get_Usuario(user, email);
         }
-
+        //Método para obtener los usuarios de un grupo, en base al id del grupo.
+        public List<Usuario> Get_Usuarios_Grupo(int grupo_id)
+        {
+            Grupo g = new Grupo(); // Creo un objeto grupo.
+            g.Id = grupo_id; // Le asigno solamente el id.
+            List<Usuario> Usuarios = this.bd.Get_Usuarios_Grupo(g);
+            return Usuarios;
+        }
+        //Método para obtener el listado de sanciones de un usuario, en base a su id.
+        public List<Sancion> Get_Sancion_Usuario(int usuario_id)
+        {
+            Usuario u = new Usuario(); // Creo un objeto usuario.
+            u.Id = usuario_id; // Le asigno solamente el id.
+            List<Sancion> Sanciones = this.bd.Get_Sancion_Usuario(u);
+            return Sanciones;
+        }
+        //Método para obtener el administrador de un determinado grupo.
+        public Usuario Get_Administrador_Grupo(int grupo_id)
+        {
+            Grupo g = new Grupo(); // Creo un objeto grupo.
+            g.Id = grupo_id; // Le asigno solamente el id.
+            Usuario administrador = this.bd.Get_Administrador_Grupo(g);
+            return administrador;
+        }
+        //Método para agregar un usuario a un determinado grupo.
+        public string Set_Usuario_Grupo(int usuario_id, int grupo_id)
+        {
+            Usuario u = new Usuario(); // Creo un objeto usuario.
+            u.Id = usuario_id; // Le asigno solamente el id.
+            Grupo g = new Grupo(); // Creo un objeto grupo.
+            g.Id = grupo_id; // Le asigno solamente el id.
+            return this.bd.Set_Usuario_Grupo(u, g);
+        }
     }
 }

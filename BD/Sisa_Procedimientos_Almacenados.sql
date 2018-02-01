@@ -29,7 +29,7 @@ BEGIN
     WHERE Grupos.id = @v_Grupo_id
 END
 
-CREATE PROCEDURE Get_Grupos_Usuarios @v_Usuario_id int
+CREATE PROCEDURE Get_Grupos_Usuario @v_Usuario_id int
 AS
 BEGIN
     SELECT G.id, G.nombre, G.descripcion, G.administrador_id FROM Grupos AS G

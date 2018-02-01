@@ -45,9 +45,10 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
-                //Si pudo loguear
+                //Se chequea así ya que si no logeo correctamente response.d es NULL.
                 if (response.d) {
-                    window.location.href = "RestablecerContrasena.aspx";
+                    //Redireccionar a index o mi perfil.
+                    //window.location.href = "RestablecerContrasena.aspx";
                 } else {
                     $('#errorDiv').text("Las credenciales son incorrectas.");
                     $('#errorDiv').show();

@@ -132,7 +132,7 @@ namespace SISA.DataAccess
             this.CloseConnection(); // Cierro la conexión.
             return Sanciones; // Devuelvo los Sanciones
         }
-
+        //Método para obtener el administrador de un determinado grupo.
         public Usuario Get_Administrador_Grupo(Grupo g)
         {
             Usuario Administrador; //Todavía no inicializo la variable.
@@ -333,7 +333,7 @@ namespace SISA.DataAccess
                     return false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
