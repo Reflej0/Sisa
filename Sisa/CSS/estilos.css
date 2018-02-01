@@ -37,11 +37,12 @@
     max-width: 75px;
 }
 
-#loginButton {
+.btn-general {
     width: 100%;
     background-color: #f6b315;
 }
-#loginButton:hover {
+
+.btn-general:hover {
     background-color: #dda113;
     color: white;
 }
