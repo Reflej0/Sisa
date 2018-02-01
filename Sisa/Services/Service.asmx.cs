@@ -24,19 +24,24 @@ namespace Sisa.Services
 
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //WebMethod para realizar el login.
-        public bool Login(string user, string pass)
+        public int Login(string user, string pass)
         {
             string e_pass = Seguridad.Encrypt(pass); // Encripto la password desde este punto antes de que viaje.
-            bool resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+            int resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
 
-            //Si devuelve true, es porque puede loguear.
-            if (resp)
+            //Si devuelve mayor a 0 entonces logeo correctamente.
+            if (resp > 0)
             {
                 //Variables de Sesión https://msdn.microsoft.com/en-us/library/ms178581.aspx
-                Session["Usuario_Logeado"] = user;
+                Session["Usuario_id"] = user;
             }
 
             return resp;  // El string retornado indicará logeado o no logeado.
+        }
+        //Método para deslogear.
+        public void Logout()
+        {
+            Session["Usuario_id"] = null;
         }
 
         //WebMethod para crear un nuevo usuario.
@@ -44,7 +49,7 @@ namespace Sisa.Services
         public string Set_Usuario(string usuario, string password, string email)
         {
             string e_pass = Seguridad.Encrypt(password); // Encripto la password desde este punto antes de que viaje.
-            bool resp = O_Business.Login(usuario, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión
+            int resp = O_Business.Login(usuario, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión
 
             O_Business = new O_Business(); // Inicializo el objeto global.
             return O_Business.Set_Usuario(usuario, e_pass, email); // Devuelvo el string del estado de la operación.
@@ -66,6 +71,16 @@ namespace Sisa.Services
 
             //Si devuelve true, es porque existe el usuario.
             return resp;
+        }
+        //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra los grupos asociados.
+        public List<Grupo> Get_Grupos_Usuarios()
+        {
+            return O_Business.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
+        }
+        //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra las sanciones.
+        public List<Sancion> Get_Sancion_Usuario()
+        {
+            return O_Business.Get_Sancion_Usuario(Convert.ToInt32(Session["Usuario_id"]));
         }
     }
 }

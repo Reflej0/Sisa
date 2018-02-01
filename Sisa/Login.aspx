@@ -45,8 +45,9 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
+                alert(response.d);
                 //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d) {
+                if (response.d != -1) {
                     //Redireccionar a index o mi perfil.
                     //window.location.href = "RestablecerContrasena.aspx";
                 } else {

@@ -13,9 +13,17 @@
 </head>
 <body class="container-fluid fondo-coloreado">
     <!-- Contenido -->
-    <div id="header">
-
-        <h1> Header </h1>
+    <div id="header" class="row">
+        <div class="col-sm-3 col-md-3">
+            <img id="homeSoloLogo" class="d-block mx-auto" src="img/solo_logo.jpg" alt="Logo"/>
+        </div>
+        <div class="col-sm-1">
+            <img id="homeSoloTexto" class="d-block mx-auto" src="img/solo_texto.jpg" alt="Logo"/>
+        </div>
+        <div class="col-sm-2">
+            <h1> Header </h1>
+        </div>
+         
 
     </div>
     <br />
