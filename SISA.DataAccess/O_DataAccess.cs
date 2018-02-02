@@ -246,8 +246,6 @@ namespace SISA.DataAccess
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
             cmd.Parameters.AddWithValue("@v_Password", pass);
-            try
-            {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
@@ -262,11 +260,7 @@ namespace SISA.DataAccess
                     this.CloseConnection(); // Cierro la conexión.
                     return -1; // Usuario no encontrado.
                 }
-            }
-            catch (Exception)
-            {
-                return -2; // -2 para excepciones.
-            }
+            
         }
         //Método para agregar un usuario a un determinado grupo.
         public string Set_Usuario_Grupo(Usuario u, Grupo g)

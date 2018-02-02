@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Services;
 using Business;
 using SISA.Common;
-using Newtonsoft.Json;
+using Newtonsoft.Json; //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
 
 namespace Sisa.Services
 {
@@ -80,6 +80,7 @@ namespace Sisa.Services
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
             //Devuelve un string que es un JSON que Serializa el List<>, la cuestión es que ANDA.
+            //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
             return JsonConvert.SerializeObject(O_Business.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"])), Formatting.Indented);
         }
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
