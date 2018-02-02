@@ -32,26 +32,26 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a id="Grupos">
+                            <button id="Grupos">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Grupos
-                            </a>
+                            </button>
                         </h4>
                     </div>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a id="Sanciones">
+                            <button id="Sanciones">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Sanciones
-                            </a>
+                            </button>
                         </h4>
                     </div>
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a id="Salir">
+                            <button id="Salir">
                                 <span class="glyphicon glyphicon-folder-close"></span>
                                 Salir
-                            </a>
+                            </button>
                         </h4>
                     </div>
                 </div>
@@ -97,16 +97,10 @@
 <script type="text/javascript">
 
     $('#Grupos').click(function () {
-        var data = {};
-        data.user = $('#user').val();
-        data.pass = $('#password').val();
-
         $.ajax({
             type: 'POST',
             url: 'Services/Service.asmx/Get_Grupos_Usuarios',
             contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(data),
             success: function (response) {
                 var o = JSON.parse(response.d);
                 alert(o[0].nombre);
@@ -127,16 +121,10 @@
 <script type="text/javascript">
 
     $('#Sanciones').click(function () {
-        var data = {};
-        data.user = $('#user').val();
-        data.pass = $('#password').val();
-
         $.ajax({
             type: 'POST',
             url: 'Services/Service.asmx/Get_Sancion_Usuario',
             contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(data),
             success: function (response) {
                 alert(response.d);
                 //Se chequea así ya que si no logeo correctamente response.d es NULL.
@@ -156,17 +144,12 @@
 <script type="text/javascript">
 
     $('#Salir').click(function () {
-        var data = {};
-        data.user = $('#user').val();
-        data.pass = $('#password').val();
-
         $.ajax({
             type: 'POST',
             url: 'Services/Service.asmx/Logout',
             contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(data),
             success: function (response) {
+                window.location.href = "Login.aspx";
             }
         });
     });
