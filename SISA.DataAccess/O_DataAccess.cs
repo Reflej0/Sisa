@@ -179,7 +179,7 @@ namespace SISA.DataAccess
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
                             //Creo una variable auxiliar que va leyendo registro por registro.
-                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(4));
+                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
                             Grupos.Add(g);
                         }
                     }
@@ -246,8 +246,6 @@ namespace SISA.DataAccess
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
             cmd.Parameters.AddWithValue("@v_Password", pass);
-            try
-            {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
@@ -262,11 +260,7 @@ namespace SISA.DataAccess
                     this.CloseConnection(); // Cierro la conexión.
                     return -1; // Usuario no encontrado.
                 }
-            }
-            catch (Exception)
-            {
-                return -2; // -2 para excepciones.
-            }
+            
         }
         //Método para agregar un usuario a un determinado grupo.
         public string Set_Usuario_Grupo(Usuario u, Grupo g)
