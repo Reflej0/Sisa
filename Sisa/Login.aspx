@@ -45,14 +45,20 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
-                alert(response.d);
                 //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d != -1) {
+                if (response.d > 0) {
                     //Redireccionar a index o mi perfil.
                     window.location.href = "Home.aspx";
                 } else {
-                    $('#errorDiv').text("Las credenciales son incorrectas.");
-                    $('#errorDiv').show();
+                    if (response.d == -1)
+                    {
+                        $('#errorDiv').text("Las credenciales son incorrectas.");
+                        $('#errorDiv').show();
+                    }
+                    if (response.d == -2)
+                    {
+                        alert("Error interno");
+                    }
                 }
             }
         });
