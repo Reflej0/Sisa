@@ -179,7 +179,7 @@ namespace SISA.DataAccess
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
                             //Creo una variable auxiliar que va leyendo registro por registro.
-                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(4));
+                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
                             Grupos.Add(g);
                         }
                     }

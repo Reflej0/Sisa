@@ -34,77 +34,64 @@
 
     <div id="main">
         <div class="container">
-    <div class="row">
-        <div class="col-sm-3 col-md-3">
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <button id="Grupos">
-                                <span class="glyphicon glyphicon-folder-close"></span>
-                                Grupos
-                            </button>
-                        </h4>
+            <div class="row">
+                <div class="col-sm-3 col-md-3">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <button id="Grupos">
+                                        <span class="glyphicon glyphicon-folder-close"></span>
+                                        Grupos
+                                    </button>
+                                </h4>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <button id="Sanciones">
+                                        <span class="glyphicon glyphicon-folder-close"></span>
+                                        Sanciones
+                                    </button>
+                                </h4>
+                            </div>
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <button id="Salir">
+                                        <span class="glyphicon glyphicon-folder-close"></span>
+                                        Salir
+                                    </button>
+                                </h4>
+                            </div>
+                        </div>
                     </div>
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <button id="Sanciones">
-                                <span class="glyphicon glyphicon-folder-close"></span>
-                                Sanciones
-                            </button>
-                        </h4>
-                    </div>
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <button id="Salir">
-                                <span class="glyphicon glyphicon-folder-close"></span>
-                                Salir
-                            </button>
-                        </h4>
+        </div>
+                <div class="col-sm-9 col-md-9" id="pantalla">
+                    <div class="well">
+                        <h1>	HOME!				</h1>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-9 col-md-9" id="pantalla">
-            <div class="well">
-                <h1>	HOME!				</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-    </div>
+        </div> <!-- Cierro container -->
+    </div> <!-- Cierro main -->
 
     <br />
     <br />
     <br />
-
+    <hr />
     <div id="footer">
         footer
     </div>
 
-    <!-- <img id="homeLogo" class="d-block mx-auto" src="img/logo2.jpg" alt="Logo"/>-->
-    <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
-        
-            <div class="form-group">
-                <br />
-                <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
-            </div>
-        <button type="button" class="btn no-border-radius" id="loginButton">Ingresar</button>
-        <div class="error text-center" id="errorDiv"></div>
-        <br />
-        <hr class="linea-separadora" />
-        <p class="text-center"><a href="Registro.aspx">Registrate</a> para comenzar a sancionar gente</p>
-    </div>
 </body>
 </html>
 
 <script type="text/javascript">
 
     $('#Grupos').click(function () {
+
+        window.location.href = "Grupos.aspx";
+
+        /*
         $.ajax({
             type: 'POST',
             url: 'Services/Service.asmx/Get_Grupos_Usuarios',
@@ -122,6 +109,8 @@
                 }
             }
         });
+
+        */
     });
 
 </script>
