@@ -111,7 +111,7 @@
             contentType: 'application/json;charset=utf-8',
             success: function (response) {
                 var o = JSON.parse(response.d);
-                alert(o[0].nombre);
+                alert(o[0].Nombre);
                 //Se chequea así ya que si no logeo correctamente response.d es NULL.
                 if (response.d != -1) {
                     //Redireccionar a index o mi perfil.
