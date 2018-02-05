@@ -35,3 +35,7 @@ C:\Users\gyl\Source\Repos\Sisa\SISA.Business\bin\Debug\SISA.DataAccess.pdb
 C:\Users\gyl\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.csprojResolveAssemblyReference.cache
 C:\Users\gyl\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.dll
 C:\Users\gyl\Source\Repos\Sisa\SISA.Business\obj\Debug\SISA.Business.pdb
+C:\Users\gyl\Documents\Sisa\SISA.Business\obj\Debug\SISA.Business.csprojResolveAssemblyReference.cache
+C:\Users\gyl\Documents\Sisa\SISA.Business\obj\Debug\SISA.Business.csproj.CoreCompileInputs.cache
+C:\Users\gyl\Documents\Sisa\SISA.Business\obj\Debug\SISA.Business.dll
+C:\Users\gyl\Documents\Sisa\SISA.Business\obj\Debug\SISA.Business.pdb

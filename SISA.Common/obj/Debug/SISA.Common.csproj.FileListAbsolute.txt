@@ -17,3 +17,9 @@ C:\Users\gyl\Source\Repos\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
 C:\Users\gyl\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.csprojResolveAssemblyReference.cache
 C:\Users\gyl\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
 C:\Users\gyl\Source\Repos\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb
+C:\Users\gyl\Documents\Sisa\SISA.Common\bin\Debug\SISA.Common.dll
+C:\Users\gyl\Documents\Sisa\SISA.Common\bin\Debug\SISA.Common.pdb
+C:\Users\gyl\Documents\Sisa\SISA.Common\obj\Debug\SISA.Common.csprojResolveAssemblyReference.cache
+C:\Users\gyl\Documents\Sisa\SISA.Common\obj\Debug\SISA.Common.csproj.CoreCompileInputs.cache
+C:\Users\gyl\Documents\Sisa\SISA.Common\obj\Debug\SISA.Common.dll
+C:\Users\gyl\Documents\Sisa\SISA.Common\obj\Debug\SISA.Common.pdb

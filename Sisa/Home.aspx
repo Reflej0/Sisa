@@ -34,16 +34,14 @@
                         <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo"/>
                         <h3>Sistema de Sanciones</h3>
                         <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
+                        <br />
+                        <div class="card border-danger mb-3">
+                          <div class="card-header text-center">Notificaciones</div>
+                          <div class="card-body text-danger">
+                            <p class="card-title" id="texto-notificacion">No hay notificaciones.</p>
+                          </div>
+                        </div>
                         <ul>
-                            <li>
-                                Mis sanciones
-                            </li>
-                            <li>
-                                Sanciones realizadas
-                            </li>
-                            <li>
-                                Votacion
-                            </li>
                             <li>
                                 Mis grupos
                             </li>
@@ -66,6 +64,13 @@
 </html>
 
 <script type="text/javascript">
+
+    function mostrarNotificaciones() {
+        var notificaciones = document.getElementById('texto-notificacion');
+        notificaciones.textContent = "notificaciones";
+    }
+
+    setInterval(mostrarNotificaciones, 1000);
 
     $('#Grupos').click(function () {
 
