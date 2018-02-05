@@ -34,56 +34,32 @@
                         <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo"/>
                         <h3>Sistema de Sanciones</h3>
                         <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
+                        <ul>
+                            <li>
+                                Mis sanciones
+                            </li>
+                            <li>
+                                Sanciones realizadas
+                            </li>
+                            <li>
+                                Votacion
+                            </li>
+                            <li>
+                                Mis grupos
+                            </li>
+                        </ul>
+
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
-    <!-- div id="main">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3 col-md-3">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <button>
-                                        <span class="glyphicon glyphicon-folder-close"></span>
-                                        Grupos
-                                    </button>
-                                </h4>
-                            </div>
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <button >
-                                        <span class="glyphicon glyphicon-folder-close"></span>
-                                        Sanciones
-                                    </button>
-                                </h4>
-                            </div>
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <button >
-                                        <span class="glyphicon glyphicon-folder-close"></span>
-                                        Salir
-                                    </button>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-        </div>
-                <div class="col-sm-9 col-md-9" id="pantalla">
-                    <div class="well">
-                        <h1>	HOME!				</h1>
-                    </div>
-                </div>
-            </div>
-        </div> <!-- Cierro container -->
-    </--!> <!-- Cierro main -->
 
     <div class="footer align-middle">
-        footer
+        <a class="link-info" href="https://github.com/Reflej0/Sisa"> Proyecto</a>
+        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
+        
     </div>
 
 </body>

@@ -95,6 +95,7 @@ body {
     position: absolute;
     bottom: 0;
     height: 8%;
+    padding: 13px;
 }
 
 #header {
@@ -116,3 +117,13 @@ body {
     margin: 0px;
     height: 70px;
 }
+
+/* Link del footer */
+.link-info{
+    color: #000000;
+    margin: 20px;
+}
+    .link-info:hover {
+        color: #ac7a06;
+        text-decoration: none;
+    }
