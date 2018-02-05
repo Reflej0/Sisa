@@ -84,15 +84,16 @@ namespace Sisa.Services
             bool resp = O_Business.Get_Usuario(user, email); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
             if (resp)
             {
+                String nuevaContrasena = Seguridad.Decrypt(O_Business.Get_Password_Email(user, email);
                 //Armo el mail
-                MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu nueva contraseña no existe, es una ilusión.");
+                MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu nueva contraseña es: " + nuevaContrasena);
                 //Credenciales
                 NetworkCredential netCred = new NetworkCredential("sisa.reportes@gmail.com", "1823deltaepsilonAlfa");
                 SmtpClient smtpobj = new SmtpClient("smtp.gmail.com", 587);
                 smtpobj.EnableSsl = true;
                 smtpobj.Credentials = netCred;
                 smtpobj.Send(o);
-                return Seguridad.Decrypt(O_Business.Get_Password_Email(user, email));
+                return "Revisa tu correo";
             } else
             {
                 return "No existe!";
