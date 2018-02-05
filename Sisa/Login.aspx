@@ -14,7 +14,7 @@
 <body class="container-fluid fondo-coloreado">
     <!-- Contenido -->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
-        <img id="loginLogo" class="d-block mx-auto" src="img/logo2.jpg" alt="Logo"/>
+        <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo"/>
             <div class="form-group">
                 <br />
                 <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
