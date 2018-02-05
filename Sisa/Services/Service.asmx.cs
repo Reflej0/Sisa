@@ -84,7 +84,7 @@ namespace Sisa.Services
             bool resp = O_Business.Get_Usuario(user, email); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
             if (resp)
             {
-                String nuevaContrasena = Seguridad.Decrypt(O_Business.Get_Password_Email(user, email);
+                String nuevaContrasena = Seguridad.Decrypt(O_Business.Get_Password_Email(user, email));
                 //Armo el mail
                 MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu nueva contraseña es: " + nuevaContrasena);
                 //Credenciales
