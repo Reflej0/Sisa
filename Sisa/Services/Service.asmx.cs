@@ -6,6 +6,8 @@ using System.Web.Services;
 using Business;
 using SISA.Common;
 using Newtonsoft.Json; //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
+using System.Net.Mail;
+using System.Net;
 
 namespace Sisa.Services
 {
@@ -82,6 +84,14 @@ namespace Sisa.Services
             bool resp = O_Business.Get_Usuario(user, email); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
             if (resp)
             {
+                //Armo el mail
+                MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu nueva contraseña no existe, es una ilusión.");
+                //Credenciales
+                NetworkCredential netCred = new NetworkCredential("sisa.reportes@gmail.com", "1823deltaepsilonAlfa");
+                SmtpClient smtpobj = new SmtpClient("smtp.gmail.com", 587);
+                smtpobj.EnableSsl = true;
+                smtpobj.Credentials = netCred;
+                smtpobj.Send(o);
                 return "Existe!";
             } else
             {
