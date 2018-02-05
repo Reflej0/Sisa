@@ -11,7 +11,6 @@ namespace Sisa
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write(Session["Usuario_Logeado"].ToString());
         }
     }
 }
