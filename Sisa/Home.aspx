@@ -11,25 +11,31 @@
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
-<body class="container-fluid fondo-coloreado">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-naranja">
+          <a class="navbar-brand" href="Home.aspx"> <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo"/></a>
+          <a class="navbar-brand"  id="Grupos" href="#">Grupos</a>
+          <a class="navbar-brand"  id="Sanciones" href="#">Sanciones</a>
+          <a class="navbar-brand"  id="Salir" href="#">Salir</a>
+        </nav>
     <!-- Contenido -->
-    <div id="header" class="row">
-        <div class="col-sm-3 col-md-3">
-            <img id="homeSoloLogo" class="d-block mx-auto" src="img/soloLogoBlanco.png" alt="Logo"/>
-        </div>
-        <div class="col-sm-2">
-            <h1> Header </h1>
-        </div>
-         
-
+    <div class="info">
+        <p>Nombre de usuario</p>
+        <p>12/12/2012 00:00</p>
     </div>
-    <br />
-    
-    <hr/>
-    <hr/>
-    <br />
-
-    <div id="main">
+    <div class="container-fluid">
+        <div id="header" class="row">
+            <div class="container">
+                <div class="col-sm-3 col-md-3">
+                    <img id="homeSoloLogo" class="d-block mx-auto" src="img/SoloLogoNaranja.png" alt="Logo"/>
+                </div>
+                <div class="col-sm-1">
+                    <img id="homeSoloTexto" class="d-block mx-auto" src="img/solo_texto.jpg" alt="Logo"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- div id="main">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-md-3">
@@ -37,7 +43,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <button id="Grupos">
+                                    <button>
                                         <span class="glyphicon glyphicon-folder-close"></span>
                                         Grupos
                                     </button>
@@ -45,7 +51,7 @@
                             </div>
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <button id="Sanciones">
+                                    <button >
                                         <span class="glyphicon glyphicon-folder-close"></span>
                                         Sanciones
                                     </button>
@@ -53,7 +59,7 @@
                             </div>
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <button id="Salir">
+                                    <button >
                                         <span class="glyphicon glyphicon-folder-close"></span>
                                         Salir
                                     </button>
@@ -69,13 +75,9 @@
                 </div>
             </div>
         </div> <!-- Cierro container -->
-    </div> <!-- Cierro main -->
+    </--!> <!-- Cierro main -->
 
-    <br />
-    <br />
-    <br />
-    <hr />
-    <div id="footer">
+    <div class="footer align-middle">
         footer
     </div>
 
