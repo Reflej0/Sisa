@@ -27,6 +27,8 @@
         <br />
         <hr class="linea-separadora" />
         <p class="text-center"><a href="Registro.aspx">Registrate</a> para comenzar a sancionar gente</p>
+        <hr class="linea-separadora" />
+        <p class="text-center"><a href="RestablecerContrasena.aspx">Olvidé</a> mi contraseña</p>
     </div>
 </body>
 </html>
