@@ -88,5 +88,19 @@ namespace Business
             g.Id = grupo_id; // Le asigno solamente el id.
             return this.bd.Set_Usuario_Grupo(u, g);
         }
+        //Método para agregar una sanción a un usuario.
+        public string Set_Sancion_Usuario(int usuario_sancionador_id, int grupo_id, int usuario_sancionado_id, string motivo)
+        {
+            Usuario usuario_sancionador = new Usuario();
+            Grupo g = new Grupo();
+            Usuario usuario_sancionado = new Usuario();
+            Sancion s = new Sancion();
+            usuario_sancionador.Id = usuario_sancionador_id;
+            g.Id = grupo_id;
+            usuario_sancionado.Id= usuario_sancionado_id;
+            s.Motivo = motivo;
+            s.Fecha_estado = DateTime.Now;
+            return this.bd.Set_Sancion_Usuario(usuario_sancionador, g, usuario_sancionado, s);
+        }
     }
 }

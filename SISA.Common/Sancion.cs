@@ -38,6 +38,11 @@ namespace SISA.Common
             this.fecha_estado = fecha_estado;
         }
 
+        public Sancion()
+        {
+
+        }
+
         public int Id { get => id; set => id = value; }
         public int Grupo_id { get => grupo_id; set => grupo_id = value; }
         public int Usuario_creador_id { get => usuario_creador_id; set => usuario_creador_id = value; }
