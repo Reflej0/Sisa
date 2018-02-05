@@ -26,12 +26,17 @@
     <div class="container-fluid">
         <div id="header" class="row">
             <div class="container">
-                <div class="col-sm-3 col-md-3">
-                    <img id="homeSoloLogo" class="d-block mx-auto" src="img/SoloLogoNaranja.png" alt="Logo"/>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <img id="homeSoloLogo" class="d-block mx-auto" src="img/SoloLogoNaranja.png" alt="Logo"/>
+                    </div>
+                    <div class="titulo-home col-md-4">
+                        <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo"/>
+                        <h3>Sistema de Sanciones</h3>
+                        <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
+                    </div>
                 </div>
-                <div class="col-sm-1">
-                    <img id="homeSoloTexto" class="d-block mx-auto" src="img/solo_texto.jpg" alt="Logo"/>
-                </div>
+
             </div>
         </div>
     </div>

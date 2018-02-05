@@ -87,6 +87,7 @@ body {
     padding-bottom: 80px;
 }
 
+/* Footer */
 .footer {
     width: 100%;
     background-color: #cccccc;
@@ -100,8 +101,18 @@ body {
     height: 30%;
 }
 
+/* Ultima conexion y nombre de usuario */
 .info {
     text-align: right;
     font-size: 12px;
     padding: 10px;
+}
+
+.titulo-home > h3 {
+    font-weight: bold;
+}
+
+#homeSoloTexto{
+    margin: 0px;
+    height: 70px;
 }
