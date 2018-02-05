@@ -21,7 +21,7 @@
     <!-- Contenido -->
     <div class="info">
         <p>Nombre de usuario</p>
-        <p>12/12/2012 00:00</p>
+        <p><%= DateTime.Now.ToString() %></p>
     </div>
     <div class="container-fluid">
         <div id="header" class="row">
