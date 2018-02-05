@@ -20,3 +20,10 @@ C:\Users\Guido\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.cspro
 C:\Users\Guido\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.csproj.CoreCompileInputs.cache
 C:\Users\Guido\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.dll
 C:\Users\Guido\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.pdb
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.dll
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\bin\Debug\SISA.DataAccess.pdb
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.dll
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\bin\Debug\SISA.Common.pdb
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.dll
+C:\Users\gyl\Source\Repos\Sisa\SISA.DataAccess\obj\Debug\SISA.DataAccess.pdb
