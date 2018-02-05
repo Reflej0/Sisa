@@ -69,3 +69,11 @@ BEGIN
     SELECT 1 FROM Usuarios AS U
     WHERE U.usuario = @v_Usuario AND U.email = @v_Email
 END
+
+
+CREATE PROCEDURE Get_Password_Email @v_Usuario varchar(50), @v_Email varchar(50)
+AS
+BEGIN
+    SELECT U.password FROM Usuarios AS U
+    WHERE U.usuario = @v_Usuario AND U.email = @v_Email
+END
