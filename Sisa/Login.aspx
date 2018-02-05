@@ -13,7 +13,7 @@
 </head>
 <body class="container-fluid fondo-coloreado">
     <!-- Contenido -->
-    <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
+    <div class="gradient-border col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo"/>
             <div class="form-group">
                 <br />
