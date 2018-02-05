@@ -86,7 +86,7 @@ namespace Sisa.Services
             {
                 String nuevaContrasena = Seguridad.Decrypt(O_Business.Get_Password_Email(user, email));
                 //Armo el mail
-                MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu nueva contraseña es: " + nuevaContrasena);
+                MailMessage o = new MailMessage("sisa.reportes@gmail.com", email, "Recuperar Contraseña", "Tu contraseña es: " + nuevaContrasena);
                 //Credenciales
                 NetworkCredential netCred = new NetworkCredential("sisa.reportes@gmail.com", "1823deltaepsilonAlfa");
                 SmtpClient smtpobj = new SmtpClient("smtp.gmail.com", 587);
