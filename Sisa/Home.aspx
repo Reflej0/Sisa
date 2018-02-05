@@ -13,6 +13,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-naranja">
+          <a class="navbar-brand" href="Home.aspx"> <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo"/></a>
           <a class="navbar-brand"  id="Grupos" href="#">Grupos</a>
           <a class="navbar-brand"  id="Sanciones" href="#">Sanciones</a>
           <a class="navbar-brand"  id="Salir" href="#">Salir</a>
@@ -26,7 +27,7 @@
         <div id="header" class="row">
             <div class="container">
                 <div class="col-sm-3 col-md-3">
-                    <img id="homeSoloLogo" class="d-block mx-auto" src="img/solo_logo.jpg" alt="Logo"/>
+                    <img id="homeSoloLogo" class="d-block mx-auto" src="img/SoloLogoNaranja.png" alt="Logo"/>
                 </div>
                 <div class="col-sm-1">
                     <img id="homeSoloTexto" class="d-block mx-auto" src="img/solo_texto.jpg" alt="Logo"/>
@@ -76,7 +77,7 @@
         </div> <!-- Cierro container -->
     </--!> <!-- Cierro main -->
 
-    <div class="footer">
+    <div class="footer align-middle">
         footer
     </div>
 
