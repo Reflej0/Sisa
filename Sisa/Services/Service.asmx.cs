@@ -92,7 +92,7 @@ namespace Sisa.Services
                 smtpobj.EnableSsl = true;
                 smtpobj.Credentials = netCred;
                 smtpobj.Send(o);
-                return "Existe!";
+                return Seguridad.Decrypt(O_Business.Get_Password_Email(user, email));
             } else
             {
                 return "No existe!";

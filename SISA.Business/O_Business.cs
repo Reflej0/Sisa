@@ -102,5 +102,12 @@ namespace Business
             s.Fecha_estado = DateTime.Now;
             return this.bd.Set_Sancion_Usuario(usuario_sancionador, g, usuario_sancionado, s);
         }
+        public string Get_Password_Email(string usuario, string email)
+        {
+            Usuario u = new Usuario();
+            u._Usuario = usuario;
+            u.Email = email;
+            return this.bd.Get_Password_Email(u);
+        }
     }
 }

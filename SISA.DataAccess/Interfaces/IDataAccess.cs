@@ -35,5 +35,7 @@ namespace SISA.DataAccess.Interfaces
         string Set_Usuario_Grupo(Usuario u, Grupo g);
         //Método para agregar una sanción a un usuario.
         string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s);
+        //Método para recuperar la contraseña
+        string Get_Password_Email(Usuario u);
     }
 }
