@@ -75,6 +75,20 @@ namespace Sisa.Services
             return resp;
         }
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        //WebMethod para recuperar la contraseña.
+        public string Recuperar_Contrasena(string user, string email)
+        {
+            O_Business = new O_Business();
+            bool resp = O_Business.Get_Usuario(user, email); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+            if (resp)
+            {
+                return "Existe!";
+            } else
+            {
+                return "No existe!";
+            }
+        }
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra los grupos asociados.
         public string Get_Grupos_Usuarios()
         {

@@ -31,13 +31,14 @@
 <script type="text/javascript">
 
     $('#restablecerButton').click(function () {
-        var user = $('#user').val();
-        var email = $('#email').val();
 
+        var data = {};
+        data.user = $('#user').val();
+        data.email = $('#email').val();
         //Voy a validar que exista el usuario para el que quiere restablecer la contraseña.
         $.ajax({
             type: 'POST',
-            url: 'Services/Service.asmx/Get_Usuario',
+            url: 'Services/Service.asmx/Recuperar_Contrasena',
             contentType: 'application/json;charset=utf-8',
             dataType: 'json',
             data: JSON.stringify(data),

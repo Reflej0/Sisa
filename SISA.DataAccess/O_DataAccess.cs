@@ -317,7 +317,7 @@ namespace SISA.DataAccess
 
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
-            cmd.Parameters.AddWithValue("@v_Password", email);
+            cmd.Parameters.AddWithValue("@v_Email", email);
             try
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
