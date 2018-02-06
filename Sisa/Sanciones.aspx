@@ -153,6 +153,24 @@
         }
     })
 
+    $('#sendButton').click(function () {
+        var data = {};
+        data.grupo_id = $('#selectGrupo').val();
+        data.sancionado_id = $('#selectIntegrante').val();
+        data.motivo = $("#Motivo").val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Set_Sancion_Usuario',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    window.location = 'Home.aspx'
+                }
+            });
+       
+    });
 </script>
 
 <script type="text/javascript">
