@@ -8,7 +8,6 @@
     <title>SiSa</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
@@ -28,9 +27,9 @@
     </div>
     <div class="container">
         <div class="titulo-formulario">
-            <h3>Sancionar a un mogolico <i class="fas fa-exclamation-triangle"></i></h3>
+            <h3>Sancionar a un mogolico <i class="far fa-frown"></i></h3>
         </div>
-        <div class="form-group">
+        <div class="form-group contenido-centrado">
             <label for="selectGrupo">Grupo</label>
             <select class="form-control" id="selectGrupo">
                 <option value="0" selected>Seleccione un grupo...</option>
@@ -54,14 +53,18 @@
                 <option value="0" selected>Seleccione un integrante...</option>
             </select>
             <label for="Motivo">Motivo</label>
-            <textarea class="form-control" rows="5" id="Motivo"></textarea>
-            <button type="button" class="btn no-border-radius btn-general" id="sendButton">Sanción!!!</button>
+            <textarea class="form-control" rows="3" id="Motivo"></textarea>
+            <br />
+            <div class="text-center">
+                <button type="button" class="btn btn-danger" id="sendButton">Sanción!!!</button>
+            </div>
+            
 
         </div>
     </div>
 
     <div class="footer align-middle">
-        <a class="link-info" href="https://github.com/Reflej0/Sisa">Proyecto</a>
+        <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
         <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
 
     </div>
