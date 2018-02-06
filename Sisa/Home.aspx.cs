@@ -15,14 +15,14 @@ namespace Sisa
             //-1 o -2 indican que INTENTE entrar pero tengo creedenciales incorrectas.
             if (Session["Usuario_id"] == null)
             {
-                Response.Redirect("Login.asmx");
+                Response.Redirect("Login.aspx");
             }
             else
             {
                 int usuario_id = Int32.Parse(Session["Usuario_id"].ToString());
                 if(usuario_id < 0)
                 {
-                    Response.Redirect("Login.asmx");
+                    Response.Redirect("Login.aspx");
                 }
             }
         }
