@@ -102,12 +102,27 @@ namespace Business
             s.Fecha_estado = DateTime.Now;
             return this.bd.Set_Sancion_Usuario(usuario_sancionador, g, usuario_sancionado, s);
         }
+        //Método para obtener el password de un usuario en base a su usuario y mail.
         public string Get_Password_Email(string usuario, string email)
         {
             Usuario u = new Usuario();
             u._Usuario = usuario;
             u.Email = email;
             return this.bd.Get_Password_Email(u);
+        }
+        //Método para obtener las sanciones activas de un determinado grupo.
+        public List<Sancion> Get_Sanciones_Activas_Grupos(int grupo_id)
+        {
+            Grupo g = new Grupo();
+            g.Id = grupo_id;
+            return this.bd.Get_Sanciones_Activas_Grupos(g);
+        }
+        //Método para obtener el grupo determinado de un usuario.
+        public Grupo Get_Grupo_Determinado_Usuario(int usuario_id)
+        {
+            Usuario u = new Usuario();
+            u.Id = usuario_id;
+            return this.bd.Get_Grupo_Determinado_Usuario(u);
         }
     }
 }

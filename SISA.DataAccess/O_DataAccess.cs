@@ -367,5 +367,64 @@ namespace SISA.DataAccess
                 return e.ToString();
             }
         }
+        //Método para obtener todas las sanciones de un grupo en estado activo.
+        public List<Sancion> Get_Sanciones_Activas_Grupos(Grupo g)
+        {
+            List<Sancion> Sanciones = new List<Sancion>();
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Sanciones_Activas_Grupos", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", u.Id); // Id del grupos.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Sancion s = new Sancion(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetDateTime(6));
+                            Sanciones.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Sanciones; // Devuelvo los Grupos
+        }
+        //Método para obtener el grupo (por defecto) de un determinado usuario.
+        public Grupo Get_Grupo_Determinado_Usuario(Usuario u)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Grupo_Determinado_Usuario", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del grupos.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
+                            return g;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return null; // Acá no llega.
+        }
     }
 }

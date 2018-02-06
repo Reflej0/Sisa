@@ -37,5 +37,9 @@ namespace SISA.DataAccess.Interfaces
         string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s);
         //Método para recuperar la contraseña
         string Get_Password_Email(Usuario u);
+        //Método para obtener todas las sanciones activas de un determinado grupo.
+        List<Sancion> Get_Sanciones_Activas_Grupos(Grupo g);
+        //Método para obtener el grupo (por defecto) de un usuario.
+        Grupo Get_Grupo_Determinado_Usuario(Usuario u);
     }
 }

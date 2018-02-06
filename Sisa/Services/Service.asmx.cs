@@ -110,10 +110,24 @@ namespace Sisa.Services
         }
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //Este método no recibe usuario_id porque ya esta en Session. Recibe el Usuario_id y muestra las sanciones.
-        public List<Sancion> Get_Sancion_Usuario()
+        public string Get_Sancion_Usuario()
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
-            return O_Business.Get_Sancion_Usuario(Convert.ToInt32(Session["Usuario_id"]));
+            return JsonConvert.SerializeObject(O_Business.Get_Sancion_Usuario(Convert.ToInt32(Session["Usuario_id"])), Formatting.Indented);
+        }
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        //Este método recibe llamadas de AJAX cada 1 segundo.
+        public string Get_Sanciones_Activas_Grupos(int grupo_id)
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return JsonConvert.SerializeObject(O_Business.Get_Sanciones_Activas_Grupos(grupo_id), Formatting.Indented);
+        }
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        //Método para obtener el grupo (por defecto de un usuario).
+        public int Get_Grupo_Determinado_Usuario()
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return O_Business.Get_Grupo_Determinado_Usuario(Convert.ToInt32(Session["Usuario_id"])).Id;
         }
     }
 }

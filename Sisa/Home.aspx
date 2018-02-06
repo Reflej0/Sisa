@@ -64,13 +64,62 @@
 </html>
 
 <script type="text/javascript">
+    var grupo_predeterminado_id; // Variable global de JS que contiene la id del grupo predeterminado del usuario.
 
+    //Cuando cargo el home, también cargo el Grupo Predeterminado del usuario.
+    $(document).ready(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Grupo_Determinado_Usuario',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                //Se chequea así ya que si response.d es NULL.
+                if (response.d) {
+                    grupo_predeterminado_id = response.d;
+                }
+                else {
+                    //Manejar acá lo de errores.
+                }
+            }
+        });
+    });
     function mostrarNotificaciones() {
         var notificaciones = document.getElementById('texto-notificacion');
         notificaciones.textContent = "notificaciones";
     }
 
     setInterval(mostrarNotificaciones, 1000);
+
+    setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
+
+    //Método de JS.
+    function Get_Sanciones_Activas_Grupos() 
+    {
+        var data = {}; // En esta variable voy a tener el grupo_id.
+        data.grupo_id = grupo_predeterminado_id;
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Sanciones_Activas_Grupos',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                //Estructura del response.
+                //Donde dice 0 es si devolvió al menos 1, obviamente hay que iterar.
+                //o[0].Id - o[0].grupo_id - o[0].usuario_creador_id - o[0].usuario_sancionado_id - o[0].motivo - o[0].estado - o[0].fecha_creacion;
+                var o = JSON.parse(response.d); // En esta variable guardo el response.
+                //Se chequea así ya que si response.d es NULL.
+                if (response.d) 
+                {
+                    //Manejar acá lo visual.
+                }
+                else 
+                {
+                    //Manejar acá lo de errores.
+                }
+            }
+        });
+    }
 
     $('#Grupos').click(function () {
 
