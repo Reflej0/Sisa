@@ -77,3 +77,22 @@ BEGIN
     SELECT U.password FROM Usuarios AS U
     WHERE U.usuario = @v_Usuario AND U.email = @v_Email
 END
+
+CREATE PROCEDURE Get_Sanciones_Activas_Grupos @v_Grupo_id int
+AS
+BEGIN
+    SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
+    FROM Sanciones AS S
+    WHERE S.grupo_id = @v_Grupo_id
+    AND S.estado = 1
+END
+
+CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
+AS
+BEGIN
+    SELECT TOP 1 G.id, G.nombre, G.descripcion
+    FROM Grupos AS G
+    INNER JOIN Grupos_Usuarios AS GU
+    ON G.id = GU.grupo_id
+    WHERE GU.usuario_id = @v_Usuario_id
+END

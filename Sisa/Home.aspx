@@ -37,10 +37,32 @@
                         <br />
                         <div class="card border-danger mb-3">
                           <div class="card-header text-center">Notificaciones</div>
-                          <div class="card-body text-danger">
-                            <p class="card-title" id="texto-notificacion">No hay notificaciones.</p>
+                            
+<div id="carouselExampleIndicators" class="carousel slide card-body text-danger asd" data-ride="carousel">
+    <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicador"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicador"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicador"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <p class="card-title"> Tenes 3 votaciones pendientes.</p>
+      <br />
+    </div>
+    <div class="carousel-item">
+      <p class="card-title"> 4 sanciones realizadas </p>
+      <br />
+    </div>
+    <div class="carousel-item">
+      <p class="card-title"> 10 sanciones recibidas </p>
+      <br />
+    </div>
+  </div>
+
+</div>
+                
                           </div>
-                        </div>
+
                         <ul>
                             <li>
                                 Mis grupos
@@ -54,11 +76,11 @@
         </div>
     </div>
 
-    <div class="footer align-middle">
+    <footer class="footer align-middle">
         <a class="link-info" href="https://github.com/Reflej0/Sisa"> Proyecto</a>
         <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
         
-    </div>
+    </footer>
 
 </body>
 </html>

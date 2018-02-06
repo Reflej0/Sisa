@@ -14,8 +14,8 @@ namespace Sisa
         {
             // Deberia levantar el ID del usuario, para saber sus grupos
             
-            Response.Write("Hola estoy en el pagee <br/><br/><br/>");
-            Response.Write("mi ID es:" + Session["Usuario_id"]);
+            Response.Write("<div class='msg-grupo'>Hola estoy en el pagee <br/>");
+            Response.Write("mi ID es:" + Session["Usuario_id"] +"</div>");
             //Response.End();
 
         }

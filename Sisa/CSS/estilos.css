@@ -180,3 +180,22 @@ body {
         background-position: 0% 50%;
     }
 }
+
+.msg-grupo{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* Indicadores del carousel */
+.indicador {
+    background-color: #ff0000 !important;
+}
+
+.indicador:active {
+    background-color: #ff6666 !important;
+}
+.indicador:hover{
+    cursor: pointer;
+}
