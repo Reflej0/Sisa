@@ -373,7 +373,7 @@ namespace SISA.DataAccess
             List<Sancion> Sanciones = new List<Sancion>();
             this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Get_Sanciones_Activas_Grupos", cnn); // Nombre del SP a Ejecutar.
-            cmd.Parameters.AddWithValue("@v_Grupo_id", u.Id); // Id del grupos.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupos.
             cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
             try
             {
