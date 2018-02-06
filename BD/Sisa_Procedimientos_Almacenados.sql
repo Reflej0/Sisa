@@ -86,3 +86,13 @@ BEGIN
     WHERE S.grupo_id = @v_Grupo_id
     AND S.estado = 1
 END
+
+CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
+AS
+BEGIN
+    SELECT TOP 1 G.id, G.nombre, G.descripcion
+    FROM Grupos AS G
+    INNER JOIN Grupos_Usuarios AS GU
+    ON G.id = GU.grupo_id
+    WHERE GU.usuario_id = @v_Usuario_id
+END
