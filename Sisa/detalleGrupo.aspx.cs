@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,20 @@ namespace Sisa
 {
 	public partial class detalleGrupo : System.Web.UI.Page
 	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+        public Dictionary<int, int> sanciones;
+        public Dictionary<int, int> Sanciones { get { return sanciones; } }
 
-		}
+        protected void Page_Load(object sender, EventArgs e)
+		{
+            if (Session["Usuario_id"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+            else
+            {
+                O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
+                this.sanciones = objBusiness.Get_Cantidad_Sanciones_Usuarios_Grupo(1);
+            }
+        }
 	}
 }
