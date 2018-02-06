@@ -140,13 +140,11 @@ namespace Sisa.Services
             return O_Business.Get_Usuarios_Grupo(grupo_id);
         }
         //WebMethod para crear una nueva sancion
-        [WebMethod(CacheDuration = 1, BufferResponse = false)]
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         public int Set_Sancion_Usuario(int grupo_id, int sancionado_id, string motivo)
         {
             //Obtengo el id del sancionador mediante la sesion
-            //No ANDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaA
-            //int sancionador_id = Convert.ToInt32(Session["Usuario_id"]);
-            int sancionador_id = 5;
+            int sancionador_id = Convert.ToInt32(Session["Usuario_id"]);
             O_Business = new O_Business(); // Inicializo el objeto global.
             Grupo grupoSancionador = O_Business.Get_Grupo_Determinado_Usuario(sancionador_id);
             Grupo grupoSancionado = O_Business.Get_Grupo_Determinado_Usuario(sancionado_id);
