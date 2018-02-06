@@ -56,7 +56,7 @@
             <textarea class="form-control" rows="3" id="Motivo"></textarea>
             <br />
             <div class="text-center">
-                <button type="button" class="btn btn-danger" id="sendButton">Sanción!!!</button>
+                <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
             
 
@@ -65,7 +65,7 @@
 
     <div class="footer align-middle">
         <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
+        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i> Drive</a>
 
     </div>
 
