@@ -30,24 +30,26 @@
                 <br/>
 
                 <div class="row">
-                    <table class="col-md-6 offset-md-3">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Sanciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Guichu</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>Lean</td>
-                                <td>108</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-md-6 offset-md-3">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Sanciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Guichu</td>
+                                    <td>25</td>
+                                </tr>
+                                <tr>
+                                    <td>Lean</td>
+                                    <td>108</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

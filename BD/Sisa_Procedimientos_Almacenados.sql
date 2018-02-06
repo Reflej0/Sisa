@@ -96,3 +96,12 @@ BEGIN
     ON G.id = GU.grupo_id
     WHERE GU.usuario_id = @v_Usuario_id
 END
+
+CREATE PROCEDURE Get_Cantidad_Sanciones_Usuarios_Grupo @v_Grupo_id int
+AS
+BEGIN
+    SELECT COUNT(*)
+    FROM Sanciones AS S
+    WHERE S.grupo_id = @v_Grupo_id
+	GROUP BY usuario_sancionado_id
+END
