@@ -105,3 +105,10 @@ BEGIN
     WHERE S.grupo_id = @v_Grupo_id
 	GROUP BY usuario_sancionado_id
 END
+
+CREATE PROCEDURE Get_Nombre_Usuario @v_Usuario_id int
+AS
+BEGIN
+    SELECT usuario FROM Usuarios AS U
+    WHERE U.id = @v_Usuario_id
+END
