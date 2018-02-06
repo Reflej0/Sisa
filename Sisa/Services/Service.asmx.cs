@@ -18,9 +18,9 @@ namespace Sisa.Services
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
-     [System.Web.Script.Services.ScriptService]
-     //Los WebMethods son los métodos los cuales recepcionan llamadas de AJAX.
-     // AJAX -> WebMethod -> Business -> DataAccess.
+    [System.Web.Script.Services.ScriptService]
+    //Los WebMethods son los métodos los cuales recepcionan llamadas de AJAX.
+    // AJAX -> WebMethod -> Business -> DataAccess.
     public class Service : System.Web.Services.WebService
     {
         public O_Business O_Business = null; // Creo un objeto global (en común a todos los webmethod).
@@ -94,7 +94,8 @@ namespace Sisa.Services
                 smtpobj.Credentials = netCred;
                 smtpobj.Send(o);
                 return "Revisa tu correo";
-            } else
+            }
+            else
             {
                 return "No existe!";
             }
@@ -137,6 +138,31 @@ namespace Sisa.Services
             //Devuelve un string que es un JSON que Serializa el List<>, la cuestión es que ANDA.
             //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
             return O_Business.Get_Usuarios_Grupo(grupo_id);
+        }
+        //WebMethod para crear una nueva sancion
+        [WebMethod(CacheDuration = 1, BufferResponse = false)]
+        public int Set_Sancion_Usuario(int grupo_id, int sancionado_id, int sancionador_id, string motivo)
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            Grupo grupoSancionador = O_Business.Get_Grupo_Determinado_Usuario(sancionador_id);
+            Grupo grupoSancionado = O_Business.Get_Grupo_Determinado_Usuario(sancionado_id);
+            int flagError = 0;
+            if (grupoSancionado.Id.Equals(grupo_id) && grupoSancionador.Id.Equals(grupo_id))
+            {
+                //Faltan validaiciones de motivo?
+                String sancion = O_Business.Set_Sancion_Usuario(sancionador_id, grupo_id, sancionado_id, motivo);
+
+                if (sancion.Length.Equals(0))
+                {
+                    flagError = 1;
+                }
+            }
+            else
+            {
+                flagError = 1;
+            }
+
+            return flagError;
         }
     }
 }
