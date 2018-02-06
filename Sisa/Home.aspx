@@ -38,28 +38,28 @@
                         <div class="card border-danger mb-3">
                           <div class="card-header text-center">Notificaciones</div>
                             
-<div id="carouselExampleIndicators" class="carousel slide card-body text-danger asd" data-ride="carousel">
-    <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicador"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicador"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicador"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <p class="card-title"> Tenes 3 votaciones pendientes.</p>
-      <br />
-    </div>
-    <div class="carousel-item">
-      <p class="card-title"> 4 sanciones realizadas </p>
-      <br />
-    </div>
-    <div class="carousel-item">
-      <p class="card-title"> 10 sanciones recibidas </p>
-      <br />
-    </div>
-  </div>
+                            <div id="carouselExampleIndicators" class="carousel slide card-body text-danger asd" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicador"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicador"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicador"></li>
+                              </ol>
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <p class="card-title"> Tenes 3 votaciones pendientes.</p>
+                                  <br />
+                                </div>
+                                <div class="carousel-item">
+                                  <p class="card-title"> 4 sanciones realizadas </p>
+                                  <br />
+                                </div>
+                                <div class="carousel-item">
+                                  <p class="card-title"> 10 sanciones recibidas </p>
+                                  <br />
+                                </div>
+                              </div>
 
-</div>
+                            </div>
                 
                           </div>
 
@@ -105,14 +105,9 @@
             }
         });
     });
-    function mostrarNotificaciones() {
-        var notificaciones = document.getElementById('texto-notificacion');
-        notificaciones.textContent = "notificaciones";
-    }
 
-    setInterval(mostrarNotificaciones, 1000);
 
-    setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
+   // setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
 
     //Método de JS.
     function Get_Sanciones_Activas_Grupos() 

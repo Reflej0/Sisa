@@ -201,3 +201,9 @@ body {
 .indicador:hover{
     cursor: pointer;
 }
+
+/* Formulario de sanciones */
+.titulo-formulario {
+    color: #ff0000;
+    text-align: center;
+}

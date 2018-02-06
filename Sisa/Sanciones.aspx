@@ -7,6 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>SiSa</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
@@ -24,7 +26,10 @@
         <p>Nombre de usuario</p>
         <p><%= DateTime.Now.ToString() %></p>
     </div>
-    <div class="container-fluid">
+    <div class="container">
+        <div class="titulo-formulario">
+            <h3>Sancionar a un mogolico <i class="fas fa-exclamation-triangle"></i></h3>
+        </div>
         <div class="form-group">
             <label for="selectGrupo">Grupo</label>
             <select class="form-control" id="selectGrupo">
