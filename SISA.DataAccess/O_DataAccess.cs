@@ -426,5 +426,34 @@ namespace SISA.DataAccess
             this.CloseConnection(); // Cierro la conexión.
             return null; // Acá no llega.
         }
+
+        //Método para obtener la cantidad de sanciones por usuario de un determinado grupo.
+        public Dictionary<int, int> Get_Cantidad_Sanciones_Usuarios_Grupo(Grupo g)
+        {
+            Dictionary<int, int> Sanciones = new Dictionary<int, int>();
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Cantidad_Sanciones_Usuarios_Grupo", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupos.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            Sanciones.Add(reader.GetInt32(0), reader.GetInt32(1));
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Sanciones; // Devuelvo los Grupos
+        }
     }
 }
