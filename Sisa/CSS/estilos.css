@@ -187,3 +187,15 @@ body {
     right: 0;
     z-index: 1;
 }
+
+/* Indicadores del carousel */
+.indicador {
+    background-color: #ff0000 !important;
+}
+
+.indicador:active {
+    background-color: #ff6666 !important;
+}
+.indicador:hover{
+    cursor: pointer;
+}
