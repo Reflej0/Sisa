@@ -90,7 +90,7 @@ END
 CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
 AS
 BEGIN
-    SELECT TOP 1 G.id, G.nombre, G.descripcion
+    SELECT TOP 1 G.id, G.nombre, G.descripcion, G.administrador_id
     FROM Grupos AS G
     INNER JOIN Grupos_Usuarios AS GU
     ON G.id = GU.grupo_id
