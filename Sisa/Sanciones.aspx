@@ -22,7 +22,7 @@
     </nav>
     <!-- Contenido -->
     <div class="info">
-        <p>Nombre de usuario</p>
+        <p><%= Session["Nombre"] %></p>
         <p><%= DateTime.Now.ToString() %></p>
     </div>
     <div class="container">

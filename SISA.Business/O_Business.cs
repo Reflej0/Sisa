@@ -131,5 +131,12 @@ namespace Business
             g.Id = grupo_id;
             return this.bd.Get_Cantidad_Sanciones_Usuarios_Grupo(g);
         }
+        //Método para obtener el nombre de un usuario.
+        public String Get_Nombre_Usuario(int usuario_id)
+        {
+            Usuario u = new Usuario();
+            u.Id = usuario_id;
+            return this.bd.Get_Nombre_Usuario(u);
+        }
     }
 }
