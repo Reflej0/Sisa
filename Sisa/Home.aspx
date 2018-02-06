@@ -54,23 +54,16 @@
         </div>
     </div>
 
-    <div class="footer align-middle">
+    <footer class="footer align-middle">
         <a class="link-info" href="https://github.com/Reflej0/Sisa"> Proyecto</a>
         <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
         
-    </div>
+    </footer>
 
 </body>
 </html>
 
 <script type="text/javascript">
-
-    function mostrarNotificaciones() {
-        var notificaciones = document.getElementById('texto-notificacion');
-        notificaciones.textContent = "notificaciones";
-    }
-
-    setInterval(mostrarNotificaciones, 1000);
 
     $('#Grupos').click(function () {
 

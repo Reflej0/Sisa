@@ -180,3 +180,10 @@ body {
         background-position: 0% 50%;
     }
 }
+
+.msg-grupo{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
