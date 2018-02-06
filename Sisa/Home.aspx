@@ -38,9 +38,23 @@
                         <div class="card border-danger mb-3">
                           <div class="card-header text-center">Notificaciones</div>
                           <div class="card-body text-danger">
-                            <p class="card-title" id="texto-notificacion">No hay notificaciones.</p>
-                          </div>
+                            
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <p class="card-title"> Tenes 3 votaciones pendientes.</p>
+    </div>
+    <div class="carousel-item">
+      <p class="card-title"> 4 sanciones realizadas </p>
+    </div>
+    <div class="carousel-item">
+      <p class="card-title"> 10 sanciones recibidas </p>
+    </div>
+  </div>
+</div>
                         </div>
+                          </div>
+
                         <ul>
                             <li>
                                 Mis grupos
