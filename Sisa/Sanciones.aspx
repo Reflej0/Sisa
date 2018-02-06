@@ -45,11 +45,13 @@
                 %>
             </select>
             <label for="selectGrupo">Integrante</label>
-            <select class="form-control" id="selectIntegrante">
+            <select class="form-control" id="selectIntegrante" disabled>
                 <option value="0" selected>Seleccione un integrante...</option>
             </select>
             <label for="Motivo">Motivo</label>
             <textarea class="form-control" rows="5" id="Motivo"></textarea>
+            <button type="button" class="btn no-border-radius btn-general" id="sendButton">Sanción!!!</button>
+
         </div>
     </div>
 
@@ -119,6 +121,32 @@
             }
         });
     });
+
+    $('#selectGrupo').on('change', function () {
+        if (this.value > 0) {
+            var data = {};
+            data.grupo_id = this.value;
+
+            $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Get_Usuarios_Grupos',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.d) {
+                        $.each(response.d, function (index, value) {
+                            $('<option/>', { value: value["Id"] }).text(value["_Usuario"]).appendTo('#selectIntegrante');
+                        });
+                        $('#selectIntegrante').prop("disabled", false);
+                    }
+                }
+            });
+        } else {
+            $('#selectIntegrante').prop("disabled", true).empty();
+            $('<option/>', { value: 0 }).text("Seleccione un integrante...").appendTo('#selectIntegrante');
+        }
+    })
 
 </script>
 
