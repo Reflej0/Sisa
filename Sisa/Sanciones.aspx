@@ -29,32 +29,39 @@
         <div class="titulo-formulario">
             <h3>Sancionar a un mogolico <i class="far fa-frown"></i></h3>
         </div>
-        <div class="form-group contenido-centrado">
-            <label for="selectGrupo">Grupo</label>
-            <select class="form-control" id="selectGrupo">
-                <option value="0" selected>Seleccione un grupo...</option>
-                <% try
-                    {
-                        foreach (List<string> item in StringGrupos)
-                        {%>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-6">
+                    <label for="selectGrupo">Grupo</label>
+                    <select class="form-control" id="selectGrupo">
+                        <option value="0" selected>Seleccione un grupo...</option>
+                        <% try
+                            {
+                                foreach (List<string> item in StringGrupos)
+                                {%>
 
-                <option value="<% Response.Write(item[0]);%>"><% Response.Write(item[1]); %></option>
-                <%}
+                        <option value="<% Response.Write(item[0]);%>"><% Response.Write(item[1]); %></option>
+                        <%}
 
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-                %>
-            </select>
-            <label for="selectGrupo">Integrante</label>
-            <select class="form-control" id="selectIntegrante" disabled>
-                <option value="0" selected>Seleccione un integrante...</option>
-            </select>
-            <label for="Motivo">Motivo</label>
-            <textarea class="form-control" rows="3" id="Motivo"></textarea>
-            <br />
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                        %>
+                    </select>
+                    <label for="selectGrupo">Integrante</label>
+                    <select class="form-control" id="selectIntegrante" disabled>
+                        <option value="0" selected>Seleccione un integrante...</option>
+                    </select>
+                </div>
+                <div class="col col-md-6">
+                    <label for="Motivo">Motivo</label>
+                    <textarea class="form-control" rows="4" id="Motivo"></textarea>
+
+                </div>
+            </div>
+                                <br />
             <div class="text-center">
                 <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
