@@ -107,6 +107,7 @@
   <ItemGroup>
     <Content Include="Registro.aspx" />
     <Content Include="RestablecerContrasena.aspx" />
+    <Content Include="Sanciones.aspx" />
     <Content Include="Services\Service.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="RestablecerContrasena.aspx.designer.cs">
       <DependentUpon>RestablecerContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Sanciones.aspx.cs">
+      <DependentUpon>Sanciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Sanciones.aspx.designer.cs">
+      <DependentUpon>Sanciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Services\Service.asmx.cs">
       <DependentUpon>Service.asmx</DependentUpon>
