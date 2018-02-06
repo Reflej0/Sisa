@@ -133,6 +133,7 @@
                 //Se chequea así ya que si response.d es NULL.
                 if (response.d) 
                 {
+                    alert(o[0].Motivo);
                     //Manejar acá lo visual.
                 }
                 else 
