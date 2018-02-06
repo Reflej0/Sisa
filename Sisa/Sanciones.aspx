@@ -25,31 +25,32 @@
         <p><%= DateTime.Now.ToString() %></p>
     </div>
     <div class="container-fluid">
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Admin_id</th>
-            </tr>
-            <tr>
+        <div class="form-group">
+            <label for="selectGrupo">Grupo</label>
+            <select class="form-control" id="selectGrupo">
+                <option value="0" selected>Seleccione un grupo...</option>
                 <% try
                     {
                         foreach (List<string> item in StringGrupos)
-                        {
-                            foreach (string texto in item)
-                            {%>
-                <th><% Response.Write(texto);%></th>
+                        {%>
+
+                <option value="<% Response.Write(item[0]);%>"><% Response.Write(item[1]); %></option>
                 <%}
-                        }
+
                     }
                     catch (Exception e)
                     {
                         Console.WriteLine(e);
                     }
                 %>
-            </tr>
-        </table>
+            </select>
+            <label for="selectGrupo">Integrante</label>
+            <select class="form-control" id="selectIntegrante">
+                <option value="0" selected>Seleccione un integrante...</option>
+            </select>
+            <label for="Motivo">Motivo</label>
+            <textarea class="form-control" rows="5" id="Motivo"></textarea>
+        </div>
     </div>
 
     <div class="footer align-middle">

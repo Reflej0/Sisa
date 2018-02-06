@@ -41,8 +41,8 @@ namespace Sisa
                 {
                     lista_Interna.Add(grupo.Id.ToString());
                     lista_Interna.Add(grupo.Nombre);
-                    lista_Interna.Add(grupo.Descripcion);
-                    lista_Interna.Add(grupo.Administrador_id.ToString());
+                    //lista_Interna.Add(grupo.Descripcion);
+                    //lista_Interna.Add(grupo.Administrador_id.ToString());
                     lista_Grupos.Add(lista_Interna);
                 }
 
