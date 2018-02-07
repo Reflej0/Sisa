@@ -79,7 +79,8 @@
 
 <script type="text/javascript">
     var grupo_predeterminado_id; // Variable global de JS que contiene la id del grupo predeterminado del usuario.
-
+    var array_sanciones = []; // Variable global de JS que contiene las sanciones del grupo predeterminado del usuario.
+    var sanciones = 0; // Variable global de JS que contiene la cantidad de sanciones del grupo.
     //Cuando cargo el home, también cargo el Grupo Predeterminado del usuario.
     $(document).ready(function () {
         $.ajax({
@@ -99,7 +100,7 @@
     });
 
 
-   // setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
+   setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
 
     //Método de JS.
     function Get_Sanciones_Activas_Grupos() 
@@ -116,17 +117,19 @@
                 //Estructura del response.
                 //Donde dice 0 es si devolvió al menos 1, obviamente hay que iterar.
                 //o[0].Id - o[0].grupo_id - o[0].usuario_creador_id - o[0].usuario_sancionado_id - o[0].motivo - o[0].estado - o[0].fecha_creacion;
-                var o = JSON.parse(response.d); // En esta variable guardo el response.
                 //Se chequea así ya que si response.d es NULL.
                 if (response.d) 
                 {
-                    alert(o[0].Motivo);
-                    //Manejar acá lo visual.
+                    var array_aux = eval('(' + response.d + ')');
+                    for (i in array_aux) {
+                        array_sanciones.push(array_aux[i]);
+                    }
                 }
                 else 
                 {
                     //Manejar acá lo de errores.
                 }
+                sanciones = array_sanciones.length;
             }
         });
     }
