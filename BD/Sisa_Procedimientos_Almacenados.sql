@@ -106,6 +106,13 @@ BEGIN
 	WHERE V.valor = 1 AND S.id = @v_Sancion_id
 END
 
+CREATE PROCEDURE Get_Cant_Usuarios_Grupos @v_Grupo_id int
+AS
+BEGIN
+	SELECT COUNT(GU.id) FROM Grupos_Usuarios AS GU
+	WHERE GU.grupo_id = @v_Grupo_id
+END
+
 CREATE PROCEDURE Set_Usuario @v_Usuario varchar(255), @v_Password varchar(255), @v_Email varchar(255)
 AS
 BEGIN
