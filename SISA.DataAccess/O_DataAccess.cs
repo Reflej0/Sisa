@@ -308,6 +308,108 @@ namespace SISA.DataAccess
                 return e.ToString();
             }
         }
+        //Método para agregar un voto positivo o negativo a una sanción.
+        public string Set_Voto_Sancion(Usuario votante, Voto v, Sancion s)
+        {
+            //PRIMERO AGREGO UN VOTO POSITIVO O NEGATIVO A LA SANCION.
+            /* 0-> NEGATIVO.
+             * 1-> POSITIVO.
+            */
+
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Set_Votos_Sanciones", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@v_Sancion_id", s.Id); ;
+            cmd.Parameters.AddWithValue("@v_Valor", v.Valor); ;
+            cmd.Parameters.AddWithValue("@v_Usuario_id", votante.Id);
+            try
+            {
+                cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                this.CloseConnection(); // Cierro la conexión despues de votar.
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+
+            //VERIFICO DESPUES DE AGREGAR EL VOTO EL ESTADO DE LA SANCION.
+
+            int cant_votos = 0;
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd_ = new SqlCommand("Get_Votos_Sanciones", cnn); // Nombre del SP a Ejecutar.
+            cmd_.Parameters.AddWithValue("@v_Sancion_id", s.Id);
+            cmd_.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd_.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            cant_votos = reader.GetInt32(0); // Obtengo la cantidad de votos positivos asociados a la sanción.
+                            this.CloseConnection();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+
+            //OBTENGO LA CANTIDAD DE USUARIOS EN EL GRUPO.
+
+            int cant_usuarios = 0;
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd__ = new SqlCommand("Get_Cant_Usuarios_Grupos", cnn); // Nombre del SP a Ejecutar.
+            cmd__.Parameters.AddWithValue("@v_Grupo_id", s.Grupo_id);
+            cmd__.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd__.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            cant_usuarios = reader.GetInt32(0); // Obtengo de usuarios del grupo.
+                            this.CloseConnection();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+
+            //VERIFICO EL 50%
+
+            float porcentaje = (cant_votos / cant_usuarios);
+            //SI LA SANCION YA TIENE +50% SANCIONADO !
+            if(porcentaje > 0.5)
+            {
+                this.OpenConnection(); // Primero abro la conexión.
+                SqlCommand cmd___ = new SqlCommand("Update_Sancion", cnn);
+                cmd___.CommandType = CommandType.StoredProcedure;
+                cmd___.Parameters.AddWithValue("@v_Sancion_id", s.Id);
+                try
+                {
+                    cmd___.ExecuteNonQuery(); // Ejecuto el SP.
+                    this.CloseConnection(); // Cierro la conexión despues de votar.
+                }
+                catch (Exception e)
+                {
+                    return e.ToString();
+                }
+                return "Voto asignado, y la sanción ya cumple la cantidad de votos necesarios";
+            }
+            else
+            {
+                return "Voto asignado, pero todavía la sanción no cumple con el porcentaje necesario";
+            }
+        }
 
         public bool Get_Usuario(string usuario, string email)
         {

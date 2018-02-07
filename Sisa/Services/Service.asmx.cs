@@ -170,5 +170,12 @@ namespace Sisa.Services
 
             return flagError;
         }
+        //WebMethod para asignar un nuevo voto a una sanción.
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Set_Voto_Sancion(int votante_id, int voto_valor, int sancion_id)
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return O_Business.Set_Voto_Sancion(votante_id, voto_valor, sancion_id);
+        }
     }
 }

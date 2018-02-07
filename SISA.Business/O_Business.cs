@@ -138,5 +138,16 @@ namespace Business
             u.Id = usuario_id;
             return this.bd.Get_Nombre_Usuario(u);
         }
+        //Método para agregar un voto positivo o negativo a una sanción.
+        public string Set_Voto_Sancion(int votante_id, int voto_valor, int sancion_id)
+        {
+            Usuario votante = new Usuario();
+            votante.Id = votante_id;
+            Voto v = new Voto();
+            v.Valor = voto_valor;
+            Sancion s = new Sancion();
+            s.Id = sancion_id;
+            return this.bd.Set_Voto_Sancion(votante, v, s);
+        }
     }
 }
