@@ -41,15 +41,15 @@
                             </thead>
                             <tbody>
                             <% 
-//foreach (var pair in sanciones)
-//{
+                                foreach (String grupo in nombresGrupos)
+                                {
                             %>
                                     <tr>
-                                        <td>asd</td>
+                                        <td><% Response.Write(grupo);%></td>
                                         <td><button type="button" class="btn btn-danger" id="deleteButton" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
                                     </tr>
                             <%
-//}
+                                }
                             %>
                             </tbody>
                         </table>
