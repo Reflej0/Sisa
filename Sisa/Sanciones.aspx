@@ -22,41 +22,48 @@
     </nav>
     <!-- Contenido -->
     <div class="info">
-        <p>Nombre de usuario</p>
+        <p><%= Session["Nombre"] %></p>
         <p><%= DateTime.Now.ToString() %></p>
     </div>
     <div class="container">
         <div class="titulo-formulario">
             <h3>Sancionar a un mogolico <i class="far fa-frown"></i></h3>
         </div>
-        <div class="form-group contenido-centrado">
-            <label for="selectGrupo">Grupo</label>
-            <select class="form-control" id="selectGrupo">
-                <option value="0" selected>Seleccione un grupo...</option>
-                <% try
-                    {
-                        foreach (List<string> item in StringGrupos)
-                        {%>
+        <div class="form-group">
+            <div class="row">
+                <div class="col col-md-6">
+                    <label for="selectGrupo">Grupo</label>
+                    <select class="form-control" id="selectGrupo">
+                        <option value="0" selected>Seleccione un grupo...</option>
+                        <% try
+                            {
+                                foreach (List<string> item in StringGrupos)
+                                {%>
 
-                <option value="<% Response.Write(item[0]);%>"><% Response.Write(item[1]); %></option>
-                <%}
+                        <option value="<% Response.Write(item[0]);%>"><% Response.Write(item[1]); %></option>
+                        <%}
 
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-                %>
-            </select>
-            <label for="selectGrupo">Integrante</label>
-            <select class="form-control" id="selectIntegrante" disabled>
-                <option value="0" selected>Seleccione un integrante...</option>
-            </select>
-            <label for="Motivo">Motivo</label>
-            <textarea class="form-control" rows="3" id="Motivo"></textarea>
-            <br />
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e);
+                            }
+                        %>
+                    </select>
+                    <label for="selectGrupo">Integrante</label>
+                    <select class="form-control" id="selectIntegrante" disabled>
+                        <option value="0" selected>Seleccione un integrante...</option>
+                    </select>
+                </div>
+                <div class="col col-md-6">
+                    <label for="Motivo">Motivo</label>
+                    <textarea class="form-control" rows="4" id="Motivo"></textarea>
+
+                </div>
+            </div>
+                                <br />
             <div class="text-center">
-                <button type="button" class="btn btn-danger" id="sendButton">Sanción!!!</button>
+                <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
             
 
@@ -65,7 +72,7 @@
 
     <div class="footer align-middle">
         <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
+        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i> Drive</a>
 
     </div>
 

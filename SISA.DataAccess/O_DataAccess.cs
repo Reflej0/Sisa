@@ -246,21 +246,21 @@ namespace SISA.DataAccess
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Usuario", usuario); ;
             cmd.Parameters.AddWithValue("@v_Password", pass);
-                using (SqlDataReader reader = cmd.ExecuteReader())
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
                 {
-                    if (reader.HasRows) // Si el select devuelve algo, es porque el usuario existe.
+                    while (reader.Read()) // Mientras voy leyendo todos los resultados.
                     {
-                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
-                        {
-                            int usuario_id = reader.GetInt32(0); // Devuelvo el id_usuario porque con esto se maneja todo después.
-                            this.CloseConnection(); // Cierro la conexión.
-                            return usuario_id;
-                        }
+                        int usuario_id = reader.GetInt32(0); // Devuelvo el id_usuario porque con esto se maneja todo después.
+                        this.CloseConnection(); // Cierro la conexión.
+                        return usuario_id;
                     }
-                    this.CloseConnection(); // Cierro la conexión.
-                    return -1; // Usuario no encontrado.
                 }
-            
+                this.CloseConnection(); // Cierro la conexión.
+                return -1; // Usuario no encontrado.
+            }
+
         }
         //Método para agregar un usuario a un determinado grupo.
         public string Set_Usuario_Grupo(Usuario u, Grupo g)
@@ -454,6 +454,35 @@ namespace SISA.DataAccess
             }
             this.CloseConnection(); // Cierro la conexión.
             return Sanciones; // Devuelvo los Grupos
+        }
+        public String Get_Nombre_Usuario(Usuario u)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Nombre_Usuario", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del grupos.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            string nombre = reader.GetString(0);
+                            this.CloseConnection();
+                            return nombre;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return null; // Acá no llega.
         }
     }
 }

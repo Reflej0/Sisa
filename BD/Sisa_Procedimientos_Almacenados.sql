@@ -100,8 +100,15 @@ END
 CREATE PROCEDURE Get_Cantidad_Sanciones_Usuarios_Grupo @v_Grupo_id int
 AS
 BEGIN
-    SELECT COUNT(*)
+    SELECT usuario_sancionado_id, COUNT(*)
     FROM Sanciones AS S
     WHERE S.grupo_id = @v_Grupo_id
 	GROUP BY usuario_sancionado_id
+END
+
+CREATE PROCEDURE Get_Nombre_Usuario @v_Usuario_id int
+AS
+BEGIN
+    SELECT usuario FROM Usuarios AS U
+    WHERE U.id = @v_Usuario_id
 END

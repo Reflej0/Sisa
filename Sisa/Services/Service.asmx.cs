@@ -31,12 +31,15 @@ namespace Sisa.Services
         {
             string e_pass = Seguridad.Encrypt(pass); // Encripto la password desde este punto antes de que viaje.
             int resp = O_Business.Login(user, e_pass); // Guardo la respuesta en este caso para evaluar si debo invocar o no una variable de sesión.
+            O_Business = new O_Business(); // Inicializo de nuevo.
 
+            string nombre = O_Business.Get_Nombre_Usuario(resp);
             //Si devuelve mayor a 0 entonces logeo correctamente.
             if (resp > 0)
             {
                 //Variables de Sesión https://msdn.microsoft.com/en-us/library/ms178581.aspx
                 Session["Usuario_id"] = resp;
+                Session["Nombre"] = nombre;
             }
 
             return resp;  // El número retornado indicará logeado o no logeado.
@@ -45,6 +48,7 @@ namespace Sisa.Services
         //Método para deslogear.
         public void Logout()
         {
+            Session["Nombre"] = null;
             Session["Usuario_id"] = null;
         }
 

@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>SiSa</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
@@ -20,7 +21,7 @@
         </nav>
     <!-- Contenido -->
     <div class="info">
-        <p>Nombre de usuario</p>
+        <p><%= Session["Nombre"] %></p>
         <p><%= DateTime.Now.ToString() %></p>
     </div>
     <div class="container-fluid">
@@ -78,7 +79,7 @@
 
     <footer class="footer align-middle">
         <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
+        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i> Drive</a>
         
     </footer>
 

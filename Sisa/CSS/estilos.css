@@ -208,6 +208,10 @@ body {
     text-align: center;
 }
 
-.contenido-centrado{
-    padding: 20px;
+.contenido-centrado {
+    width: 100%;
+    padding-right: 190px;
+    padding-left: 190px;
+    margin-right: auto;
+    margin-left: auto;
 }
