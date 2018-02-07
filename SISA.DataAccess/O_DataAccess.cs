@@ -428,9 +428,9 @@ namespace SISA.DataAccess
         }
 
         //Método para obtener la cantidad de sanciones por usuario de un determinado grupo.
-        public Dictionary<int, int> Get_Cantidad_Sanciones_Usuarios_Grupo(Grupo g)
+        public Dictionary<string, int> Get_Cantidad_Sanciones_Usuarios_Grupo(Grupo g)
         {
-            Dictionary<int, int> Sanciones = new Dictionary<int, int>();
+            Dictionary<string, int> Sanciones = new Dictionary<string, int>();
             this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Get_Cantidad_Sanciones_Usuarios_Grupo", cnn); // Nombre del SP a Ejecutar.
             cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupos.
@@ -443,7 +443,7 @@ namespace SISA.DataAccess
                     {
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
-                            Sanciones[reader.GetInt16(0)] = reader.GetInt16(1);
+                            Sanciones.Add(reader.GetString(0), reader.GetInt32(1));
                         }
                     }
                 }

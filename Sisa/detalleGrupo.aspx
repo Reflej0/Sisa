@@ -39,14 +39,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Guichu</td>
-                                    <td>25</td>
-                                </tr>
-                                <tr>
-                                    <td>Lean</td>
-                                    <td>108</td>
-                                </tr>
+                            <% 
+                                foreach (var pair in sanciones)
+                                {
+                            %>
+                                    <tr>
+                                        <td><% Response.Write(pair.Key); %></td>
+                                        <td><% Response.Write(pair.Value); %></td>
+                                    </tr>
+                            <%
+                                }
+                            %>
                             </tbody>
                         </table>
                     </div>
