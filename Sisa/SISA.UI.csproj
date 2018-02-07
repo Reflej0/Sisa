@@ -113,6 +113,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="RestablecerContrasena.aspx" />
     <Content Include="Sanciones.aspx" />
+    <Content Include="Votaciones.aspx" />
     <Content Include="Services\Service.asmx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
