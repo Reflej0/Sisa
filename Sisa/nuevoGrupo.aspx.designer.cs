@@ -10,6 +10,6 @@
 namespace Sisa {
     
     
-    public partial class Home {
+    public partial class nuevoGrupo {
     }
 }
