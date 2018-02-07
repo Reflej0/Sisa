@@ -41,6 +41,7 @@
                             {
                                 foreach (List<string> item in StringSanciones)
                                 {%>
+                        <input type="hidden" id="grupo_id" value="<% Response.Write(Grupos[Convert.ToInt32(item[0])]);%>"/>
                         <tr>
                             <td><% Response.Write(Grupos[Convert.ToInt32(item[0])]);%></td>
                             <td><% Response.Write(item[1]);%></td>
@@ -48,9 +49,9 @@
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="radioButton-<% Response.Write(item[3]);%>"></td>
+                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"></td>
                             <td>
-                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="radioButton-<% Response.Write(item[3]);%>"></td>
+                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"></td>
 
                             <%
                                 }%>
@@ -79,120 +80,27 @@
 </html>
 
 <script type="text/javascript">
-
-    function mostrarNotificaciones() {
-        var notificaciones = document.getElementById('texto-notificacion');
-        notificaciones.textContent = "notificaciones";
-    }
-
-    setInterval(mostrarNotificaciones, 1000);
-
-    $('#Grupos').click(function () {
-
-        window.location.href = "Grupos.aspx";
-
-        /*
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Grupos_Usuarios',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                var o = JSON.parse(response.d);
-                alert(o[0].Nombre);
-                //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d != -1) {
-                    //Redireccionar a index o mi perfil.
-                    //window.location.href = "RestablecerContrasena.aspx";
-                } else {
-                    $('#errorDiv').text("Las credenciales son incorrectas.");
-                    $('#errorDiv').show();
-                }
-            }
-        });
-
-        */
-    });
-
-</script>
-
-<script type="text/javascript">
-
-    $('#Sanciones').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Sancion_Usuario',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                alert(response.d);
-                //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d != -1) {
-                    //Redireccionar a index o mi perfil.
-                    //window.location.href = "RestablecerContrasena.aspx";
-                } else {
-                    $('#errorDiv').text("Las credenciales son incorrectas.");
-                    $('#errorDiv').show();
-                }
-            }
-        });
-    });
-
-    $('#selectGrupo').on('change', function () {
-        if (this.value > 0) {
+    /*$(':radio').each(function () {
+        alert($(this).val());
+        alert($(this).attr('id'));
+    });*/
+    $('#enviarButton').click(function () {
+        $(':radio:checked').each(function ()
+        {
             var data = {};
-            data.grupo_id = this.value;
-
+            data.voto_valor = 1;
+            data.sancion_id = $(this).attr('id');
+            data.grupo_id = $("grupo_id").val();
             $.ajax({
                 type: 'POST',
-                url: 'Services/Service.asmx/Get_Usuarios_Grupos',
+                url: 'Services/Service.asmx/Set_Voto_Sancion',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    if (response.d) {
-                        $.each(response.d, function (index, value) {
-                            $('<option/>', { value: value["Id"] }).text(value["_Usuario"]).appendTo('#selectIntegrante');
-                        });
-                        $('#selectIntegrante').prop("disabled", false);
-                    }
+                    alert(response.d);
                 }
             });
-        } else {
-            $('#selectIntegrante').prop("disabled", true).empty();
-            $('<option/>', { value: 0 }).text("Seleccione un integrante...").appendTo('#selectIntegrante');
-        }
-    })
-
-    $('#sendButton').click(function () {
-        var data = {};
-        data.grupo_id = $('#selectGrupo').val();
-        data.sancionado_id = $('#selectIntegrante').val();
-        data.motivo = $("#Motivo").val();
-
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Set_Sancion_Usuario',
-            contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(data),
-            success: function (response) {
-                window.location = 'Home.aspx'
-            }
-        });
-
-    });
-</script>
-
-<script type="text/javascript">
-
-    $('#Salir').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Logout',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                window.location.href = "Login.aspx";
-            }
         });
     });
-
 </script>

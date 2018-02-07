@@ -378,10 +378,10 @@ namespace SISA.DataAccess
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
                             cant_votos = reader.GetInt32(0); // Obtengo la cantidad de votos positivos asociados a la sanción.
-                            this.CloseConnection();
                         }
                     }
                 }
+                this.CloseConnection();
             }
             catch (Exception e)
             {
@@ -404,10 +404,10 @@ namespace SISA.DataAccess
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
                             cant_usuarios = reader.GetInt32(0); // Obtengo de usuarios del grupo.
-                            this.CloseConnection();
                         }
                     }
                 }
+                this.CloseConnection();
             }
             catch (Exception e)
             {

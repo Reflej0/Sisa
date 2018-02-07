@@ -172,10 +172,11 @@ namespace Sisa.Services
         }
         //WebMethod para asignar un nuevo voto a una sanción.
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
-        public string Set_Voto_Sancion(int votante_id, int voto_valor, int sancion_id)
+        public string Set_Voto_Sancion(int voto_valor, int sancion_id, int grupo_id)
         {
+            int votante_id = Convert.ToInt32(Session["Usuario_id"]);
             O_Business = new O_Business(); // Inicializo el objeto global.
-            return O_Business.Set_Voto_Sancion(votante_id, voto_valor, sancion_id);
+            return O_Business.Set_Voto_Sancion(votante_id, voto_valor, sancion_id, grupo_id);
         }
         //WebMethod para obtener todos los usuarios del sistema.
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
