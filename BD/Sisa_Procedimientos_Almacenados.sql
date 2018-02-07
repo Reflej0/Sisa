@@ -100,7 +100,7 @@ END
 CREATE PROCEDURE Get_Votos_Sanciones @v_Sancion_id int
 AS
 BEGIN
-	SELECT V.id FROM Votos AS V
+	SELECT COUNT(V.id) FROM Votos AS V
 	INNER JOIN Sanciones AS S
 	ON V.sancion_id = S.id
 	WHERE V.valor = 1 AND S.id = @v_Sancion_id
