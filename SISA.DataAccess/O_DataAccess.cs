@@ -443,7 +443,7 @@ namespace SISA.DataAccess
                     {
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
-                            Sanciones.Add(reader.GetInt32(0), reader.GetInt32(1));
+                            Sanciones[reader.GetInt16(0)] = reader.GetInt16(1);
                         }
                     }
                 }
