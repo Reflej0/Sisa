@@ -27,8 +27,9 @@
     </div>
     <div class="container">
         <div class="titulo-formulario">
-            <h3>Sancionar a un mogolico <i class="far fa-frown"></i></h3>
+            <h3>Reportar una sanción <i class="far fa-frown"></i></h3>
         </div>
+        <br />
         <div class="form-group">
             <div class="row">
                 <div class="col col-md-6">
@@ -61,7 +62,7 @@
 
                 </div>
             </div>
-                                <br />
+            <br />
             <div class="text-center">
                 <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
