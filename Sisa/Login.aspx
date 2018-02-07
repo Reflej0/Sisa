@@ -35,6 +35,41 @@
 
 <script type="text/javascript">
 
+    $('#password').bind("enterKey", function (e) 
+    {
+    });
+    $('#password').keyup(function (e) {
+        if (e.keyCode == 13)
+        {
+            var data = {};
+            data.user = $('#user').val();
+            data.pass = $('#password').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Login',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    //Se chequea así ya que si no logeo correctamente response.d es NULL.
+                    if (response.d > 0) {
+                        //Redireccionar a index o mi perfil.
+                        window.location.href = "Home.aspx";
+                    } else {
+                        if (response.d == -1) {
+                            $('#errorDiv').text("Las credenciales son incorrectas.");
+                            $('#errorDiv').show();
+                        }
+                        if (response.d == -2) {
+                            alert("Error interno");
+                        }
+                    }
+                }
+            });
+        }
+    });
+
     $('#loginButton').click(function () {
         var data = {};
         data.user = $('#user').val();
