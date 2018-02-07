@@ -87,6 +87,7 @@
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery-3.2.1.min.js" />
     <Content Include="Login.aspx" />
+    <Content Include="misGrupos.aspx" />
     <Content Include="nuevoGrupo.aspx" />
     <Content Include="packages.config" />
     <Content Include="CSS\bootstrap-grid.css.map" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="misGrupos.aspx.cs">
+      <DependentUpon>misGrupos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="misGrupos.aspx.designer.cs">
+      <DependentUpon>misGrupos.aspx</DependentUpon>
     </Compile>
     <Compile Include="nuevoGrupo.aspx.cs">
       <DependentUpon>nuevoGrupo.aspx</DependentUpon>
