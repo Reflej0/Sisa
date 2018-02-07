@@ -216,3 +216,12 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
+
+.tabla > thead > tr {
+    background-color: #f9c753;
+}
+
+.maximo {
+    color: #ffffff;
+    background-color: #cc0000;
+}

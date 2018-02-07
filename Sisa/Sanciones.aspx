@@ -13,13 +13,7 @@
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-naranja">
-        <a class="navbar-brand" href="Home.aspx">
-            <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo" /></a>
-        <a class="navbar-brand" id="Grupos" href="#">Grupos</a>
-        <a class="navbar-brand" id="Sanciones" href="#">Sanciones</a>
-        <a class="navbar-brand" id="Salir" href="#">Salir</a>
-    </nav>
+    <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
     <div class="info">
         <p><%= Session["Nombre"] %></p>
@@ -71,11 +65,7 @@
         </div>
     </div>
 
-    <div class="footer align-middle">
-        <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i> Drive</a>
-
-    </div>
+    <!-- #include file="~/Element/_Footer.aspx" -->
 
 </body>
 </html>
