@@ -114,7 +114,8 @@
     <Content Include="RestablecerContrasena.aspx" />
     <Content Include="Sanciones.aspx" />
     <Content Include="Services\Service.asmx" />
-    <Content Include="Web.config">
+    <Content Include="Votaciones.aspx" />
+    <Content Include="Web.config" />
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
@@ -200,6 +201,13 @@
     <Compile Include="Services\Service.asmx.cs">
       <DependentUpon>Service.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Votaciones.aspx.cs">
+      <DependentUpon>Votaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Votaciones.aspx.designer.cs">
+      <DependentUpon>Votaciones.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
