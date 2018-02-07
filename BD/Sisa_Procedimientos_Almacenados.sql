@@ -45,24 +45,6 @@ BEGIN
     WHERE U.usuario = @v_Usuario AND U.password = @v_Password
 END
 
-CREATE PROCEDURE Set_Usuario @v_Usuario varchar(255), @v_Password varchar(255), @v_Email varchar(255)
-AS
-BEGIN
-    INSERT INTO Usuarios(usuario, password, email) VALUES (@v_Usuario, @v_Password, @v_Email)
-END
-
-CREATE PROCEDURE Set_Usuario_Grupo @v_Grupo_id int, @v_Usuario_id int
-AS
-BEGIN
-    INSERT INTO Grupos_Usuarios(grupo_id, usuario_id) VALUES (@v_Grupo_id, @v_Usuario_id)
-END
-
-CREATE PROCEDURE Set_Sancion @v_Grupo_id int, @v_Usuario_creador_id int, @v_Usuario_sancionado_id int, @v_Motivo varchar(255), @v_Estado int, @v_Fecha_creacion DATETIME
-AS
-BEGIN
-    INSERT INTO Sanciones(grupo_id, usuario_creador_id, usuario_sancionado_id, motivo, estado, fecha_creacion) VALUES (@v_Grupo_id, @v_Usuario_creador_id, @v_Usuario_sancionado_id, @v_Motivo, @v_Estado, @v_Fecha_creacion)
-END
-
 CREATE PROCEDURE Get_Usuario_Email @v_Usuario varchar(50), @v_Email varchar(50)
 AS
 BEGIN
@@ -113,4 +95,37 @@ AS
 BEGIN
     SELECT usuario FROM Usuarios AS U
     WHERE U.id = @v_Usuario_id
+END
+
+CREATE PROCEDURE Get_Votos_Sanciones @v_Sancion_id int
+AS
+BEGIN
+	SELECT V.id FROM Votos AS V
+	INNER JOIN Sanciones AS S
+	ON V.sancion_id = S.id
+	WHERE V.valor = 1 AND S.id = @v_Sancion_id
+END
+
+CREATE PROCEDURE Set_Usuario @v_Usuario varchar(255), @v_Password varchar(255), @v_Email varchar(255)
+AS
+BEGIN
+    INSERT INTO Usuarios(usuario, password, email) VALUES (@v_Usuario, @v_Password, @v_Email)
+END
+
+CREATE PROCEDURE Set_Usuario_Grupo @v_Grupo_id int, @v_Usuario_id int
+AS
+BEGIN
+    INSERT INTO Grupos_Usuarios(grupo_id, usuario_id) VALUES (@v_Grupo_id, @v_Usuario_id)
+END
+
+CREATE PROCEDURE Set_Sancion @v_Grupo_id int, @v_Usuario_creador_id int, @v_Usuario_sancionado_id int, @v_Motivo varchar(255), @v_Estado int, @v_Fecha_creacion DATETIME
+AS
+BEGIN
+    INSERT INTO Sanciones(grupo_id, usuario_creador_id, usuario_sancionado_id, motivo, estado, fecha_creacion) VALUES (@v_Grupo_id, @v_Usuario_creador_id, @v_Usuario_sancionado_id, @v_Motivo, @v_Estado, @v_Fecha_creacion)
+END
+
+CREATE PROCEDURE Set_Votos_Sanciones @v_Sancion_id int, @v_Valor int, @v_Usuario_id int
+AS
+BEGIN
+	INSERT INTO Votos(sancion_id, valor, usuario_id) VALUES (@v_Sancion_id , @v_Valor, @v_Usuario_id)
 END
