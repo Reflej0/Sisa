@@ -131,8 +131,8 @@ BEGIN
     INSERT INTO Sanciones(grupo_id, usuario_creador_id, usuario_sancionado_id, motivo, estado, fecha_creacion) VALUES (@v_Grupo_id, @v_Usuario_creador_id, @v_Usuario_sancionado_id, @v_Motivo, @v_Estado, @v_Fecha_creacion)
 END
 
-CREATE PROCEDURE Set_Votos_Sanciones @v_Sancion_id int, @v_Valor int, @v_Usuario_id int
+CREATE PROCEDURE Update_Sancion @v_Sancion_id int
 AS
 BEGIN
-	INSERT INTO Votos(sancion_id, valor, usuario_id) VALUES (@v_Sancion_id , @v_Valor, @v_Usuario_id)
+	UPDATE Sanciones SET estado = 1 WHERE Sanciones.id = @v_Sancion_id
 END
