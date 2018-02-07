@@ -71,6 +71,36 @@ namespace SISA.DataAccess
             this.CloseConnection(); // Cierro la conexión.
             return Grupos; // Devuelvo los Grupos.
         }
+        //Método que devuelve todos los usuarios del sistema.
+        public List<Usuario> Get_Usuarios()
+        {
+            List<Usuario> Usuarios = new List<Usuario>();
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Usuarios", cnn); // Nombre del SP a Ejecutar.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Usuario u = new Usuario(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                            Usuarios.Add(u);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Usuarios; // Devuelvo los Usuarios.
+        }
+
         //Método para obtener los usuarios de un grupo, en base al id del grupo.
         public List<Usuario> Get_Usuarios_Grupo(Grupo g)
         {

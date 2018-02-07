@@ -136,12 +136,12 @@ namespace Sisa.Services
         }
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //Este método recibe grupo id y trae los usuarios vinculados
-        public List<Usuario> Get_Usuarios_Grupos(int grupo_id)
+        public string Get_Usuarios_Grupos(int grupo_id)
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
             //Devuelve un string que es un JSON que Serializa el List<>, la cuestión es que ANDA.
             //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
-            return O_Business.Get_Usuarios_Grupo(grupo_id);
+            return JsonConvert.SerializeObject(O_Business.Get_Usuarios_Grupo(grupo_id), Formatting.Indented);
         }
         //WebMethod para crear una nueva sancion
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
@@ -176,6 +176,13 @@ namespace Sisa.Services
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
             return O_Business.Set_Voto_Sancion(votante_id, voto_valor, sancion_id);
+        }
+        //WebMethod para obtener todos los usuarios del sistema.
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Get_Usuarios()
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return JsonConvert.SerializeObject(O_Business.Get_Usuarios(), Formatting.Indented);
         }
     }
 }

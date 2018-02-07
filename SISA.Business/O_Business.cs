@@ -149,5 +149,11 @@ namespace Business
             s.Id = sancion_id;
             return this.bd.Set_Voto_Sancion(votante, v, s);
         }
+        //Método que devuelve todos los usuarios del sistema.
+        public List<Usuario> Get_Usuarios()
+        {
+            //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
+            return this.bd.Get_Usuarios();
+        }
     }
 }

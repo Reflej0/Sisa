@@ -43,5 +43,7 @@ namespace SISA.DataAccess.Interfaces
         Grupo Get_Grupo_Determinado_Usuario(Usuario u);
         //Método para agregar un voto positivo o negativo a una sanción.
         string Set_Voto_Sancion(Usuario votante, Voto v, Sancion s);
+        //Método que devuelve todos los usuarios del sitio.
+        List<Usuario> Get_Usuarios();
     }
 }

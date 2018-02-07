@@ -10,6 +10,9 @@
     <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="/resources/demos/style.css"/>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
@@ -39,9 +42,7 @@
                     </div>
                     <div class="col col-md-6">
                         <label for="selectGrupo">Integrante</label>
-                        <select class="form-control" id="selectGrupo">
-                            <option value="0" selected>Seleccione un integrante</option>
-                        </select>
+                        <input class="form-control" id="integrantes" />
                     </div>
                 </div>
                 <div class="col col-md-6">
@@ -76,3 +77,29 @@
 
 </body>
 </html>
+
+  <script>
+      var array_usuarios = [];
+      $(document).ready(function () {
+          $.ajax({
+              type: 'POST',
+              url: 'Services/Service.asmx/Get_Usuarios',
+              contentType: 'application/json;charset=utf-8',
+              success: function (response) {
+                  //Se chequea así ya que si response.d es NULL.
+                  if (response.d) {
+                      var array_full = eval('(' + response.d + ')');
+                      for (i in array_full) {
+                          array_usuarios.push(array_full[i]["_Usuario"]);
+                      }
+                  }
+                  else {
+                      //Manejar acá lo de errores.
+                  }
+              }
+          });
+          $("#integrantes").autocomplete({
+              source: array_usuarios
+          });
+      });
+  </script>
