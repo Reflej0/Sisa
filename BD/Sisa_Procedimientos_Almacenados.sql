@@ -4,6 +4,12 @@ BEGIN
     SELECT id, nombre, descripcion, administrador_id FROM Grupos
 END
 
+CREATE PROCEDURE Get_Usuarios
+AS
+BEGIN
+    SELECT id, usuario, email, password FROM Usuarios
+END
+
 CREATE PROCEDURE Get_Usuarios_Grupo @v_Grupo_id int
 AS
 BEGIN
