@@ -206,6 +206,7 @@ body {
 .titulo-formulario {
     color: #ff0000;
     text-align: center;
+    border-bottom: 2px solid red;
 }
 
 .contenido-centrado {

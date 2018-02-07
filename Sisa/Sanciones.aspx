@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SiSa</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -27,8 +27,9 @@
     </div>
     <div class="container">
         <div class="titulo-formulario">
-            <h3>Sancionar a un mogolico <i class="far fa-frown"></i></h3>
+            <h3>Reportar una sanción <i class="far fa-frown"></i></h3>
         </div>
+        <br />
         <div class="form-group">
             <div class="row">
                 <div class="col col-md-6">
@@ -61,7 +62,7 @@
 
                 </div>
             </div>
-                                <br />
+            <br />
             <div class="text-center">
                 <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
@@ -82,8 +83,8 @@
 <script type="text/javascript">
 
     function mostrarNotificaciones() {
-        var notificaciones = document.getElementById('texto-notificacion');
-        notificaciones.textContent = "notificaciones";
+        //var notificaciones = document.getElementById('texto-notificacion');
+        //notificaciones.textContent = "notificaciones";
     }
 
     setInterval(mostrarNotificaciones, 1000);

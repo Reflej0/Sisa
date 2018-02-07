@@ -10,8 +10,8 @@ namespace Sisa
 {
 	public partial class detalleGrupo : System.Web.UI.Page
 	{
-        public Dictionary<int, int> sanciones;
-        public Dictionary<int, int> Sanciones { get { return sanciones; } }
+        public Dictionary<string, int> sanciones;
+        public Dictionary<string, int> Sanciones { get { return sanciones; } }
 
         protected void Page_Load(object sender, EventArgs e)
 		{

@@ -125,7 +125,7 @@ namespace Business
             return this.bd.Get_Grupo_Determinado_Usuario(u);
         }
         //Método para obtener la cantidad de sanciones por usuario de un determinado grupo.
-        public Dictionary<int, int> Get_Cantidad_Sanciones_Usuarios_Grupo(int grupo_id)
+        public Dictionary<string, int> Get_Cantidad_Sanciones_Usuarios_Grupo(int grupo_id)
         {
             Grupo g = new Grupo();
             g.Id = grupo_id;
