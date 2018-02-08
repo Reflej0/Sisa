@@ -64,11 +64,13 @@ namespace Business
             return Usuarios;
         }
         //Método para obtener el listado de sanciones de un usuario, en base a su id.
-        public List<Sancion> Get_Sancion_Usuario(int usuario_id)
+        public List<Sancion> Get_Sancion_Usuario(int usuario_id, int grupo_id)
         {
             Usuario u = new Usuario(); // Creo un objeto usuario.
             u.Id = usuario_id; // Le asigno solamente el id.
-            List<Sancion> Sanciones = this.bd.Get_Sancion_Usuario(u);
+            Grupo g = new Grupo();
+            g.Id = grupo_id;
+            List<Sancion> Sanciones = this.bd.Get_Sancion_Usuario(u, g);
             return Sanciones;
         }
         //Método para obtener el administrador de un determinado grupo.

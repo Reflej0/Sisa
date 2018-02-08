@@ -80,7 +80,9 @@
 <script type="text/javascript">
     var grupo_predeterminado_id; // Variable global de JS que contiene la id del grupo predeterminado del usuario.
     var array_sanciones = []; // Variable global de JS que contiene las sanciones del grupo predeterminado del usuario.
+    var array_mis_sanciones = []; // Variable global de JS que contiene MIS sanciones, osea las que me hicieron.
     var sanciones = 0; // Variable global de JS que contiene la cantidad de sanciones del grupo.
+    var mis_sanciones = 0; // Variable global de JS que contiene la cantidad de MIS sanciones.
     //Cuando cargo el home, también cargo el Grupo Predeterminado del usuario.
     $(document).ready(function () {
         $.ajax({
@@ -101,7 +103,7 @@
 
 
    setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
-
+   setInterval(Get_Sancion_Usuario, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de mis sanciones.
     //Método de JS.
     function Get_Sanciones_Activas_Grupos() 
     {
@@ -109,7 +111,7 @@
         data.grupo_id = grupo_predeterminado_id;
         $.ajax({
             type: 'POST',
-            url: 'Services/Service.asmx/Get_Sanciones_Activas_Grupos',
+            url: 'Services/Service.asmx/Get_Sanciones_Activas_Grupos_Usuario',
             dataType: 'json',
             data: JSON.stringify(data),
             contentType: 'application/json;charset=utf-8',
@@ -135,6 +137,36 @@
             }
         });
     }
+    function Get_Sancion_Usuario() {
+        var data = {}; // En esta variable voy a tener el grupo_id.
+        data.grupo_id = grupo_predeterminado_id;
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Sancion_Usuario',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                //Estructura del response.
+                //Donde dice 0 es si devolvió al menos 1, obviamente hay que iterar.
+                //Se chequea así ya que si response.d es NULL.
+                if (response.d) {
+                    var array_aux = eval('(' + response.d + ')'); // Así convierto un string -> array JSON.
+                    array_mis_sanciones = []; // Limpio el array global.
+                    for (i in array_aux) { // Esto es para que los elementos del array_aux pasen a array_sanciones.
+                        array_mis_sanciones.push(array_aux[i]);
+                    }
+                }
+                else {
+                    //Manejar acá lo de errores.
+                }
+                mis_sanciones = array_mis_sanciones.length; //Obtengo la cantidad de sanciones.
+                $('#sanciones_recibidas').text('Sanciones recibidas:' + mis_sanciones); // Las muestro dinámicamente.
+            }
+        });
+    }
+
+
 
     $('#Grupos').click(function () {
 

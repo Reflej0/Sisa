@@ -133,12 +133,13 @@ namespace SISA.DataAccess
         }
 
         //Método para obtener el listado de sanciones de un usuario, en base a su id.
-        public List<Sancion> Get_Sancion_Usuario(Usuario u)
+        public List<Sancion> Get_Sancion_Usuario(Usuario u, Grupo g)
         {
             List<Sancion> Sanciones = new List<Sancion>(); // Listado de sanciones a devolver.
             this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Get_Sancion_Usuario", cnn); // Nombre del SP a Ejecutar.
-            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del grupo.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del usuario.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupo.
             cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
             try
             {
