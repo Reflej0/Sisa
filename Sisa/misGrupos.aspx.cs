@@ -12,9 +12,9 @@ namespace Sisa
     public partial class misGrupos : System.Web.UI.Page
     {
         public List<Grupo> grupos;
-        public List<String> nombresGrupos;
+        public Dictionary<int, String> nombresGrupos;
         public List<Grupo> Grupos { get { return grupos; } }
-        public List<String> NombresGrupos { get { return nombresGrupos; } }
+        public Dictionary<int, String> NombresGrupos { get { return nombresGrupos; } }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,11 +27,11 @@ namespace Sisa
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 this.grupos = objBusiness.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
 
-                List<String> misGrupos = new List<String>();
+                Dictionary<int, String> misGrupos = new Dictionary<int, String>();
 
                 foreach (Grupo grupo in this.grupos)
                 {
-                    misGrupos.Add(grupo.Nombre);
+                    misGrupos.Add(grupo.Id, grupo.Nombre);
                 }
 
                 this.nombresGrupos = misGrupos;

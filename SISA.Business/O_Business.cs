@@ -167,5 +167,11 @@ namespace Business
             //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
             return this.bd.Get_Usuarios();
         }
+
+        //Método que elimina un grupo_usuario
+        public string Delete_Grupo_Usuario(int grupo_id, int usuario_id)
+        {
+            return this.bd.Delete_Grupo_Usuario(grupo_id, usuario_id);
+        }
     }
 }
