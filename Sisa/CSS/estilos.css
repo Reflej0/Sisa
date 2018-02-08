@@ -251,3 +251,7 @@ ol > li{
         margin-right: 1em;
         margin-top: -10px;
     }
+
+.btn-right{
+    float: right
+}
