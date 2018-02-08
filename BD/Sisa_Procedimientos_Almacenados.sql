@@ -19,13 +19,15 @@ BEGIN
     WHERE GU.grupo_id = @v_Grupo_id
 END
 
-CREATE PROCEDURE Get_Sancion_Usuario @v_Usuario_id int
+CREATE PROCEDURE Get_Sancion_Usuario @v_Usuario_id int, @v_Grupo_id int
 AS
 BEGIN
     SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion FROM Sanciones AS S
     INNER JOIN Usuarios AS U
     ON S.usuario_sancionado_id = U.id
     WHERE U.id = @v_Usuario_id
+    AND S.grupo_id = @v_Grupo_id
+    AND S.estado = 2
 END
 
 CREATE PROCEDURE Get_Administrador_Grupo @v_Grupo_id int
