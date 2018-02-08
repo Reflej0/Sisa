@@ -33,8 +33,7 @@ namespace Sisa
                     int grupo_id = item.Id;
 
                     dictgrupos.Add(grupo_id, item.Nombre);
-                    List<Sancion> sanciones_grupo = objBusiness.Get_Sanciones_Activas_Grupos(grupo_id);
-
+                    List<Sancion> sanciones_grupo = objBusiness.Get_Sanciones_Activas_Grupos_Usuario(grupo_id, Convert.ToInt32(Session["Usuario_id"]));
                     foreach (var sancion in sanciones_grupo)
                     {
                         listado_sanciones.Add(sancion);

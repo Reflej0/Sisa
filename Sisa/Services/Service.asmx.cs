@@ -128,6 +128,13 @@ namespace Sisa.Services
             return JsonConvert.SerializeObject(O_Business.Get_Sanciones_Activas_Grupos(grupo_id), Formatting.Indented);
         }
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Get_Sanciones_Activas_Grupos_Usuario(int grupo_id)
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            int usuario_id = Convert.ToInt32(Session["Usuario_id"]);
+            return JsonConvert.SerializeObject(O_Business.Get_Sanciones_Activas_Grupos_Usuario(grupo_id, usuario_id), Formatting.Indented);
+        }
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         //Método para obtener el grupo (por defecto de un usuario).
         public int Get_Grupo_Determinado_Usuario()
         {

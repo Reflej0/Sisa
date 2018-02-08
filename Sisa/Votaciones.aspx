@@ -41,17 +41,17 @@
                             {
                                 foreach (List<string> item in StringSanciones)
                                 {%>
-                        <input type="hidden" id="grupo_id" value="<% Response.Write(Grupos[Convert.ToInt32(item[0])]);%>"/>
+                        <input type="hidden" id="grupo_id" value="<% Response.Write(item[0]);%>"/>
                         <tr>
-                            <td><% Response.Write(Grupos[Convert.ToInt32(item[0])]);%></td>
+                            <td><% Response.Write(item[0]);%></td>
                             <td><% Response.Write(item[1]);%></td>
 
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"></td>
+                                <input type="radio" si_no="1" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"/></td>
                             <td>
-                                <input type="radio" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"></td>
+                                <input type="radio" si_no="0" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"/></td>
 
                             <%
                                 }%>
@@ -80,17 +80,17 @@
 </html>
 
 <script type="text/javascript">
-    /*$(':radio').each(function () {
+    /*$(':radio').each(function () { DEBUG
         alert($(this).val());
         alert($(this).attr('id'));
     });*/
-    $('#enviarButton').click(function () {
-        $(':radio:checked').each(function ()
+    $('#enviarButton').click(function () { // No es la mejor forma, hacer tantas llamadas de AJAX como radiobuttons.
+        $(':radio:checked').each(function () // Obtengo todos los radio que fueron chequeados por si o por no.
         {
-            var data = {};
-            data.voto_valor = 1;
-            data.sancion_id = $(this).attr('id');
-            data.grupo_id = $("grupo_id").val();
+            var data = {}; // Variable que encapsula.
+            data.voto_valor = $(this).attr('si_no'); // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
+            data.sancion_id = $(this).attr('id'); // Obtengo el id de la sanción.
+            data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
             $.ajax({
                 type: 'POST',
                 url: 'Services/Service.asmx/Set_Voto_Sancion',

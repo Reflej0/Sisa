@@ -42,15 +42,15 @@
                               </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                  <p class="card-title"> Tenes 3 votaciones pendientes.</p>
+                                  <p id="votaciones_pendientes" class="card-title"></p>
                                   <br />
                                 </div>
                                 <div class="carousel-item">
-                                  <p class="card-title"> 4 sanciones realizadas </p>
+                                  <p id="sanciones_recibidas" class="card-title"></p>
                                   <br />
                                 </div>
                                 <div class="carousel-item">
-                                  <p class="card-title"> 10 sanciones recibidas </p>
+                                  <p id="sanciones_realizadas" class="card-title"> 10 sanciones recibidas </p>
                                   <br />
                                 </div>
                               </div>
@@ -120,8 +120,9 @@
                 //Se chequea así ya que si response.d es NULL.
                 if (response.d) 
                 {
-                    var array_aux = eval('(' + response.d + ')');
-                    for (i in array_aux) {
+                    var array_aux = eval('(' + response.d + ')'); // Así convierto un string -> array JSON.
+                    array_sanciones = []; // Limpio el array global.
+                    for (i in array_aux) { // Esto es para que los elementos del array_aux pasen a array_sanciones.
                         array_sanciones.push(array_aux[i]);
                     }
                 }
@@ -129,7 +130,8 @@
                 {
                     //Manejar acá lo de errores.
                 }
-                sanciones = array_sanciones.length;
+                sanciones = array_sanciones.length; //Obtengo la cantidad de sanciones.
+                $('#votaciones_pendientes').text('Votaciones pendientes:' + sanciones); // Las muestro dinámicamente.
             }
         });
     }

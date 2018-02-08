@@ -313,7 +313,7 @@ namespace SISA.DataAccess
                 return e.ToString();
             }
         }
-
+        //Método para agregar una sanción a un usuario determinado.
         public string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s)
         {
             this.OpenConnection(); // Primero abro la conexión.
@@ -331,14 +331,19 @@ namespace SISA.DataAccess
             {
                 int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
                 this.CloseConnection(); // Cierro la conexión.
-                return "Sancion agregada a:" + sancionado._Usuario;
+                return "Sancion agregada a:" + sancionado._Usuario; // Retorno el mensaje.
             }
             catch (Exception e)
             {
                 return e.ToString();
             }
         }
-        //Método para agregar un voto positivo o negativo a una sanción.
+        //Método para agregar un voto positivo o negativo a una sanción. PASOS DEL METODO.
+        /* 1) Primero se agrega un voto positivo o negativo a una determinada sanción.
+         * 2) Después se cuenta la cantidad de votos que tiene la sanción votada.
+         * 3) Después obtengo la cantidad de usuarios en el grupo de la sanción votada.
+         * 4) Después evaluo si hay mas de 50% de votos positivos, se sanciona.
+         */
         public string Set_Voto_Sancion(Usuario votante, Voto v, Sancion s)
         {
             //PRIMERO AGREGO UN VOTO POSITIVO O NEGATIVO A LA SANCION.
@@ -440,7 +445,7 @@ namespace SISA.DataAccess
                 return "Voto asignado, pero todavía la sanción no cumple con el porcentaje necesario";
             }
         }
-
+        //Método para determinada si cierta combinación de usuario - email es existente.
         public bool Get_Usuario(string usuario, string email)
         {
             this.OpenConnection(); // Primero abro la conexión.
@@ -468,6 +473,7 @@ namespace SISA.DataAccess
                 return false;
             }
         }
+        //Método que devuelve la password(encriptada) de determinado usuario.
         public string Get_Password_Email(Usuario u)
         {
             this.OpenConnection(); // Primero abro la conexión.
@@ -475,7 +481,7 @@ namespace SISA.DataAccess
             cmd.CommandType = CommandType.StoredProcedure;
 
             //Añado los parámetros.
-            cmd.Parameters.AddWithValue("@v_Usuario", u._Usuario); ;
+            cmd.Parameters.AddWithValue("@v_Usuario", u._Usuario);
             cmd.Parameters.AddWithValue("@v_Email", u.Email);
             try
             {
@@ -485,7 +491,7 @@ namespace SISA.DataAccess
                     {
                         while (reader.Read()) // Mientras voy leyendo todos los resultados.
                         {
-                            string password = reader.GetString(0);
+                            string password = reader.GetString(0); // Leo la password(encriptada).
                             this.CloseConnection();
                             return password;
                         }
@@ -529,6 +535,38 @@ namespace SISA.DataAccess
             this.CloseConnection(); // Cierro la conexión.
             return Sanciones; // Devuelvo los Grupos
         }
+        //Método que devuelve todas las sanciones de un grupo que un usuario no votó.
+        public List<Sancion> Get_Sanciones_Activas_Grupos_Usuario(Grupo g, Usuario u)
+        {
+            List<Sancion> Sanciones = new List<Sancion>();
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Sanciones_Activas_Grupos_Usuario", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupo.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del usuario.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Sancion s = new Sancion(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetDateTime(6));
+                            Sanciones.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Sanciones; // Devuelvo los Grupos
+        }
+
         //Método para obtener el grupo (por defecto) de un determinado usuario.
         public Grupo Get_Grupo_Determinado_Usuario(Usuario u)
         {

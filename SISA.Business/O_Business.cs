@@ -117,6 +117,15 @@ namespace Business
             g.Id = grupo_id;
             return this.bd.Get_Sanciones_Activas_Grupos(g);
         }
+        //Método que devuelve todas las sanciones de un grupo que un usuario no votó.
+        public List<Sancion> Get_Sanciones_Activas_Grupos_Usuario(int grupo_id, int usuario_id)
+        {
+            Grupo g = new Grupo();
+            g.Id = grupo_id;
+            Usuario u = new Usuario();
+            u.Id = usuario_id;
+            return this.bd.Get_Sanciones_Activas_Grupos_Usuario(g, u);
+        }
         //Método para obtener el grupo determinado de un usuario.
         public Grupo Get_Grupo_Determinado_Usuario(int usuario_id)
         {

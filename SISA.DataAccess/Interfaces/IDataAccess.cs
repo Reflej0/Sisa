@@ -45,5 +45,7 @@ namespace SISA.DataAccess.Interfaces
         string Set_Voto_Sancion(Usuario votante, Voto v, Sancion s);
         //Método que devuelve todos los usuarios del sitio.
         List<Usuario> Get_Usuarios();
+        //Método que devuelve todas las sanciones de un grupo que un usuario no votó.
+        List<Sancion> Get_Sanciones_Activas_Grupos_Usuario(Grupo g, Usuario u);
     }
 }
