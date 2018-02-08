@@ -12,12 +12,8 @@
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-naranja">
-          <a class="navbar-brand" href="Home.aspx"> <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo"/></a>
-          <a class="navbar-brand"  id="Grupos" href="#">Grupos</a>
-          <a class="navbar-brand"  id="Sanciones" href="#">Sanciones</a>
-          <a class="navbar-brand"  id="Salir" href="#">Salir</a>
-        </nav>
+    <!-- #include file="~/Element/_Navbar.aspx" -->
+
     <h1>
 
         Estamo activo en grupo
@@ -28,10 +24,7 @@
         </div>
     </form>
 
-    <footer class="footer align-middle">
-        <a class="link-info" href="https://github.com/Reflej0/Sisa"> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie">Drive</a>
-        
-    </footer>
+      <!-- #include file="~/Element/_Footer.aspx" -->
+
 </body>
 </html>

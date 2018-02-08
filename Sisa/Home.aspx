@@ -166,29 +166,6 @@
 
 <script type="text/javascript">
 
-    $('#Sanciones').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Sancion_Usuario',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                alert(response.d);
-                //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d != -1) {
-                    //Redireccionar a index o mi perfil.
-                    //window.location.href = "RestablecerContrasena.aspx";
-                } else {
-                    $('#errorDiv').text("Las credenciales son incorrectas.");
-                    $('#errorDiv').show();
-                }
-            }
-        });
-    });
-
-</script>
-
-<script type="text/javascript">
-
     $('#Salir').click(function () {
         $.ajax({
             type: 'POST',

@@ -13,13 +13,7 @@
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-naranja">
-        <a class="navbar-brand" href="Home.aspx">
-            <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo" /></a>
-        <a class="navbar-brand" id="Grupos" href="#">Grupos</a>
-        <a class="navbar-brand" id="Sanciones" href="#">Sanciones</a>
-        <a class="navbar-brand" id="Salir" href="#">Salir</a>
-    </nav>
+    <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
     <div class="container">
         <div class="titulo-formulario">
@@ -41,17 +35,17 @@
                             {
                                 foreach (List<string> item in StringSanciones)
                                 {%>
-                        <input type="hidden" id="grupo_id" value="<% Response.Write(item[0]);%>"/>
+                        <input type="hidden" id="grupo_id" value="<% Response.Write(item[0]);%>" />
                         <tr>
-                            <td><% Response.Write(item[0]);%></td>
+                            <td><% Response.Write(Grupos[Convert.ToInt32(item[0])]);%></td>
                             <td><% Response.Write(item[1]);%></td>
 
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <input type="radio" si_no="1" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"/></td>
+                                <input type="radio" si_no="1" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>" /></td>
                             <td>
-                                <input type="radio" si_no="0" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>"/></td>
+                                <input type="radio" si_no="0" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>" /></td>
 
                             <%
                                 }%>
@@ -65,16 +59,13 @@
                 </tbody>
             </table>
 
-                            <button type="button" class="btn no-border-radius btn-general" id="enviarButton">Enviar</button>
+            <button type="button" class="btn no-border-radius btn-general" id="enviarButton">Enviar</button>
 
         </div>
     </div>
 
-    <div class="footer align-middle">
-        <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i>Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i>Drive</a>
+    <!-- #include file="~/Element/_Footer.aspx" -->
 
-    </div>
 
 </body>
 </html>
