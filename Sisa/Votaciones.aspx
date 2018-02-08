@@ -45,10 +45,10 @@
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <button class="btn btn-success" id="<% Response.Write(item[3]);%>"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-success" si_no="1" onclick="Votar(this.id)" id="<% Response.Write(item[3]);%>"><i class="fas fa-check"></i></button>
                             </td>
                             <td>
-                                <button class="btn btn-danger" id="<% Response.Write(item[3]);%>"><i class="fas fa-times"></i></button>
+                                <button class="btn btn-danger" si_no="0" onclick="Votar(this.id)" id="<% Response.Write(item[3]);%>"><i class="fas fa-times"></i></button>
                             </td>
                             <%
                                 }%>
@@ -76,12 +76,11 @@
         alert($(this).val());
         alert($(this).attr('id'));
     });*/
-    $('#enviarButton').click(function () { // No es la mejor forma, hacer tantas llamadas de AJAX como radiobuttons.
-        $(':radio:checked').each(function () // Obtengo todos los radio que fueron chequeados por si o por no.
-        {
+    function Votar(sancion_id)
+    {
             var data = {}; // Variable que encapsula.
             data.voto_valor = $(this).attr('si_no'); // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
-            data.sancion_id = $(this).attr('id'); // Obtengo el id de la sanción.
+            data.sancion_id = sancion_id // Obtengo el id de la sanción.
             data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
             $.ajax({
                 type: 'POST',
@@ -93,6 +92,5 @@
                     alert(response.d);
                 }
             });
-        });
-    });
+    }
 </script>
