@@ -11,7 +11,8 @@ namespace Sisa
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
+            Response.Write("<div class='msg-grupo'>Bienvenido, " + Session["Nombre"] + "<br/>");
+            Response.Write(DateTime.Now.ToString() + "</div>");
+        }
 	}
 }

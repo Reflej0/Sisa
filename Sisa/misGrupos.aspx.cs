@@ -24,6 +24,8 @@ namespace Sisa
             }
             else
             {
+                Response.Write("<div class='msg-grupo'>Bienvenido, " + Session["Nombre"] + "<br/>");
+                Response.Write(DateTime.Now.ToString() + "</div>");
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 this.grupos = objBusiness.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
 

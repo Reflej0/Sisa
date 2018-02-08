@@ -15,10 +15,6 @@
 <body>
     <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
-    <div class="info">
-        <p>Nombre de usuario</p>
-        <p><%= DateTime.Now.ToString() %></p>
-    </div>
     <div class="container-fluid">
         <div id="header" class="row">
             <div class="container">

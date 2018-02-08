@@ -19,6 +19,7 @@ namespace Sisa
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //NULL indica que es la primera vez que entro.
             //-1 o -2 indican que INTENTE entrar pero tengo creedenciales incorrectas.
             if (Session["Usuario_id"] == null)
@@ -32,6 +33,8 @@ namespace Sisa
                 {
                     Response.Redirect("Login.aspx");
                 }
+                Response.Write("<div class='msg-grupo'>Bienvenido, " + Session["Nombre"] + "<br/>");
+                Response.Write(DateTime.Now.ToString() + "</div>");
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 this.grupos = objBusiness.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
                 List<List<string>> lista_Grupos = new List<List<string>>();

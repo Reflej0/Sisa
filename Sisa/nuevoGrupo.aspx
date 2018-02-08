@@ -24,10 +24,6 @@
         <a class="navbar-brand" id="Salir" href="#">Salir</a>
     </nav>
     <!-- Contenido -->
-    <div class="info">
-        <p><%= Session["Nombre"] %></p>
-        <p><%= DateTime.Now.ToString() %></p>
-    </div>
     <div class="container">
         <div class="titulo-formulario">
             <h3>Nuevo grupo</h3>

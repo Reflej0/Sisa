@@ -24,6 +24,8 @@ namespace Sisa
             }
             else
             {
+                Response.Write("<div class='msg-grupo'>Bienvenido, " + Session["Nombre"] + "<br/>");
+                Response.Write(DateTime.Now.ToString() + "</div>");
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 List<Sancion> listado_sanciones = new List<Sancion>();
                 Dictionary<int, string> dictgrupos = new Dictionary<int, string>();
