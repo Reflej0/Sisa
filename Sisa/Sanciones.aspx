@@ -135,7 +135,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'Services/Service.asmx/Get_Usuarios_Grupos',
+                url: 'Services/Service.asmx/Get_Usuarios_Grupos_Sanciones',
                 contentType: 'application/json;charset=utf-8',
                 dataType: 'json',
                 data: JSON.stringify(data),

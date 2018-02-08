@@ -47,5 +47,7 @@ namespace SISA.DataAccess.Interfaces
         List<Usuario> Get_Usuarios();
         //Método que devuelve todas las sanciones de un grupo que un usuario no votó.
         List<Sancion> Get_Sanciones_Activas_Grupos_Usuario(Grupo g, Usuario u);
+        //Metodo que trae el nombre del usuario
+        String Get_Nombre_Usuario(Usuario u);
     }
 }
