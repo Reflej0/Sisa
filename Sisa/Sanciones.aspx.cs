@@ -34,11 +34,11 @@ namespace Sisa
                 }
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 this.grupos = objBusiness.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
-                List<string> lista_Interna = new List<string>();
                 List<List<string>> lista_Grupos = new List<List<string>>();
 
                 foreach (Grupo grupo in this.grupos)
                 {
+                    List<string> lista_Interna = new List<string>();
                     lista_Interna.Add(grupo.Id.ToString());
                     lista_Interna.Add(grupo.Nombre);
                     //lista_Interna.Add(grupo.Descripcion);

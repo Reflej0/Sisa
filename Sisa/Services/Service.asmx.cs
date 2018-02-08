@@ -151,6 +151,13 @@ namespace Sisa.Services
             //https://www.newtonsoft.com/json/help/html/SerializingCollections.htm
             return JsonConvert.SerializeObject(O_Business.Get_Usuarios_Grupo(grupo_id), Formatting.Indented);
         }
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        //Este método recibe grupo id y trae los usuarios vinculados
+        public List<Usuario> Get_Usuarios_Grupos_Sanciones(int grupo_id)
+        {
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return O_Business.Get_Usuarios_Grupo(grupo_id);
+        }
         //WebMethod para crear una nueva sancion
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
         public int Set_Sancion_Usuario(int grupo_id, int sancionado_id, string motivo)
