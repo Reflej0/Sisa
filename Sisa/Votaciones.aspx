@@ -64,7 +64,24 @@
 
         </div>
     </div>
-
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>  Información </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3 id="mensajeModal"></h3>
+                </div>
+                <div class="modal-footer">
+                    <button id="cerrarButton" type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- #include file="~/Element/_Footer.aspx" -->
 
 
@@ -88,11 +105,18 @@
             dataType: 'json',
             data: JSON.stringify(data),
             success: function (response) {
-                alert(response.d);
-                $("#row-" + sancion_id).fadeOut();
-                $("#row-" + sancion_id).fadeOut("slow");
-                $("#row-" + sancion_id).fadeOut(3000);
+                $("#cerrarButton").attr("name", sancion_id)
+                $("#basicModal").modal('show');
+                $("#mensajeModal").text(response.d);
             }
         });
     }
+
+    $("#cerrarButton").on("click", function () {
+        var sancion_id = $(this).attr("name");
+        $("#row-" + sancion_id).fadeOut();
+        $("#row-" + sancion_id).fadeOut("slow");
+        $("#row-" + sancion_id).fadeOut(3000);
+    });
+
 </script>
