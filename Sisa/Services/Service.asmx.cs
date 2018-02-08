@@ -200,5 +200,13 @@ namespace Sisa.Services
             O_Business = new O_Business(); // Inicializo el objeto global.
             return JsonConvert.SerializeObject(O_Business.Get_Usuarios(), Formatting.Indented);
         }
+        //WebMethod para eliminar un grupo_usuario.
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Delete_Grupo_Usuario(int grupo_id)
+        {
+            int usuario_id = Convert.ToInt32(Session["Usuario_id"]);
+            O_Business = new O_Business(); // Inicializo el objeto global.
+            return O_Business.Delete_Grupo_Usuario(grupo_id, usuario_id);
+        }
     }
 }

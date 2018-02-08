@@ -660,5 +660,26 @@ namespace SISA.DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public string Delete_Grupo_Usuario(int grupo_id, int usuario_id)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+
+            SqlCommand cmd = new SqlCommand("Delete_Grupo_Usuario", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", usuario_id); ;
+            cmd.Parameters.AddWithValue("@v_Grupo_id", grupo_id);
+            try
+            {
+                int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                this.CloseConnection(); // Cierro la conexión.
+                return "Grupo_usuario eliminado correctamente";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+        }
     }
 }

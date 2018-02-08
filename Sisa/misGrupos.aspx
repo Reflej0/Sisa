@@ -37,12 +37,12 @@
                             </thead>
                             <tbody>
                             <% 
-                                foreach (String grupo in nombresGrupos)
+                                foreach (var grupo in nombresGrupos)
                                 {
                             %>
                                     <tr>
-                                        <td><% Response.Write(grupo);%></td>
-                                        <td><button type="button" class="btn btn-danger" id="deleteButton" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
+                                        <td><% Response.Write(grupo.Value);%></td>
+                                        <td><button type="button" class="btn btn-danger deleteButton" id="<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
                                     </tr>
                             <%
                                 }
@@ -62,7 +62,7 @@
 
 <script type="text/javascript">
 
-    $('#deleteButton').click(function () {
+    $('.deleteButton').click(function () {
         var del = confirm("Estás seguro que querés salir del grupo?");
 
         if (del == true) {
