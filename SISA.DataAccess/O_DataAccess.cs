@@ -655,5 +655,10 @@ namespace SISA.DataAccess
             this.CloseConnection(); // Cierro la conexión.
             return null; // Acá no llega.
         }
+
+        public List<Sancion> Get_Sancion_Usuario(Usuario u)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
