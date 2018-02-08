@@ -38,7 +38,7 @@
                                 foreach (List<string> item in StringSanciones)
                                 {%>
                         <input type="hidden" id="grupo_id" value="<% Response.Write(item[0]);%>" />
-                        <tr>
+                        <tr id="row-<% Response.Write(item[3]);%>">
                             <td><% Response.Write(Grupos[Convert.ToInt32(item[0])]);%></td>
                             <td><% Response.Write(item[1]);%></td>
 
@@ -76,21 +76,23 @@
         alert($(this).val());
         alert($(this).attr('id'));
     });*/
-    function Votar(sancion_id, si_no)
-    {
-            var data = {}; // Variable que encapsula.
-            data.voto_valor = si_no; // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
-            data.sancion_id = sancion_id // Obtengo el id de la sanción.
-            data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
-            $.ajax({
-                type: 'POST',
-                url: 'Services/Service.asmx/Set_Voto_Sancion',
-                contentType: 'application/json;charset=utf-8',
-                dataType: 'json',
-                data: JSON.stringify(data),
-                success: function (response) {
-                    alert(response.d);
-                }
-            });
+    function Votar(sancion_id, si_no) {
+        var data = {}; // Variable que encapsula.
+        data.voto_valor = si_no; // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
+        data.sancion_id = sancion_id // Obtengo el id de la sanción.
+        data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Set_Voto_Sancion',
+            contentType: 'application/json;charset=utf-8',
+            dataType: 'json',
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert(response.d);
+                $("#row-" + sancion_id).fadeOut();
+                $("#row-" + sancion_id).fadeOut("slow");
+                $("#row-" + sancion_id).fadeOut(3000);
+            }
+        });
     }
 </script>
