@@ -153,3 +153,10 @@ AS
 BEGIN
 	UPDATE Sanciones SET estado = 2 WHERE Sanciones.id = @v_Sancion_id
 END
+
+CREATE PROCEDURE Delete_Grupo_Usuario @v_Usuario_id int, @v_Grupo_id int
+AS
+BEGIN
+	DELETE FROM Grupos_Usuarios 
+	WHERE grupo_id = @v_Grupo_id AND usuario_id = @v_Usuario_id
+END

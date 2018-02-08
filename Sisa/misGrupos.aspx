@@ -67,3 +67,21 @@
 </body>
 </html>
 
+<script type="text/javascript">
+
+    $('#deleteButton').click(function () {
+        var del = confirm("Estás seguro que querés salir del grupo?");
+
+        if (del == true) {
+            $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Delete_Grupo_Usuario',
+                contentType: 'application/json;charset=utf-8',
+                success: function (response) {
+                    //
+                }
+            });
+        }
+    });
+
+</script>
