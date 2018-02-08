@@ -60,14 +60,18 @@
 
     $('.deleteButton').click(function () {
         var del = confirm("Estás seguro que querés salir del grupo?");
+        var data = {};
+        data.grupo_id = $(this).attr('id');
 
         if (del == true) {
             $.ajax({
                 type: 'POST',
                 url: 'Services/Service.asmx/Delete_Grupo_Usuario',
+                dataType: 'json',
+                data: JSON.stringify(data),
                 contentType: 'application/json;charset=utf-8',
                 success: function (response) {
-                    //
+                    location.reload();
                 }
             });
         }
