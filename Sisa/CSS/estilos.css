@@ -221,14 +221,10 @@ body {
     background-color: #f9c753;
 }
 
-.maximo {
-    color: #ffffff;
-    background-color: #cc0000;
-}
-
+/* Formato de numeros en palitos */
 ol {
-    height: 20px;
-    padding: 1em 0;
+    height: 10px;
+    padding-left: 0;
 } 
 
 ol > li{
@@ -239,19 +235,19 @@ ol > li{
 
 
 }
-    ol > li:nth-child(5n) {
-        transform: rotate(300deg);
-        // -webkit-transform: rotate(300deg);
-        // -moz-transform: rotate(300deg);
-        // -o-transform: rotate(300deg);
-        height: 30px;
-        position: relative;
-        left: -15px;
-        top: 5px;
-        margin-right: 1em;
-        margin-top: -10px;
-    }
-
-.btn-right{
-    float: right
+ol > li:nth-child(5n) {
+    transform: rotate(300deg);
+    -webkit-transform: rotate(300deg);
+    -moz-transform: rotate(300deg);
+    -o-transform: rotate(300deg);
+    height: 30px;
+    position: relative;
+    left: -15px;
+    top: 5px;
+    margin-right: 1em;
+    margin-top: -10px;
 }
+
+.btn-right {
+     float: right;
+} 
