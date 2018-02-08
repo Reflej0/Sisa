@@ -75,6 +75,17 @@ BEGIN
     AND S.estado = 1
 END
 
+CREATE PROCEDURE Get_Sanciones_Activas_Grupos_Usuario @v_Grupo_id int, @v_Usuario_id int
+AS
+BEGIN
+    SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
+    FROM Sanciones AS S
+    LEFT JOIN Votos AS V
+    ON S.id = V.sancion_id
+    WHERE S.grupo_id = @v_Grupo_id AND S.id NOT IN (SELECT sancion_id FROM Votos WHERE usuario_id = @v_Usuario_id)
+AND S.estado = 1
+END
+
 CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
 AS
 BEGIN
@@ -140,5 +151,5 @@ END
 CREATE PROCEDURE Update_Sancion @v_Sancion_id int
 AS
 BEGIN
-	UPDATE Sanciones SET estado = 1 WHERE Sanciones.id = @v_Sancion_id
+	UPDATE Sanciones SET estado = 2 WHERE Sanciones.id = @v_Sancion_id
 END
