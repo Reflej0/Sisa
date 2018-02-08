@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Numero</th>
                                     <th>Sanciones</th>
                                 </tr>
                             </thead>
@@ -40,7 +41,11 @@
                             %>
                                     <tr>
                                         <td><% Response.Write(pair.Key); %></td>
-                                        <td class="sancion"><% Response.Write(pair.Value); %></td>
+                                        <td class="sancion">
+                                            <% Response.Write(pair.Value); %>
+                                            <ol id="count">&nbsp;</ol>
+                                             </td>
+
                                     </tr>
                             <%
                                 }
@@ -58,15 +63,23 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function () {
+        $(function () {
+            $('#tally').on('click', function () {
+                $('#count').append('<li></li>');
+            });
+        });
 
         // Creo un array para guardar los resultados de las filas.
         var filas = [];
 
         // Recorro la parte de la tabla que tiene los numeros de sanciones.
         $(".sancion").each(function (index) {
-
+  
             // Guardo los valores en un array.
             filas[index] = $(this).text();
+            for (var i = 0; i < filas[index]; i++) {
+                $(this).find("ol").append('<li></li>');
+            }
         });
 
         // Selecciono el maximo.
