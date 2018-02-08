@@ -151,5 +151,5 @@ END
 CREATE PROCEDURE Update_Sancion @v_Sancion_id int
 AS
 BEGIN
-	UPDATE Sanciones SET estado = 1 WHERE Sanciones.id = @v_Sancion_id
+	UPDATE Sanciones SET estado = 2 WHERE Sanciones.id = @v_Sancion_id
 END
