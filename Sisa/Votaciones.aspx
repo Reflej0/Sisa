@@ -17,17 +17,19 @@
     <!-- Contenido -->
     <div class="container">
         <div class="titulo-formulario">
-            <h3>Sanciones Pendientes <i class="far fa-frown"></i></h3>
+            <h3>Sanciones Pendientes</h3>
         </div>
         <br />
         <div class="form-group">
-            <table>
+            <table class="table table-hover text-center">
                 <thead>
-                    <th>Grupo</th>
-                    <th>Nombre</th>
-                    <th>Motivo</th>
-                    <th>Si</th>
-                    <th>No</th>
+                    <tr>
+                        <th>Grupo</th>
+                        <th>Nombre</th>
+                        <th>Motivo</th>
+                        <th>Si</th>
+                        <th>No</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -43,10 +45,11 @@
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <input type="radio" si_no="1" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>" /></td>
+                                <button class="btn btn-success" id="<% Response.Write(item[3]);%>"><i class="fas fa-check"></i></button>
+                            </td>
                             <td>
-                                <input type="radio" si_no="0" name="radio<% Response.Write(item[3]);%>" id="<% Response.Write(item[3]);%>" /></td>
-
+                                <button class="btn btn-danger" id="<% Response.Write(item[3]);%>"><i class="fas fa-times"></i></button>
+                            </td>
                             <%
                                 }%>
                         </tr>
@@ -58,8 +61,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <button type="button" class="btn no-border-radius btn-general" id="enviarButton">Enviar</button>
 
         </div>
     </div>

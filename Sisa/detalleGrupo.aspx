@@ -30,6 +30,7 @@
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Numero</th>
                                     <th>Sanciones</th>
                                 </tr>
                             </thead>
@@ -40,7 +41,12 @@
                             %>
                                     <tr>
                                         <td><% Response.Write(pair.Key); %></td>
-                                        <td class="sancion"><% Response.Write(pair.Value); %></td>
+                                        <td class="sancion">
+                                            <% Response.Write(pair.Value); %>
+                                            
+                                             </td>
+                                        <td class="palitos"><ol id="count">&nbsp;</ol></td>
+
                                     </tr>
                             <%
                                 }
@@ -58,26 +64,22 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function () {
+        $(function () {
+            $('#tally').on('click', function () {
+                $('#count').append('<li></li>');
+            });
+        });
 
-        // Creo un array para guardar los resultados de las filas.
-        var filas = [];
+        var cantidad;
 
         // Recorro la parte de la tabla que tiene los numeros de sanciones.
         $(".sancion").each(function (index) {
-
-            // Guardo los valores en un array.
-            filas[index] = $(this).text();
+  
+            // tomo el numero de sanciones para mostrar en palitos el numero.
+            cantidad = $(this).text();
+            for (var i = 0; i < cantidad; i++) {
+                $(this).closest('td').next("td").find("ol").append('<li></li>');
+            }
         });
-
-        // Selecciono el maximo.
-        var max = Math.max.apply(null, filas);
-
-        // Sumo uno mas al index del maximo del array.
-        var maximo = max + 1;
-
-        // Lo marco en rojo porque es el maximo de sanciones en ese grupo.
-        $("tr:nth-child(" + maximo + ")").addClass("maximo");
-
-        // Si hay dos con el maximo de sanciones todavia no se.
     });
 </script>
