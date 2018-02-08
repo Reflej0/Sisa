@@ -45,10 +45,10 @@
                             <td><% Response.Write(item[2]);%></td>
 
                             <td>
-                                <button class="btn btn-success" si_no="1" onclick="Votar(this.id)" id="<% Response.Write(item[3]);%>"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-success" name="1" onclick="Votar(this.id, this.name)" id="<% Response.Write(item[3]);%>"><i class="fas fa-check"></i></button>
                             </td>
                             <td>
-                                <button class="btn btn-danger" si_no="0" onclick="Votar(this.id)" id="<% Response.Write(item[3]);%>"><i class="fas fa-times"></i></button>
+                                <button class="btn btn-danger" name="0" onclick="Votar(this.id, this.name)" id="<% Response.Write(item[3]);%>"><i class="fas fa-times"></i></button>
                             </td>
                             <%
                                 }%>
@@ -76,10 +76,10 @@
         alert($(this).val());
         alert($(this).attr('id'));
     });*/
-    function Votar(sancion_id)
+    function Votar(sancion_id, si_no)
     {
             var data = {}; // Variable que encapsula.
-            data.voto_valor = $(this).attr('si_no'); // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
+            data.voto_valor = si_no; // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
             data.sancion_id = sancion_id // Obtengo el id de la sanción.
             data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
             $.ajax({
