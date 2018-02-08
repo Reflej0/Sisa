@@ -80,7 +80,7 @@ AS
 BEGIN
     SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
     FROM Sanciones AS S
-    INNER JOIN Votos AS V
+    LEFT JOIN Votos AS V
     ON S.id = V.sancion_id
     WHERE S.grupo_id = @v_Grupo_id AND S.id NOT IN (SELECT sancion_id FROM Votos WHERE usuario_id = @v_Usuario_id)
 AND S.estado = 1
