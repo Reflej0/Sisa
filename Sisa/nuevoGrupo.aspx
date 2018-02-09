@@ -44,7 +44,7 @@
                             </tr>
                         </thead>
                         <tbody class="integrantes">
-                            
+                            <!-- Se llena por JS cuando se van agregando integrantes -->
                         </tbody>
                     </table>
                 </div>
@@ -63,6 +63,7 @@
   <script>
       var array_usuarios = [];
       $(document).ready(function () {
+
           $.ajax({
               type: 'POST',
               url: 'Services/Service.asmx/Get_Usuarios',
@@ -87,13 +88,30 @@
               select: function (event, ui) {
                   //Creo un tr para agregar a la tabla el integrante que ingresó
                   var trIntegrante = document.createElement('tr');
+                  trIntegrante.setAttribute('id', 'tr-' + ui.item.value);
                   $('.integrantes').append(trIntegrante);
 
                   //Creo un td y le pongo el nuevo integrante.
                   var tdIntegrante = document.createElement('td');
                   tdIntegrante.append(ui.item.value);
                   trIntegrante.append(tdIntegrante);
+                  
+                  var btnEliminar = document.createElement('button');
+                  btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
+                  btnEliminar.setAttribute('id', ui.item.value);
+                  tdIntegrante.append(btnEliminar);
+
+                  var iTrash = document.createElement('i');
+                  iTrash.setAttribute('class', 'fa fa-trash');
+                  iTrash.setAttribute('aria-hidden', 'true');
+                  btnEliminar.append(iTrash);
               }
           });
+
+          $(document).on('click', '.eliminarButton', function () {
+              var value = $(this).attr('id');
+              $('#tr-' + value).remove();
+          });
+
       });
   </script>
