@@ -65,13 +65,13 @@
     background-color: #f6b315;
 }
 
-    .navbar-naranja > a {
-        color: #000000;
-    }
+.navbar-naranja > a {
+    color: #000000;
+}
 
-        .navbar-naranja > a:hover {
-            color: #808080
-        }
+.navbar-naranja > a:hover {
+    color: #808080
+}
 
 .logo-navbar {
     height: 25px;
@@ -126,10 +126,10 @@ body {
     margin: 20px;
 }
 
-    .link-info:hover {
-        color: #ac7a06;
-        text-decoration: none;
-    }
+.link-info:hover {
+    color: #ac7a06;
+    text-decoration: none;
+}
 
 
 .gradient-border {
@@ -199,6 +199,13 @@ body {
 .text-welcome{
     padding-bottom: 0px;
 }
+
+@media (max-width: 998px) {
+    .msg-welcome {
+        display: none;
+    }
+}
+
 
 /* Indicadores del carousel */
 .indicador {
