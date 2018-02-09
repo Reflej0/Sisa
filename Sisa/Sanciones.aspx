@@ -60,7 +60,6 @@
 
         </div>
     </div>
-
     <!-- #include file="~/Element/_Footer.aspx" -->
 
 </body>
@@ -163,7 +162,11 @@
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    window.location = 'Home.aspx'
+                    if (response.d == 0)
+                    {
+                        alert("Sancion aplicada");
+                    }
+                    window.location.href = "Home.aspx";
                 }
             });
        

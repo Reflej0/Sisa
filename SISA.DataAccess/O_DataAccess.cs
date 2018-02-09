@@ -317,8 +317,10 @@ namespace SISA.DataAccess
         //Método para agregar una sanción a un usuario determinado.
         public string Set_Sancion_Usuario(Usuario sancionador, Grupo g, Usuario sancionado, Sancion s)
         {
-            this.OpenConnection(); // Primero abro la conexión.
 
+            //PRIMERO AGREGO LA SANCION.
+
+            this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Set_Sancion", cnn);
             cmd.CommandType = CommandType.StoredProcedure;
             //Añado los parámetros.
@@ -328,16 +330,38 @@ namespace SISA.DataAccess
             cmd.Parameters.AddWithValue("@v_Motivo", s.Motivo);
             cmd.Parameters.AddWithValue("@v_Estado", s.Estado);
             cmd.Parameters.AddWithValue("@v_Fecha_creacion", s.Fecha_estado);
+            int id_sancion;
             try
             {
-                int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                id_sancion = Convert.ToInt32(cmd.ExecuteScalar()); // Ejecuto el SP y Obtengo el ID de la sanción.
                 this.CloseConnection(); // Cierro la conexión.
-                return "Sancion agregada a:" + sancionado._Usuario; // Retorno el mensaje.
             }
             catch (Exception e)
             {
                 return e.ToString();
             }
+
+            //ADEMAS DE AGREGAR LA SANCION, AGREGO UN VOTO POSITIVO.
+            /* 0-> NEGATIVO.
+             * 1-> POSITIVO.
+            */
+
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd_ = new SqlCommand("Set_Votos_Sanciones", cnn);
+            cmd_.CommandType = CommandType.StoredProcedure;
+            cmd_.Parameters.AddWithValue("@v_Sancion_id", id_sancion);
+            cmd_.Parameters.AddWithValue("@v_Valor", 1); // Es POSITIVO.
+            cmd_.Parameters.AddWithValue("@v_Usuario_id", sancionador.Id);
+            try
+            {
+                cmd_.ExecuteNonQuery(); // Ejecuto el SP.
+                this.CloseConnection(); // Cierro la conexión despues de votar.
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+            return "Sancion agregada a:" + sancionado._Usuario; // Retorno el mensaje.
         }
         //Método para agregar un voto positivo o negativo a una sanción. PASOS DEL METODO.
         /* 1) Primero se agrega un voto positivo o negativo a una determinada sanción.
