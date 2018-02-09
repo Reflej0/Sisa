@@ -33,8 +33,8 @@ namespace Sisa
                 {
                     Response.Redirect("Login.aspx");
                 }
-                Response.Write("<div class='msg-grupo'>Bienvenido, " + Session["Nombre"] + "<br/>");
-                Response.Write(DateTime.Now.ToString() + "</div>");
+                Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> " + Session["Nombre"] + "</div><p>");
+                Response.Write(DateTime.Now.ToString() + "</p></div>");
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
                 this.grupos = objBusiness.Get_Grupos_Usuario(Convert.ToInt32(Session["Usuario_id"]));
                 List<List<string>> lista_Grupos = new List<List<string>>();

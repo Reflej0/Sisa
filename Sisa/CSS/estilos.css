@@ -183,11 +183,21 @@ body {
     }
 }
 
-.msg-grupo{
+/* Mensaje con nombre de usuario y ultima conexion */
+.msg-welcome{
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
+    text-align: center;
+}
+
+.msg-welcome > p{
+    font-size: 10px;
+}
+
+.text-welcome{
+    padding-bottom: 0px;
 }
 
 /* Indicadores del carousel */

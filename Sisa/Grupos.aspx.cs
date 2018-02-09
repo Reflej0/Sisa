@@ -13,9 +13,9 @@ namespace Sisa
         protected void Page_Load(object sender, EventArgs e)
         {
             // Deberia levantar el ID del usuario, para saber sus grupos
-            
-            Response.Write("<div class='msg-grupo'>Hola estoy en el pagee <br/>");
-            Response.Write("mi ID es:" + Session["Usuario_id"] +"</div>");
+
+            Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> " + Session["Nombre"] + "</div><p>");
+            Response.Write(DateTime.Now.ToString() + "</p></div>");
             //Response.End();
 
         }
