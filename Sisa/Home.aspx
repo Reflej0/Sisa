@@ -34,7 +34,6 @@
                                 <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicador"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicador"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="indicador"></li>
                               </ol>
                               <div class="carousel-inner">
                                 <div class="carousel-item active">
@@ -43,10 +42,6 @@
                                 </div>
                                 <div class="carousel-item">
                                   <p id="sanciones_recibidas" class="card-title"></p>
-                                  <br />
-                                </div>
-                                <div class="carousel-item">
-                                  <p id="sanciones_realizadas" class="card-title"> 10 sanciones recibidas </p>
                                   <br />
                                 </div>
                               </div>

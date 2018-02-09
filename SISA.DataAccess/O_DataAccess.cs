@@ -544,6 +544,9 @@ namespace SISA.DataAccess
             SqlCommand cmd = new SqlCommand("Get_Sanciones_Activas_Grupos_Usuario", cnn); // Nombre del SP a Ejecutar.
             cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); // Id del grupo.
             cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id); // Id del usuario.
+            //Las sanciones activas son entre ayer y hoy.
+            cmd.Parameters.AddWithValue("@v_Hoy", DateTime.Now.AddDays(1));
+            cmd.Parameters.AddWithValue("@v_Ayer", DateTime.Now.AddDays(-1));
             cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
             try
             {

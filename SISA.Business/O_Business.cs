@@ -101,6 +101,7 @@ namespace Business
             g.Id = grupo_id;
             usuario_sancionado.Id= usuario_sancionado_id;
             s.Motivo = motivo;
+            s.Estado = 1; // Estado 0 no utilizado. Estado 1 sanción no aprobada. Estado 2 sanción aprobada.
             s.Fecha_estado = DateTime.Now;
             return this.bd.Set_Sancion_Usuario(usuario_sancionador, g, usuario_sancionado, s);
         }
