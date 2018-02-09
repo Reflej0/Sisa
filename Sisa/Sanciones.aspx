@@ -15,7 +15,7 @@
 <body>
     <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
-    <div class="container">
+    <div class="container pagina-contenido">
         <div class="titulo-formulario">
             <h3>Reportar una sanción <i class="far fa-frown"></i></h3>
         </div>

@@ -9,6 +9,11 @@
     padding: 5%;
 }
 
+/* Contenido de la pagina */
+.pagina-contenido {
+    padding-top: 2%;
+}
+
 .error {
     color: red;
     font-weight: bold;

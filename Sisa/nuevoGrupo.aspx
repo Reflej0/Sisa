@@ -24,7 +24,7 @@
         <a class="navbar-brand" id="Salir" href="#">Salir</a>
     </nav>
     <!-- Contenido -->
-    <div class="container">
+    <div class="container pagina-contenido">
         <div class="titulo-formulario">
             <h3>Nuevo grupo</h3>
         </div>
