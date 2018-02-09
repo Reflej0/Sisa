@@ -51,7 +51,7 @@
         </div>
     </div>
 
-      <!-- #include file="~/Element/_Footer.aspx" -->
+    <!-- #include file="~/Element/_Footer.aspx" -->
 
 </body>
 </html>
@@ -71,7 +71,7 @@
                 data: JSON.stringify(data),
                 contentType: 'application/json;charset=utf-8',
                 success: function (response) {
-                    $('#grupo' + data.grupo_id).remove();
+                    $('#grupo-' + data.grupo_id).remove();
                 }
             });
         }

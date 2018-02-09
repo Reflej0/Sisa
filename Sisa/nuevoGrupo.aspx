@@ -16,15 +16,10 @@
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-naranja">
-        <a class="navbar-brand" href="Home.aspx">
-            <img class="logo-navbar" src="img/logoNavBar.png" alt="Logo" /></a>
-        <a class="navbar-brand" id="Grupos" href="#">Grupos</a>
-        <a class="navbar-brand" id="Sanciones" href="#">Sanciones</a>
-        <a class="navbar-brand" id="Salir" href="#">Salir</a>
-    </nav>
+    <!-- #include file="~/Element/_Navbar.aspx" -->
+
     <!-- Contenido -->
-    <div class="container pagina-contenido">
+    <div class="container-fluid pagina-contenido">
         <div class="titulo-formulario">
             <h3>Nuevo grupo</h3>
         </div>
@@ -48,10 +43,8 @@
                                 <th>Integrantes</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr><td>Tocino</td></tr>
-                            <tr><td>Tocino</td></tr>
-                            <tr><td>Tocino</td></tr>
+                        <tbody class="integrantes">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -60,17 +53,10 @@
             <div class="text-center">
                 <button type="button" class="btn btn-success" id="addButton">Agregar <i class="fas fa-plus"></i></button>
             </div>
-            
-
         </div>
     </div>
 
-    <div class="footer align-middle">
-        <a class="link-info" href="https://github.com/Reflej0/Sisa"><i class="fab fa-github"></i> Proyecto</a>
-        <a class="link-info" href="https://drive.google.com/drive/folders/1pQlQ849c1K7kmFXsuy--92jWJM8wDnie"><i class="fab fa-google-drive"></i> Drive</a>
-
-    </div>
-
+    <!-- #include file="~/Element/_Footer.aspx" -->
 </body>
 </html>
 
@@ -94,8 +80,20 @@
                   }
               }
           });
+
+
           $("#integrantes").autocomplete({
-              source: array_usuarios
+              source: array_usuarios,
+              select: function (event, ui) {
+                  //Creo un tr para agregar a la tabla el integrante que ingresó
+                  var trIntegrante = document.createElement('tr');
+                  $('.integrantes').append(trIntegrante);
+
+                  //Creo un td y le pongo el nuevo integrante.
+                  var tdIntegrante = document.createElement('td');
+                  tdIntegrante.append(ui.item.value);
+                  trIntegrante.append(tdIntegrante);
+              }
           });
       });
   </script>
