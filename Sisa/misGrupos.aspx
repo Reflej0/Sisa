@@ -20,11 +20,11 @@
     <div class="container-fluid">
         <div id="header" class="row">
             <div class="container">
-                <h2>Mis grupos</h2>
+                <div class="text-center"><h2>Mis grupos</h2></div>
                 <br/>
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <table class="table table-bordered text-center">
+                        <table class="table table-striped table-bordered text-center tabla">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -36,7 +36,7 @@
                                 foreach (var grupo in nombresGrupos)
                                 {
                             %>
-                                    <tr>
+                                    <tr id="grupo-<% Response.Write(grupo.Key);%>">
                                         <td><% Response.Write(grupo.Value);%></td>
                                         <td><button type="button" class="btn btn-danger deleteButton" id="<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
                                     </tr>
@@ -71,7 +71,7 @@
                 data: JSON.stringify(data),
                 contentType: 'application/json;charset=utf-8',
                 success: function (response) {
-                    location.reload();
+                    $('#grupo' + data.grupo_id).remove();
                 }
             });
         }

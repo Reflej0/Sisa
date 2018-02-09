@@ -57,7 +57,7 @@
 
                         <ul>
                             <li>
-                                Mis grupos
+                                <a href="misGrupos.aspx">Mis grupos</a>
                             </li>
                         </ul>
 
