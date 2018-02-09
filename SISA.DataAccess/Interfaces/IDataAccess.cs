@@ -22,7 +22,7 @@ namespace SISA.DataAccess.Interfaces
         //Método para obtener el listado de todos los usuarios de un grupo.
         List<Usuario> Get_Usuarios_Grupo(Grupo g);
         //Método para obtener el listado de todas las sanciones de un usuario.
-        List<Sancion> Get_Sancion_Usuario(Usuario u, Grupo g)
+        List<Sancion> Get_Sancion_Usuario(Usuario u, Grupo g);
         //Método para obtener el administrador de un determinado grupo.
         Usuario Get_Administrador_Grupo(Grupo g);
         //Método para listar los grupos de un usuario determinado.
