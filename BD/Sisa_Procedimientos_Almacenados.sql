@@ -68,16 +68,16 @@ BEGIN
     WHERE U.usuario = @v_Usuario AND U.email = @v_Email
 END
 
-CREATE PROCEDURE Get_Sanciones_Activas_Grupos @v_Grupo_id int
+CREATE PROCEDURE Get_Sanciones_Activas_Grupos @v_Grupo_id int, @v_Hoy date, @v_Ayer date
 AS
 BEGIN
     SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
     FROM Sanciones AS S
     WHERE S.grupo_id = @v_Grupo_id
-    AND S.estado = 1
+    AND S.estado = 1 AND (S.fecha_creacion BETWEEN @v_Ayer AND @v_Hoy)
 END
 
-CREATE PROCEDURE Get_Sanciones_Activas_Grupos_Usuario @v_Grupo_id int, @v_Usuario_id int
+CREATE PROCEDURE Get_Sanciones_Activas_Grupos_Usuario @v_Grupo_id int, @v_Usuario_id int, @v_Hoy date, @v_Ayer date
 AS
 BEGIN
     SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
@@ -85,7 +85,7 @@ BEGIN
     LEFT JOIN Votos AS V
     ON S.id = V.sancion_id
     WHERE S.grupo_id = @v_Grupo_id AND S.id NOT IN (SELECT sancion_id FROM Votos WHERE usuario_id = @v_Usuario_id)
-AND S.estado = 1
+AND S.estado = 1 AND (S.fecha_creacion BETWEEN @v_Ayer AND @v_Hoy)
 END
 
 CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
