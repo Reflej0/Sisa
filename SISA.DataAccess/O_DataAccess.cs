@@ -659,11 +659,6 @@ namespace SISA.DataAccess
             return null; // Acá no llega.
         }
 
-        public List<Sancion> Get_Sancion_Usuario(Usuario u)
-        {
-            throw new NotImplementedException();
-        }
-
         public string Delete_Grupo_Usuario(int grupo_id, int usuario_id)
         {
             this.OpenConnection(); // Primero abro la conexión.
