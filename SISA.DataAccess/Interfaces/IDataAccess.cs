@@ -28,7 +28,7 @@ namespace SISA.DataAccess.Interfaces
         //Método para listar los grupos de un usuario determinado.
         List<Grupo> Get_Grupos_Usuario(Usuario u);
         //Método para crear un nuevo grupo.
-        string Set_Grupo(Grupo g);
+        string Set_Grupo(Grupo g, string usuarios);
         //Método para crear un nuevo usuario.
         string Set_Usuario(Usuario u);
         //Método para agregar un usuario a un grupo.

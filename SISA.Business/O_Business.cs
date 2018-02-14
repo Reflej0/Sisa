@@ -27,10 +27,10 @@ namespace Business
             return respuesta;
         }
         //Método para crear un nuevo grupo.
-        public string Set_Grupo(string nombre, string descripcion, int administrador_id)
+        public string Set_Grupo(string nombre, string usuarios, int administrador_id)
         {
-            Grupo g = new Grupo(nombre, descripcion, administrador_id);
-            string respuesta = this.bd.Set_Grupo(g);
+            Grupo g = new Grupo(nombre, "Descripcion del grupo", administrador_id);
+            string respuesta = this.bd.Set_Grupo(g, usuarios);
             return respuesta;
         }
         //Método encargado de gestionar el login.

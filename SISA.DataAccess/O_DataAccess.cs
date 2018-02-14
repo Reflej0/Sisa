@@ -224,8 +224,11 @@ namespace SISA.DataAccess
             return Grupos; // Devuelvo los Grupos
         }
         //Método para crear un nuevo grupo.
-        public string Set_Grupo(Grupo g)
+        public string Set_Grupo(Grupo g, string usuarios)
         {
+
+            //PRIMERO CREO EL GRUPO.
+
             this.OpenConnection(); // Primero abro la conexión.
 
             SqlCommand cmd = new SqlCommand("Set_Grupo", cnn);
@@ -233,17 +236,42 @@ namespace SISA.DataAccess
             //Añado los parámetros.
             cmd.Parameters.AddWithValue("@v_Nombre", g.Nombre); ;
             cmd.Parameters.AddWithValue("@v_Descripcion", g.Descripcion);
-            cmd.Parameters.AddWithValue("@v_Administrador", g.Administrador_id);
+            cmd.Parameters.AddWithValue("@v_Administrador_id", g.Administrador_id);
+            int id_grupo = 0;
             try
             {
-                int rowAffected = cmd.ExecuteNonQuery(); // Ejecuto el SP.
-                this.CloseConnection(); // Cierro la conexión.
-                return "Grupo creado correctamente";
+                id_grupo = Convert.ToInt32(cmd.ExecuteScalar()); // OBTENGO LA ID DEL GRUPO AGREGADO.
             }
             catch (Exception e)
             {
                 return e.ToString();
             }
+
+            this.CloseConnection();
+
+            //AHORA AGREGO A LOS USUARIOS AL GRUPO.
+
+            this.OpenConnection();
+            string[] id_usuarios = usuarios.Split(','); // VARIABLE SIMIL ARRAY CON LOS ID DE LOS USUARIOS.
+            int k = 0;
+            for(k = 0; k <id_usuarios.Length; k++)
+            {
+                SqlCommand _cmd = new SqlCommand("Set_Usuario_Grupo", cnn);
+                _cmd.CommandType = CommandType.StoredProcedure;
+                _cmd.Parameters.AddWithValue("@v_Grupo_id", id_grupo);
+                _cmd.Parameters.AddWithValue("@v_Usuario_id", Convert.ToInt32(id_usuarios[k]));
+                try
+                {
+                    int rowAffected = _cmd.ExecuteNonQuery(); // Ejecuto el SP.
+                }
+                catch (Exception e)
+                {
+                    return e.ToString();
+                }
+            }
+
+            this.CloseConnection();
+            return "Grupo creado exitosamente";
         }
         //Método para crear un nuevo usuario.
         public string Set_Usuario(Usuario u)

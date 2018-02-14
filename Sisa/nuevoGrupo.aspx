@@ -33,17 +33,17 @@
                     </div>
                     <div class="col col-md-6">
                         <label for="selectGrupo">Integrante</label>
-                        <input class="form-control" id="integrantes" />
+                        <input class="form-control" id="_integrantes" />
                     </div>
                 </div>
                 <div class="col col-md-6">
-                    <table>
+                    <table id="table">
                         <thead>
                             <tr>
                                 <th>Integrantes</th>
                             </tr>
                         </thead>
-                        <tbody class="integrantes">
+                        <tbody id="integrantes" class="integrantes">
                             <!-- Se llena por JS cuando se van agregando integrantes -->
                         </tbody>
                     </table>
@@ -61,7 +61,8 @@
 </html>
 
   <script>
-      var array_usuarios = [];
+      var array_usuarios = []; // ARRAY QUE CONTIENE LOS NOMBRES DE USUARIO.
+      var array_usuarios_id = []; // ARRAY QUE CONTIENE LOS IDS DE USUARIO.
       $(document).ready(function () {
 
           $.ajax({
@@ -74,6 +75,7 @@
                       var array_full = eval('(' + response.d + ')');
                       for (i in array_full) {
                           array_usuarios.push(array_full[i]["_Usuario"]);
+                          array_usuarios_id.push(array_full[i]["Id"]);
                       }
                   }
                   else {
@@ -83,7 +85,7 @@
           });
 
 
-          $("#integrantes").autocomplete({
+          $("#_integrantes").autocomplete({
               source: array_usuarios,
               select: function (event, ui) {
                   //Creo un tr para agregar a la tabla el integrante que ingresó
@@ -114,4 +116,38 @@
           });
 
       });
+
+      $(document).on('click', '#addButton', function () {
+          var array_usuarios_del_grupo = []; // ARRAY CON LOS USUARIOS SELECCIONADOS A AGREGAR.
+          var integrantes = document.getElementById('integrantes'); // OBJETO TBODY.
+          var tds = integrantes.getElementsByTagName('td'); // OBJETOS TD DENTRO DEL TBODY.
+          var cant_usuarios = tds.length;
+          for (i = 0; i < cant_usuarios; i++)
+          {
+              //alert(tds[i].innerHTML.substring(0, tds[i].innerHTML.indexOf('<')));
+              array_usuarios_del_grupo.push(tds[i].innerHTML.substring(0, tds[i].innerHTML.indexOf('<'))); //EXTRAIGO EL NOMBRE LOS USUARIOS
+          }
+          var array_id_usuarios_a_agregar = []; // ARRAY CON LOS IDS DE LOS USUARIOS A AGREGAR AL GRUPO.
+          for (j = 0; j < cant_usuarios; j++)
+          {
+              //alert(array_usuarios_id[array_usuarios.indexOf(array_usuarios_del_grupo[j])]);
+              array_id_usuarios_a_agregar.push(array_usuarios_id[array_usuarios.indexOf(array_usuarios_del_grupo[j])]); ///BUSCO EL ID DEL USUARIO.
+          }
+          var data = {}; // Variable que encapsula.
+          data.usuarios = array_id_usuarios_a_agregar.join(","); // EL ARRAY LO PASO A STRING.
+          data.nombre = $("#nombre").val(); // PASO EL NOMBRE DEL GRUPO.
+          data.administrador_id = array_id_usuarios_a_agregar[0]; // POR DEFECTO EL ADMINISTRADOR ES EL PRIMER USUARIO DE LA LISTA.
+          $.ajax({
+              type: 'POST',
+              url: 'Services/Service.asmx/Set_Grupo',
+              contentType: 'application/json;charset=utf-8',
+              dataType: 'json',
+              data: JSON.stringify(data),
+              success: function (response) {
+                  alert(response.d);
+              }
+          });
+      });
+
+      
   </script>
