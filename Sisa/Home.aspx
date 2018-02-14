@@ -52,8 +52,19 @@
                     </div>
                 </div>
             </div>
+             <div class="col-md-4">
+                <div class="card">
+                    <h5 class="card-header">Sancionado del mes</h5>
+                    <div class="card-body">
+                        <p>Cada mes se elige al sancionado del mes, esta persona es aquella que haya recibido más sanciones durante el mes pasado.</p>
+                        <br />
+                        <h5 class="card-title">Sancionado del mes: <span id="sancionado_mes" class="badge badge-secondary">usuario</span></h5>
+                        <div class="card-footer bg-transparent border-secondary text-sanciones text-center font-weight-bold" >--</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <a href="misGrupos.aspx">Mis grupos</a>
+        
     </div>
 
     <!-- #include file="~/Element/_Footer.aspx" -->
@@ -146,6 +157,8 @@
                 }
                 mis_sanciones = array_mis_sanciones.length; //Obtengo la cantidad de sanciones.
                 $('#sanciones_recibidas').text(mis_sanciones); // Las muestro dinámicamente.
+
+                // Si las sanciones superan las 5 muestro mensajes rojos de alerta.
                 if (mis_sanciones < 5) {
                     $('#sanciones_recibidas').addClass("badge-success");
                     $('#consejo').text("Muy bien! Estás manteniendo la paz.");
