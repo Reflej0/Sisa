@@ -114,4 +114,16 @@
           });
 
       });
+
+
+      $('#Salir').click(function () {
+          $.ajax({
+              type: 'POST',
+              url: 'Services/Service.asmx/Logout',
+              contentType: 'application/json;charset=utf-8',
+              success: function (response) {
+                  window.location.href = "Login.aspx";
+              }
+          });
+      });
   </script>
