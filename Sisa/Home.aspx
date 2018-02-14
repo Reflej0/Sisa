@@ -15,83 +15,46 @@
 <body>
     <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
-        <div class="pagina-header">
+    <div class="pagina-header">
 
-             <div class="container pagina-contenido">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <img id="homeSoloLogo" class="d-block mx-auto logo-inicio" src="img/SoloLogoNaranja.png" alt="Logo"/>
-                    </div>
-                    <div class="titulo-home col-md-4">
-                        <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo"/>
-                        <h3>Sistema de Sanciones</h3>
-                        <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
-                    </div>
-                  </div>
+        <div class="container pagina-contenido">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <img id="homeSoloLogo" class="d-block mx-auto logo-inicio" src="img/SoloLogoNaranja.png" alt="Logo" />
+                </div>
+                <div class="titulo-home col-md-4">
+                    <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo" />
+                    <h3>Sistema de Sanciones</h3>
+                    <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
+                </div>
             </div>
-          </div>
+        </div>
+    </div>
     <div class="container pagina-contenido">
         <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <h5 class="card-header">Votaciones</h5>
-                <div class="card-body">
-                    <p>Cuando se inicia una sanción, primero pasa a votación para que todos los miembros del grupo decidan si les parece justa su aplicación</p>
-                    <h5 class="card-title">Votaciones pendientes: <span id="votaciones_pendientes" class="badge badge-danger">0</span></h5>
-                    <div class="card-footer bg-transparent border-danger">No te olvides de votar!</div>
-                </div>
-            </div>
-          </div>
-         <div class="col-md-4">
-            <div class="card">
-                <h5 class="card-header">Sanciones</h5>
-                <div class="card-body">
-                    <p>Cuando usas vocabulario inapropiado en el horario laboral se te puede aplicar una sanción por violar el código de convivencia según la ley № 10326 </p>
-                    <h5 class="card-title">Sanciones recibidas: <span id="sanciones_recibidas" class="badge badge-danger">0</span></h5>
-                    <div class="card-footer bg-transparent border-danger" id="consejo">--</div>
-                </div>
-            </div>
-          </div>
-        </div>
-    <a href="misGrupos.aspx">Mis grupos</a>
-    </div>
-
-                        <!-- br />
-                        <div class="card border-danger mb-3">
-                          <div class="card-header text-center">Notificaciones</div>
-                            
-                            <div id="carouselExampleIndicators" class="carousel slide card-body text-danger asd" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active indicador"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1" class="indicador"></li>
-                              </ol>
-                              <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                  <p id="votaciones_pendientes" class="card-title"></p>
-                                  <br />
-                                </div>
-                                <div class="carousel-item">
-                                  <p id="sanciones_recibidas" class="card-title"></p>
-                                  <br />
-                                </div>
-                              </div>
-
-                            </div>
-                
-                          </div>
-
-                        <ul>
-                            <li>
-                                <a href="misGrupos.aspx">Mis grupos</a>
-                            </li>
-                        </ul>
-
+            <div class="col-md-4">
+                <div class="card">
+                    <h5 class="card-header">Votaciones</h5>
+                    <div class="card-body">
+                        <p>Cuando se inicia una sanción, primero pasa a votación para que todos los miembros del grupo decidan si les parece justa su aplicación</p>
+                        <h5 class="card-title">Votaciones pendientes: <span id="votaciones_pendientes" class="badge badge-info">0</span></h5>
+                        <div class="card-footer bg-transparent border-info text-votaciones">No te olvides de votar!</div>
                     </div>
                 </div>
-
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h5 class="card-header">Sanciones</h5>
+                    <div class="card-body">
+                        <p>Cuando usas vocabulario inapropiado en el horario laboral se te puede aplicar una sanción por violar el código de convivencia según la ley № 10326 </p>
+                        <h5 class="card-title">Sanciones recibidas: <span id="sanciones_recibidas" class="badge badge-secondary">0</span></h5>
+                        <div class="card-footer bg-transparent border-secondary text-sanciones text-center font-weight-bold" id="consejo">--</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div-->
+        <a href="misGrupos.aspx">Mis grupos</a>
+    </div>
 
     <!-- #include file="~/Element/_Footer.aspx" -->
 
@@ -184,9 +147,15 @@
                 mis_sanciones = array_mis_sanciones.length; //Obtengo la cantidad de sanciones.
                 $('#sanciones_recibidas').text(mis_sanciones); // Las muestro dinámicamente.
                 if (mis_sanciones < 5) {
-                    $('#consejo').text("Muy bien! Estas manteniendo la paz");
+                    $('#sanciones_recibidas').addClass("badge-success");
+                    $('#consejo').text("Muy bien! Estás manteniendo la paz.");
+                    $('#consejo').addClass("text-success");
+                    $('#consejo').addClass("border-success");
                 } else {
-                    $('#consejo').text("Cuida tu vocabulario.");
+                    $('#sanciones_recibidas').addClass("badge-danger");
+                    $('#consejo').text("Cuidá tu vocabulario.");
+                    $('#consejo').addClass("text-danger");
+                    $('#consejo').addClass("border-danger");
                 }
             }
         });

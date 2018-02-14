@@ -287,3 +287,15 @@ ol {
 .altura-error {
     height: 100%;
 }
+
+/* Textos de las cards de info del home. */
+.text-votaciones {
+    font-weight: bold;
+    text-align: center;
+    color: #0066ff;
+}
+
+.text-sanciones{
+    padding-left: 0px;
+    padding-right: 0px;
+}
