@@ -18,8 +18,10 @@
     <div class="container-fluid pagina-contenido">
         <div id="header" class="row">
             <div class="container">
-                <div class="text-center"><h2>Detalles del grupo: <span>Grupo</span></h2></div>
-                <br/>
+                <div class="text-center">
+                    <h2>Detalles del grupo: <span>Grupo</span></h2>
+                </div>
+                <br />
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
                         <table class="table table-striped table-bordered text-center tabla">
@@ -31,22 +33,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <% 
-                                foreach (var pair in sanciones)
-                                {
-                            %>
-                                    <tr>
-                                        <td><% Response.Write(pair.Key); %></td>
-                                        <td class="sancion">
-                                            <% Response.Write(pair.Value); %>
+                                <% 
+                                    foreach (var pair in sanciones)
+                                    {
+                                %>
+                                <tr>
+                                    <td><% Response.Write(pair.Key); %></td>
+                                    <td class="sancion">
+                                        <% Response.Write(pair.Value); %>
                                             
-                                             </td>
-                                        <td class="palitos"><ol id="count">&nbsp;</ol></td>
+                                    </td>
+                                    <td class="palitos">
+                                        <ol id="count">&nbsp;</ol>
+                                    </td>
 
-                                    </tr>
-                            <%
-                                }
-                            %>
+                                </tr>
+                                <%
+                                    }
+                                %>
                             </tbody>
                         </table>
                     </div>
@@ -70,11 +74,23 @@
 
         // Recorro la parte de la tabla que tiene los numeros de sanciones.
         $(".sancion").each(function (index) {
-  
+
             // tomo el numero de sanciones para mostrar en palitos el numero.
             cantidad = $(this).text();
             for (var i = 0; i < cantidad; i++) {
                 $(this).closest('td').next("td").find("ol").append('<li></li>');
+            }
+        });
+    });
+
+
+    $('#Salir').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                window.location.href = "Login.aspx";
             }
         });
     });
