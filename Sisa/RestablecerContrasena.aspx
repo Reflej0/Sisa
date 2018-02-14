@@ -38,10 +38,10 @@
 <script type="text/javascript">
 
     $('#restablecerButton').click(function () {
-
         var data = {};
         data.user = $('#user').val();
         data.email = $('#email').val();
+
         //Voy a validar que exista el usuario para el que quiere restablecer la contraseña.
         $.ajax({
             type: 'POST',

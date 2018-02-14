@@ -24,7 +24,7 @@ namespace Sisa
                 {
                     Response.Redirect("Login.aspx");
                 }
-                Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> " + Session["Nombre"] + "</div><p>");
+                Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> <label id='nombreUsuario'>" + Session["Nombre"] + "</label> </div><p>");
                 Response.Write(DateTime.Now.ToString() + "</p></div>");
             }
         }

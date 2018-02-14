@@ -21,6 +21,15 @@
         </div>
         <br />
         <div class="form-group">
+            <%if (StringSanciones.Count.Equals(0))
+                {%>
+            <div class="text-center">
+                <img class="img-responsive pull-left altura-error" src="img/errorLogo.png" />
+                <h3 class="pull-right d-inline">No hay sanciones pendientes</h3>
+            </div>
+            <%}
+                else
+                {%>
             <table class="table table-hover text-center">
                 <thead>
                     <tr>
@@ -61,7 +70,7 @@
                     </tr>
                 </tbody>
             </table>
-
+            <%}%>
         </div>
     </div>
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

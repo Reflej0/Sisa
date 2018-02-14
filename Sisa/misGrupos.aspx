@@ -37,8 +37,8 @@
                                 {
                             %>
                                     <tr id="grupo-<% Response.Write(grupo.Key);%>">
-                                        <td><% Response.Write(grupo.Value);%></td>
-                                        <td><button type="button" class="btn btn-danger deleteButton" id="<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
+                                        <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Key);%>"><% Response.Write(grupo.Value);%></a></td>
+                                        <td><!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" --></td>
                                     </tr>
                             <%
                                 }
@@ -55,26 +55,3 @@
 
 </body>
 </html>
-
-<script type="text/javascript">
-
-    $('.deleteButton').click(function () {
-        var del = confirm("Estás seguro que querés salir del grupo?");
-        var data = {};
-        data.grupo_id = $(this).attr('id');
-
-        if (del == true) {
-            $.ajax({
-                type: 'POST',
-                url: 'Services/Service.asmx/Delete_Grupo_Usuario',
-                dataType: 'json',
-                data: JSON.stringify(data),
-                contentType: 'application/json;charset=utf-8',
-                success: function (response) {
-                    $('#grupo-' + data.grupo_id).remove();
-                }
-            });
-        }
-    });
-
-</script>

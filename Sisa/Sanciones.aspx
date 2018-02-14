@@ -43,7 +43,7 @@
                     </select>
                     <label for="selectGrupo">Integrante</label>
                     <select class="form-control" id="selectIntegrante" disabled>
-                        <option value="0" selected>Seleccione un integrante...</option>
+                        <option value="0" selected="selected">Seleccione un integrante...</option>
                     </select>
                 </div>
                 <div class="col col-md-6">
@@ -57,7 +57,7 @@
                 <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
             
-
+            <div class="error text-center" id="errorDiv"></div>
         </div>
     </div>
     <!-- #include file="~/Element/_Footer.aspx" -->
@@ -104,25 +104,6 @@
 
 <script type="text/javascript">
 
-    $('#Sanciones').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Sancion_Usuario',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                alert(response.d);
-                //Se chequea así ya que si no logeo correctamente response.d es NULL.
-                if (response.d != -1) {
-                    //Redireccionar a index o mi perfil.
-                    //window.location.href = "RestablecerContrasena.aspx";
-                } else {
-                    $('#errorDiv').text("Las credenciales son incorrectas.");
-                    $('#errorDiv').show();
-                }
-            }
-        });
-    });
-
     $('#selectGrupo').on('change', function () {
         if (this.value > 0) {
             var data = {};
@@ -154,7 +135,8 @@
         data.grupo_id = $('#selectGrupo').val();
         data.sancionado_id = $('#selectIntegrante').val();
         data.motivo = $("#Motivo").val();
-
+        
+        if (data.grupo_id != 0 && data.sancionado_id != 0 && data.motivo.length > 0) {
             $.ajax({
                 type: 'POST',
                 url: 'Services/Service.asmx/Set_Sancion_Usuario',
@@ -162,14 +144,16 @@
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    if (response.d == 0)
-                    {
+                    if (response.d == 0) {
                         alert("Sancion aplicada");
                     }
                     window.location.href = "Home.aspx";
                 }
             });
-       
+        } else {
+            $('#errorDiv').text("Los campos no pueden estar vacíos.");
+            $('#errorDiv').show();
+        }   
     });
 </script>
 

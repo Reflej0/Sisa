@@ -24,8 +24,11 @@ namespace Sisa
                 Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> " + Session["Nombre"] + "</div><p>");
                 Response.Write(DateTime.Now.ToString() + "</p></div>");
 
-                O_Business objBusiness = new O_Business(); // Inicializo el objeto global.
-                this.sanciones = objBusiness.Get_Cantidad_Sanciones_Usuarios_Grupo(1);
+                // Inicializo el objeto global
+                O_Business objBusiness = new O_Business();
+                // Obtengo el parámetro de la URL.
+                string id = Page.ClientQueryString;
+                this.sanciones = objBusiness.Get_Cantidad_Sanciones_Usuarios_Grupo(Int32.Parse(id));
             }
         }
 	}
