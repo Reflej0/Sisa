@@ -68,7 +68,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>  Información </h4>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>Información </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -119,4 +119,14 @@
         $("#row-" + sancion_id).fadeOut(3000);
     });
 
+    $('#Salir').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                window.location.href = "Login.aspx";
+            }
+        });
+    });
 </script>
