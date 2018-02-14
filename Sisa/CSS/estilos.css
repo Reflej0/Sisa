@@ -27,6 +27,16 @@
 .linea-separadora {
     margin-top: 30px;
 }
+/* Logo del home */
+.logo-inicio{
+    height: 180px;
+}
+
+.pagina-header {
+    background-color: #000000;
+    margin: 0px;
+    padding-bottom: 3%;
+}
 
 /* ESTILOS DEL LOGIN */
 .contenido-login {
@@ -105,10 +115,6 @@ body {
     padding: 13px;
 }
 
-#header {
-    height: 30%;
-}
-
 /* Ultima conexion y nombre de usuario */
 .info {
     text-align: right;
@@ -119,6 +125,10 @@ body {
 .titulo-home > h3 {
     font-weight: bold;
 }
+
+.titulo-home{
+    color: #ffffff;
+} 
 
 #homeSoloTexto {
     margin: 0px;

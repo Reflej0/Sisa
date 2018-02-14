@@ -15,18 +15,25 @@
 <body>
     <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
-    <div class="container-fluid pagina-contenido">
-        <div id="header" class="row">
-            <div class="container">
+        <div class="pagina-header">
+
+             <div class="container pagina-contenido">
                 <div class="row">
                     <div class="col-sm-6 col-md-6">
-                        <img id="homeSoloLogo" class="d-block mx-auto" src="img/SoloLogoNaranja.png" alt="Logo"/>
+                        <img id="homeSoloLogo" class="d-block mx-auto logo-inicio" src="img/SoloLogoNaranja.png" alt="Logo"/>
                     </div>
                     <div class="titulo-home col-md-4">
                         <img id="homeSoloTexto" src="img/SoloLetrasNaranja.png" alt="Logo"/>
                         <h3>Sistema de Sanciones</h3>
                         <p>SiSa es el sistema que permite mantener la paz en el ambiente laboral.</p>
-                        <br />
+                    </div>
+                  </div>
+            </div>
+          </div>
+     <p id="votaciones_pendientes" class="card-title"></p>
+    <p id="sanciones_recibidas" class="card-title"></p>
+    <a href="misGrupos.aspx">Mis grupos</a>
+                        <!-- br />
                         <div class="card border-danger mb-3">
                           <div class="card-header text-center">Notificaciones</div>
                             
@@ -61,7 +68,7 @@
 
             </div>
         </div>
-    </div>
+    </div-->
 
     <!-- #include file="~/Element/_Footer.aspx" -->
 
