@@ -139,6 +139,13 @@ BEGIN
     SELECT SCOPE_IDENTITY()
 END
 
+CREATE PROCEDURE Set_Grupo @v_Nombre varchar(255), @v_Descripcion varchar(255), @v_Administrador_id int
+AS
+BEGIN
+    INSERT INTO Grupos(nombre, descripcion, administrador_id) VALUES (@v_Nombre, @v_Descripcion, @v_Administrador_id)
+    SELECT SCOPE_IDENTITY()
+END
+
 CREATE PROCEDURE Set_Usuario_Grupo @v_Grupo_id int, @v_Usuario_id int
 AS
 BEGIN
