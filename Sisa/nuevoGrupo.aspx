@@ -11,8 +11,8 @@
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-    <link rel="stylesheet" href="/resources/demos/style.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
 <body>
@@ -60,58 +60,70 @@
 </body>
 </html>
 
-  <script>
-      var array_usuarios = [];
-      $(document).ready(function () {
+<script>
+    var array_usuarios = [];
+    $(document).ready(function () {
 
-          $.ajax({
-              type: 'POST',
-              url: 'Services/Service.asmx/Get_Usuarios',
-              contentType: 'application/json;charset=utf-8',
-              success: function (response) {
-                  //Se chequea así ya que si response.d es NULL.
-                  if (response.d) {
-                      var array_full = eval('(' + response.d + ')');
-                      for (i in array_full) {
-                          array_usuarios.push(array_full[i]["_Usuario"]);
-                      }
-                  }
-                  else {
-                      //Manejar acá lo de errores.
-                  }
-              }
-          });
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Get_Usuarios',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                //Se chequea así ya que si response.d es NULL.
+                if (response.d) {
+                    var array_full = eval('(' + response.d + ')');
+                    for (i in array_full) {
+                        array_usuarios.push(array_full[i]["_Usuario"]);
+                    }
+                }
+                else {
+                    //Manejar acá lo de errores.
+                }
+            }
+        });
 
 
-          $("#integrantes").autocomplete({
-              source: array_usuarios,
-              select: function (event, ui) {
-                  //Creo un tr para agregar a la tabla el integrante que ingresó
-                  var trIntegrante = document.createElement('tr');
-                  trIntegrante.setAttribute('id', 'tr-' + ui.item.value);
-                  $('.integrantes').append(trIntegrante);
+        $("#integrantes").autocomplete({
+            source: array_usuarios,
+            select: function (event, ui) {
+                //Creo un tr para agregar a la tabla el integrante que ingresó
+                var trIntegrante = document.createElement('tr');
+                trIntegrante.setAttribute('id', 'tr-' + ui.item.value);
+                $('.integrantes').append(trIntegrante);
 
-                  //Creo un td y le pongo el nuevo integrante.
-                  var tdIntegrante = document.createElement('td');
-                  tdIntegrante.append(ui.item.value);
-                  trIntegrante.append(tdIntegrante);
-                  
-                  var btnEliminar = document.createElement('button');
-                  btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
-                  btnEliminar.setAttribute('id', ui.item.value);
-                  tdIntegrante.append(btnEliminar);
+                //Creo un td y le pongo el nuevo integrante.
+                var tdIntegrante = document.createElement('td');
+                tdIntegrante.append(ui.item.value);
+                trIntegrante.append(tdIntegrante);
 
-                  var iTrash = document.createElement('i');
-                  iTrash.setAttribute('class', 'fa fa-trash');
-                  iTrash.setAttribute('aria-hidden', 'true');
-                  btnEliminar.append(iTrash);
-              }
-          });
+                var btnEliminar = document.createElement('button');
+                btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
+                btnEliminar.setAttribute('id', ui.item.value);
+                tdIntegrante.append(btnEliminar);
 
-          $(document).on('click', '.eliminarButton', function () {
-              var value = $(this).attr('id');
-              $('#tr-' + value).remove();
-          });
+                var iTrash = document.createElement('i');
+                iTrash.setAttribute('class', 'fa fa-trash');
+                iTrash.setAttribute('aria-hidden', 'true');
+                btnEliminar.append(iTrash);
+            }
+        });
 
-      });
-  </script>
+        $(document).on('click', '.eliminarButton', function () {
+            var value = $(this).attr('id');
+            $('#tr-' + value).remove();
+        });
+
+    });
+
+
+    $('#Salir').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                window.location.href = "Login.aspx";
+            }
+        });
+    });
+</script>
