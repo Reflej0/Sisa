@@ -104,7 +104,7 @@ BEGIN
     SELECT U.usuario, COUNT(*) AS cant
     FROM Sanciones AS S
 	INNER JOIN Usuarios AS U ON U.id = S.usuario_sancionado_id
-    WHERE S.grupo_id = 1
+    WHERE S.grupo_id = @v_Grupo_id
 	GROUP BY U.usuario
 	ORDER BY cant
 END
