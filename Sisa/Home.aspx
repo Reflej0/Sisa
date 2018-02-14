@@ -58,8 +58,8 @@
                     <div class="card-body">
                         <p>Cada mes se elige al sancionado del mes, esta persona es aquella que haya recibido más sanciones durante el mes pasado.</p>
                         <br />
-                        <h5 class="card-title">Sancionado del mes: <span id="sancionado_mes" class="badge badge-secondary">usuario</span></h5>
-                        <div class="card-footer bg-transparent border-secondary text-sanciones text-center font-weight-bold" >--</div>
+                        <h5 class="card-title">Sancionado del mes: <span id="sancionado_mes" class="badge badge-secondary">sbhadbda</span></h5>
+                        <div class="card-footer bg-transparent border-secondary text-sancionado text-center font-weight-bold" id="sancionado" >--</div>
                     </div>
                 </div>
             </div>
@@ -94,6 +94,18 @@
                 }
             }
         });
+
+        var usuarioLogueado = $("#nombreUsuario").text();
+        var sancionadoDelMes = $("#sancionado_mes").text();
+        if (usuarioLogueado === sancionadoDelMes) {
+            $('#sancionado_mes').addClass("badge-congrats");
+            $('#sancionado').text("Felicitaciones!");
+            $('#sancionado').addClass("text-congrats");
+            $('#sancionado').addClass("border-congrats");
+        } else {
+            $('#sancionado').text("Seguí participando");
+        }
+
     });
 
 
