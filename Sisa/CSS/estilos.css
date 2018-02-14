@@ -80,13 +80,13 @@
     background-color: #f6b315;
 }
 
-.navbar-naranja > a {
-    color: #000000;
-}
+    .navbar-naranja > a {
+        color: #000000;
+    }
 
-.navbar-naranja > a:hover {
-    color: #808080
-}
+        .navbar-naranja > a:hover {
+            color: #808080
+        }
 
 .logo-navbar {
     height: 25px;
@@ -141,10 +141,10 @@ body {
     margin: 20px;
 }
 
-.link-info:hover {
-    color: #ac7a06;
-    text-decoration: none;
-}
+    .link-info:hover {
+        color: #ac7a06;
+        text-decoration: none;
+    }
 
 
 .gradient-border {
@@ -199,7 +199,7 @@ body {
 }
 
 /* Mensaje con nombre de usuario y ultima conexion */
-.msg-welcome{
+.msg-welcome {
     position: absolute;
     top: 0;
     right: 0;
@@ -207,11 +207,11 @@ body {
     text-align: center;
 }
 
-.msg-welcome > p{
-    font-size: 10px;
-}
+    .msg-welcome > p {
+        font-size: 10px;
+    }
 
-.text-welcome{
+.text-welcome {
     padding-bottom: 0px;
 }
 
@@ -227,12 +227,13 @@ body {
     background-color: #ff0000 !important;
 }
 
-.indicador:active {
-    background-color: #ff6666 !important;
-}
-.indicador:hover{
-    cursor: pointer;
-}
+    .indicador:active {
+        background-color: #ff6666 !important;
+    }
+
+    .indicador:hover {
+        cursor: pointer;
+    }
 
 /* Formulario de sanciones */
 .titulo-formulario {
@@ -257,29 +258,32 @@ body {
 ol {
     height: 10px;
     padding-left: 0;
-} 
-
-ol > li{
-    display: inline-block;
-    height: 20px;
-    border: 1px solid #000;
-    margin-right: 4px;
-
-
 }
-ol > li:nth-child(5n) {
-    transform: rotate(300deg);
-    -webkit-transform: rotate(300deg);
-    -moz-transform: rotate(300deg);
-    -o-transform: rotate(300deg);
-    height: 30px;
-    position: relative;
-    left: -15px;
-    top: 5px;
-    margin-right: 1em;
-    margin-top: -10px;
-}
+
+    ol > li {
+        display: inline-block;
+        height: 20px;
+        border: 1px solid #000;
+        margin-right: 4px;
+    }
+
+        ol > li:nth-child(5n) {
+            transform: rotate(300deg);
+            -webkit-transform: rotate(300deg);
+            -moz-transform: rotate(300deg);
+            -o-transform: rotate(300deg);
+            height: 30px;
+            position: relative;
+            left: -15px;
+            top: 5px;
+            margin-right: 1em;
+            margin-top: -10px;
+        }
 
 .btn-right {
-     float: right;
-} 
+    float: right;
+}
+
+.altura-error {
+    height: 100%;
+}
