@@ -80,7 +80,6 @@
     <Content Include="Element\_DeleteGrupoUsuario.aspx" />
     <Content Include="Element\_Footer.aspx" />
     <Content Include="Element\_Navbar.aspx" />
-    <Content Include="Grupos.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\logo2.jpg" />
@@ -148,13 +147,6 @@
     </Compile>
     <Compile Include="Element\_Navbar.aspx.designer.cs">
       <DependentUpon>_Navbar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Grupos.aspx.cs">
-      <DependentUpon>Grupos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Grupos.aspx.designer.cs">
-      <DependentUpon>Grupos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
