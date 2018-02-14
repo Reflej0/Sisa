@@ -37,7 +37,7 @@
                                 {
                             %>
                                     <tr id="grupo-<% Response.Write(grupo.Key);%>">
-                                        <td><% Response.Write(grupo.Value);%></td>
+                                        <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Key);%>"><% Response.Write(grupo.Value);%></a></td>
                                         <td><button type="button" class="btn btn-danger deleteButton" id="<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"><i class="fas fa-sign-out-alt"></i></button></td>
                                     </tr>
                             <%
