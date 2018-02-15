@@ -11,7 +11,7 @@
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
-<body class="container-fluid fondo-coloreado">
+<body class="fondo-coloreado body-sin-footer">
     <!-- Contenido -->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo" />

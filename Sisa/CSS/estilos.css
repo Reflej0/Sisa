@@ -21,7 +21,7 @@
 }
 
 .fondo-coloreado {
-    background: linear-gradient(to bottom right, red, yellow);
+    background: linear-gradient(to bottom right, #ffe0cc, #e65c00);
 }
 
 }
@@ -59,10 +59,10 @@
     background-color: #f6b315;
 }
 
-    .btn-general:hover {
-        background-color: #dda113;
-        color: white;
-    }
+.btn-general:hover {
+    background-color: #dda113;
+    color: white;
+}
 
 @media (max-width: 768px) {
     .contenido-login {
@@ -104,6 +104,12 @@ body {
     position: relative;
     min-height: 100%;
     padding-bottom: 80px;
+}
+
+.body-sin-footer {
+    position: relative;
+    min-height: initial;
+    padding-bottom: 0px;
 }
 
 /* Footer */

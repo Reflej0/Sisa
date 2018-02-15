@@ -11,7 +11,7 @@
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
-<body class="container-fluid fondo-coloreado">
+<body class="body-sin-footer fondo-coloreado">
     <!-- Contenido -->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         <div class="justify-content-center align-content-center">
