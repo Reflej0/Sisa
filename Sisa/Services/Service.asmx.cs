@@ -198,5 +198,13 @@ namespace Sisa.Services
             O_Business = new O_Business(); // Inicializo el objeto global.
             return O_Business.Delete_Grupo_Usuario(grupo_id, usuario_id);
         }
+
+        //WebMethod para obtener el grupo con un id
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Get_Grupo(int grupo_id)
+        {
+            O_Business = new O_Business(); //Inicializo el objeto global.
+            return JsonConvert.SerializeObject(O_Business.Get_Grupo(grupo_id), Formatting.Indented);
+        }
     }
 }

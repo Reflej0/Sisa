@@ -77,6 +77,7 @@
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\estilos.css" />
     <Content Include="detalleGrupo.aspx" />
+    <Content Include="editarGrupo.aspx" />
     <Content Include="Element\_DeleteGrupoUsuario.aspx" />
     <Content Include="Element\_Footer.aspx" />
     <Content Include="Element\_Navbar.aspx" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="detalleGrupo.aspx.designer.cs">
       <DependentUpon>detalleGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editarGrupo.aspx.cs">
+      <DependentUpon>editarGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editarGrupo.aspx.designer.cs">
+      <DependentUpon>editarGrupo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Element\_DeleteGrupoUsuario.aspx.cs">
       <DependentUpon>_DeleteGrupoUsuario.aspx</DependentUpon>
