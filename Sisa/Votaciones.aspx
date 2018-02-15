@@ -61,19 +61,16 @@
         </div>
     </div>
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>Información </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content contenido-modal">
+                <div class="modal-header titulo-modal ">
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i> Información </h4>
                 </div>
                 <div class="modal-body">
-                    <h3 id="mensajeModal"></h3>
+                    <label id="mensajeModal"></label>
                 </div>
                 <div class="modal-footer">
-                    <button id="cerrarButton" type="button" class="btn btn-info" data-dismiss="modal">Cerrar</button>
+                    <button id="cerrarButton" type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

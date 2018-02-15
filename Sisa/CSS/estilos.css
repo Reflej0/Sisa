@@ -316,3 +316,15 @@ ol {
 .border-congrats {
     border-color: #ff3399 !important;
 }
+
+/* Modal */
+.titulo-modal {
+    background-color: #ff6600;
+    color: #ffffff;
+    text-align: center;
+    display: unset;
+}
+
+.contenido-modal > h4{
+    text-align: center;
+}
