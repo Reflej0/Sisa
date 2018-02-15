@@ -21,7 +21,9 @@
 }
 
 .fondo-coloreado {
-    background-color: #f6b315;
+    background: linear-gradient(to bottom right, red, yellow);
+}
+
 }
 
 .linea-separadora {
@@ -328,30 +330,4 @@ ol {
 
 .contenido-modal > h4 {
     text-align: center;
-}
-
-@keyframes epi {
-    16% {
-        background: yellow;
-    }
-
-    32% {
-        background: lime;
-    }
-
-    48% {
-        background: navy;
-    }
-
-    64% {
-        background: yellow;
-    }
-
-    80% {
-        background: lime;
-    }
-
-    100% {
-        background: navy;
-    }
 }
