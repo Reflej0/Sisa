@@ -1,19 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Votaciones.aspx.cs" Inherits="Sisa.Votaciones" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Votaciones.aspx.cs" Inherits="Sisa.Votaciones" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>SiSa</title>
-    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <script src="JS/jquery-3.2.1.min.js"></script>
-    <script src="JS/bootstrap.min.js"></script>
-    <link href="CSS/estilos.css" rel="stylesheet" />
-</head>
-<body>
-    <!-- #include file="~/Element/_Navbar.aspx" -->
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <!-- Contenido -->
     <div class="container pagina-contenido">
         <div class="titulo-formulario">
@@ -91,51 +78,38 @@
             </div>
         </div>
     </div>
-    <!-- #include file="~/Element/_Footer.aspx" -->
+</asp:Content>
 
+<asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
+    <script type="text/javascript">
+        /*$(':radio').each(function () { DEBUG
+            alert($(this).val());
+            alert($(this).attr('id'));
+        });*/
+        function Votar(sancion_id, si_no) {
+            var data = {}; // Variable que encapsula.
+            data.voto_valor = si_no; // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
+            data.sancion_id = sancion_id // Obtengo el id de la sanción.
+            data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
+            $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Set_Voto_Sancion',
+                contentType: 'application/json;charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    $("#cerrarButton").attr("name", sancion_id)
+                    $("#basicModal").modal('show');
+                    $("#mensajeModal").text(response.d);
+                }
+            });
+        }
 
-</body>
-</html>
-
-<script type="text/javascript">
-    /*$(':radio').each(function () { DEBUG
-        alert($(this).val());
-        alert($(this).attr('id'));
-    });*/
-    function Votar(sancion_id, si_no) {
-        var data = {}; // Variable que encapsula.
-        data.voto_valor = si_no; // Los checkbox tienen un atributo si_no. si_no = 1 es Voto a Favor.
-        data.sancion_id = sancion_id // Obtengo el id de la sanción.
-        data.grupo_id = $("#grupo_id").val(); // Obtengo el id del grupo.
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Set_Voto_Sancion',
-            contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(data),
-            success: function (response) {
-                $("#cerrarButton").attr("name", sancion_id)
-                $("#basicModal").modal('show');
-                $("#mensajeModal").text(response.d);
-            }
+        $("#cerrarButton").on("click", function () {
+            var sancion_id = $(this).attr("name");
+            $("#row-" + sancion_id).fadeOut();
+            $("#row-" + sancion_id).fadeOut("slow");
+            $("#row-" + sancion_id).fadeOut(3000);
         });
-    }
-
-    $("#cerrarButton").on("click", function () {
-        var sancion_id = $(this).attr("name");
-        $("#row-" + sancion_id).fadeOut();
-        $("#row-" + sancion_id).fadeOut("slow");
-        $("#row-" + sancion_id).fadeOut(3000);
-    });
-
-    $('#Salir').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Logout',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                window.location.href = "Login.aspx";
-            }
-        });
-    });
-</script>
+    </script>
+</asp:Content>
