@@ -60,11 +60,13 @@
             <%}%>
         </div>
     </div>
+
+    <!-- Modal -->
     <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content contenido-modal">
                 <div class="modal-header titulo-modal ">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>Información </h4>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i> Información </h4>
                 </div>
                 <div class="modal-body">
                     <label id="mensajeModal"></label>

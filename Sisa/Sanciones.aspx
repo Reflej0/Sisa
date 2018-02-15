@@ -57,6 +57,22 @@
                 <button type="button" class="btn btn-danger" id="sendButton">Sanción <i class="fas fa-gavel"></i></button>
             </div>
             
+      <!-- Modal -->
+          <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" >
+                <div class="modal-content contenido-modal">
+                    <div class="modal-header titulo-modal ">
+                        <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i> Información </h4>
+                    </div>
+                    <div class="modal-body">
+                        <label> Sanción aplicada </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cerrarButton" type="button" class="btn btn-outline-dark" data-dismiss="modal" >Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="error text-center" id="errorDiv"></div>
         </div>
     </div>
@@ -145,15 +161,22 @@
                 data: JSON.stringify(data),
                 success: function (response) {
                     if (response.d == 0) {
-                        alert("Sancion aplicada");
+
+                        // Muestro el modal.
+                        $('#basicModal').modal();
                     }
-                    window.location.href = "Home.aspx";
                 }
             });
         } else {
             $('#errorDiv').text("Los campos no pueden estar vacíos.");
             $('#errorDiv').show();
         }   
+
+        // Cuando el modal se cierra, por tocar el boton o fuera de si redirijo al home.
+        $('#basicModal').on('hidden.bs.modal', function () {
+            window.location.href = "Home.aspx";
+        })
+
     });
 </script>
 

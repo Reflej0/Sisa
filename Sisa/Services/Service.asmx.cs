@@ -160,30 +160,14 @@ namespace Sisa.Services
         }
         //WebMethod para crear una nueva sancion
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
-        public int Set_Sancion_Usuario(int grupo_id, int sancionado_id, string motivo)
+        public string Set_Sancion_Usuario(int grupo_id, int sancionado_id, string motivo)
         {
             //Obtengo el id del sancionador mediante la sesion
             int sancionador_id = Convert.ToInt32(Session["Usuario_id"]);
             O_Business = new O_Business(); // Inicializo el objeto global.
-            Grupo grupoSancionador = O_Business.Get_Grupo_Determinado_Usuario(sancionador_id);
-            Grupo grupoSancionado = O_Business.Get_Grupo_Determinado_Usuario(sancionado_id);
-            int flagError = 0;
-            if (grupoSancionado.Id.Equals(grupo_id) && grupoSancionador.Id.Equals(grupo_id))
-            {
                 //Faltan validaiciones de motivo?
-                String sancion = O_Business.Set_Sancion_Usuario(sancionador_id, grupo_id, sancionado_id, motivo);
+            return O_Business.Set_Sancion_Usuario(sancionador_id, grupo_id, sancionado_id, motivo);
 
-                if (sancion.Length.Equals(0))
-                {
-                    flagError = 1;
-                }
-            }
-            else
-            {
-                flagError = 1;
-            }
-
-            return flagError;
         }
         //WebMethod para asignar un nuevo voto a una sanción.
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
