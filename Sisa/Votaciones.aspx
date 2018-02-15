@@ -102,6 +102,12 @@
             });
         }
 
+        $('#basicModal').on('hidden.bs.modal', function () {
+            var sancion_id = $("#cerrarButton").attr("name");
+            $("#row-" + sancion_id).fadeOut();
+            $("#row-" + sancion_id).fadeOut("slow");
+            $("#row-" + sancion_id).fadeOut(3000);
+        })
         $("#cerrarButton").on("click", function () {
             var sancion_id = $(this).attr("name");
             $("#row-" + sancion_id).fadeOut();
