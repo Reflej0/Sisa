@@ -21,6 +21,43 @@
                 <div class="text-center">
                     <button type="button" class="btn btn-danger" id="addSancion">Nueva sanción <i class="fas fa-plus"></i></button>
                 </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <table class="table table-striped table-bordered text-center tabla">
+                            <thead>
+                                <tr>
+                                    <th>Grupo</th>
+                                    <th>Creador</th>
+                                    <th>Sancionado</th>
+                                    <th>Motivo</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%--<% 
+                                    foreach (var pair in sanciones)
+                                    {
+                                %>
+                                <tr>
+                                    <td><% Response.Write(pair.Key); %></td>
+                                    <td class="sancion">
+                                        <% Response.Write(pair.Value); %>
+                                            
+                                    </td>
+                                    <td class="palitos">
+                                        <ol id="count">&nbsp;</ol>
+                                    </td>
+
+                                </tr>
+                                <%
+                                    }
+                                %>--%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
