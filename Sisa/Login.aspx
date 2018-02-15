@@ -13,15 +13,15 @@
 </head>
 <body class="container-fluid fondo-coloreado">
     <!-- Contenido -->
-    <div class="gradient-border col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
-        <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo"/>
-            <div class="form-group">
-                <br />
-                <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
-            </div>
+    <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
+        <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo" />
+        <div class="form-group">
+            <br />
+            <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
+        </div>
         <button type="button" class="btn no-border-radius btn-general" id="loginButton">Ingresar</button>
         <div class="error text-center" id="errorDiv"></div>
         <br />
@@ -34,13 +34,13 @@
 </html>
 
 <script type="text/javascript">
-
-    $('#password').bind("enterKey", function (e) 
-    {
+    $('body, html').css("animation-name", "epi");
+    $('body, html').css("animation-duration", "1s");
+    $('body, html').css("animation-iteration-count", "infinite")
+    $('#password').bind("enterKey", function (e) {
     });
     $('#password').keyup(function (e) {
-        if (e.keyCode == 13)
-        {
+        if (e.keyCode == 13) {
             var data = {};
             data.user = $('#user').val();
             data.pass = $('#password').val();
@@ -102,7 +102,7 @@
             $('#errorDiv').text("Los campos no pueden estar vacíos.");
             $('#errorDiv').show();
         }
-        
+
     });
 
 </script>

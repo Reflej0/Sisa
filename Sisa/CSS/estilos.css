@@ -28,7 +28,7 @@
     margin-top: 30px;
 }
 /* Logo del home */
-.logo-inicio{
+.logo-inicio {
     height: 180px;
 }
 
@@ -126,9 +126,9 @@ body {
     font-weight: bold;
 }
 
-.titulo-home{
+.titulo-home {
     color: #ffffff;
-} 
+}
 
 #homeSoloTexto {
     margin: 0px;
@@ -210,9 +210,10 @@ body {
     .msg-welcome > p {
         font-size: 10px;
     }
-    #nombreUsuario {
-        margin-bottom: 0px;
-    }
+
+#nombreUsuario {
+    margin-bottom: 0px;
+}
 
 .text-welcome {
     padding-bottom: 0px;
@@ -298,7 +299,7 @@ ol {
     color: #0066ff;
 }
 
-.text-sanciones{
+.text-sanciones {
     padding-left: 0px;
     padding-right: 0px;
 }
@@ -325,6 +326,32 @@ ol {
     display: unset;
 }
 
-.contenido-modal > h4{
+.contenido-modal > h4 {
     text-align: center;
+}
+
+@keyframes epi {
+    16% {
+        background: yellow;
+    }
+
+    32% {
+        background: lime;
+    }
+
+    48% {
+        background: navy;
+    }
+
+    64% {
+        background: yellow;
+    }
+
+    80% {
+        background: lime;
+    }
+
+    100% {
+        background: navy;
+    }
 }
