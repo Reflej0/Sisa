@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SiSa</title>
     <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="JS/jquery-3.2.1.min.js"></script>
     <script src="JS/bootstrap.min.js"></script>
@@ -38,7 +39,10 @@
                             %>
                                     <tr id="grupo-<% Response.Write(grupo.Key);%>">
                                         <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Key);%>"><% Response.Write(grupo.Value);%></a></td>
-                                        <td><!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" --></td>
+                                        <td>
+                                            <!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" -->
+                                            <a href="editarGrupo.aspx?id=<%Response.Write(grupo.Key);%>" class="btn btn-info editButton" id="edit-<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>
+                                        </td>
                                     </tr>
                             <%
                                 }
