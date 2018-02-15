@@ -1,19 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Sisa.Home" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Sisa.Home" %>
 
-<!DOCTYPE html>
+<asp:Content ID="Content1" ContentPlaceHolderID="body" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SiSa</title>
-    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <script src="JS/jquery-3.2.1.min.js"></script>
-    <script src="JS/bootstrap.min.js"></script>
-    <link href="CSS/estilos.css" rel="stylesheet" />
-</head>
-<body>
-    <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
     <div class="pagina-header">
 
@@ -52,27 +40,25 @@
                     </div>
                 </div>
             </div>
-             <div class="col-md-4">
+            <div class="col-md-4">
                 <div class="card">
                     <h5 class="card-header">Sancionado del mes</h5>
                     <div class="card-body">
                         <p>Cada mes se elige al sancionado del mes, esta persona es aquella que haya recibido más sanciones durante el mes pasado.</p>
                         <br />
                         <h5 class="card-title">Sancionado del mes: <span id="sancionado_mes" class="badge badge-secondary">sbhadbda</span></h5>
-                        <div class="card-footer bg-transparent border-secondary text-sancionado text-center font-weight-bold" id="sancionado" >--</div>
+                        <div class="card-footer bg-transparent border-secondary text-sancionado text-center font-weight-bold" id="sancionado">--</div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     </div>
 
-    <!-- #include file="~/Element/_Footer.aspx" -->
 
-</body>
-</html>
+</asp:Content>
 
-<script type="text/javascript">
+<asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
     var grupo_predeterminado_id; // Variable global de JS que contiene la id del grupo predeterminado del usuario.
     var array_sanciones = []; // Variable global de JS que contiene las sanciones del grupo predeterminado del usuario.
     var array_mis_sanciones = []; // Variable global de JS que contiene MIS sanciones, osea las que me hicieron.
@@ -214,19 +200,4 @@
     });
 
 </script>
-
-<script type="text/javascript">
-
-    $('#Salir').click(function () {
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Logout',
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                window.location.href = "Login.aspx";
-            }
-        });
-    });
-
-</script>
-
+</asp:Content>

@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Sisa.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SiSa</title>
+    <link href="CSS/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="JS/jquery-3.2.1.min.js"></script>
+    <script src="JS/bootstrap.min.js"></script>
+    <link href="CSS/estilos.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- #include file="~/Element/_Navbar.aspx" -->
+
+    <asp:ContentPlaceHolder ID="body" runat="server">
+    </asp:ContentPlaceHolder>
+    <!-- #include file="~/Element/_Footer.aspx" -->
+
+</body>
+</html>
+<asp:contentplaceholder id="js" runat="server">
+    </asp:contentplaceholder>
+<script type="text/javascript">
+
+    $('#Salir').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                window.location.href = "Login.aspx";
+            }
+        });
+    });
+
+</script>
