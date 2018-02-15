@@ -67,7 +67,7 @@
 
           $.ajax({
               type: 'POST',
-              url: 'Services/Service.asmx/Get_Usuarios',
+              url: 'Services/Service.asmx/Get_Usuarios_Sin_Yo',
               contentType: 'application/json;charset=utf-8',
               success: function (response) {
                   //Se chequea así ya que si response.d es NULL.

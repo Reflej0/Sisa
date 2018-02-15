@@ -169,6 +169,15 @@ namespace Business
             return this.bd.Get_Usuarios();
         }
 
+        //Método que devuelve todos los usuarios del sistema menos yo.
+        public List<Usuario> Get_Usuarios_Sin_Yo(int id)
+        {
+            //Instancio un objeto de DataAccess solo para el login, al hacer el return ya no es posible acceder mas a el.
+            List<Usuario> Usuarios = this.bd.Get_Usuarios();
+            Usuarios.Remove(Usuarios.Find(i => i.Id == id));
+            return Usuarios;
+        }
+
         //Método que elimina un grupo_usuario
         public string Delete_Grupo_Usuario(int grupo_id, int usuario_id)
         {
