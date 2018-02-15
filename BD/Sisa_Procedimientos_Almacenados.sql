@@ -84,6 +84,7 @@ BEGIN
     FROM Sanciones AS S
     WHERE S.grupo_id = @v_Grupo_id AND S.id NOT IN (SELECT sancion_id FROM Votos WHERE usuario_id = @v_Usuario_id)
 AND S.estado = 1 AND (S.fecha_creacion BETWEEN @v_Ayer AND @v_Hoy)
+AND S.usuario_sancionado_id <> @v_Usuario_id
 END
 
 CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
