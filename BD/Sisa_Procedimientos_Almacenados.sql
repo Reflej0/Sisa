@@ -172,3 +172,11 @@ BEGIN
 	DELETE FROM Grupos_Usuarios 
 	WHERE grupo_id = @v_Grupo_id AND usuario_id = @v_Usuario_id
 END
+
+CREATE PROCEDURE Get_Grupo @id_grupo int
+AS
+BEGIN
+	SELECT *
+	FROM Grupos G
+	WHERE G.id = @id_grupo
+END
