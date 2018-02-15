@@ -136,7 +136,6 @@
           var data = {}; // Variable que encapsula.
           data.usuarios = array_id_usuarios_a_agregar.join(","); // EL ARRAY LO PASO A STRING.
           data.nombre = $("#nombre").val(); // PASO EL NOMBRE DEL GRUPO.
-          data.administrador_id = array_id_usuarios_a_agregar[0]; // POR DEFECTO EL ADMINISTRADOR ES EL PRIMER USUARIO DE LA LISTA.
           $.ajax({
               type: 'POST',
               url: 'Services/Service.asmx/Set_Grupo',

@@ -19,7 +19,14 @@
         </div>
     </div>
     <div class="container pagina-contenido">
-        <div class="row">
+        <div class="loading">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+        <div class="row"  id="informacionHome">
             <div class="col-md-4">
                 <div class="card">
                     <h5 class="card-header">Votaciones</h5>
@@ -71,6 +78,10 @@
             type: 'POST',
             url: 'Services/Service.asmx/Get_Grupo_Determinado_Usuario',
             contentType: 'application/json;charset=utf-8',
+            beforeSend: function () {
+                // setting a timeout
+                $('#informacionHome').css("display", "none");
+            },
             success: function (response) {
                 //Se chequea así ya que si response.d es NULL.
                 if (response.d) {
@@ -81,7 +92,7 @@
                 else {
                     //Manejar acá lo de errores.
                 }
-            }
+            },
         });
 
         var usuarioLogueado = $("#nombreUsuario").text();
@@ -168,6 +179,9 @@
                     $('#consejo').addClass("text-danger");
                     $('#consejo').addClass("border-danger");
                 }
+
+                $('#informacionHome').fadeIn(1000);
+                $('.loading').css("display", "none");
             }
         });
     }

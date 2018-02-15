@@ -64,11 +64,12 @@ namespace Sisa.Services
         }
 
         //WebMethod para crear un nuevo grupo.
-        [WebMethod(CacheDuration = 1, BufferResponse = false)]
-        public string Set_Grupo(string usuarios, string nombre, int administrador_id)
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Set_Grupo(string usuarios, string nombre)
         {
             O_Business = new O_Business(); // Inicializo el objeto global.
-            return O_Business.Set_Grupo(nombre, usuarios, administrador_id); // Devuelvo el OBJETO persona a la vista HTML.
+            int usuario_id = Convert.ToInt32(Session["Usuario_id"]);
+            return O_Business.Set_Grupo(nombre, usuarios, usuario_id); // Devuelvo el OBJETO persona a la vista HTML.
         }
 
         [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
