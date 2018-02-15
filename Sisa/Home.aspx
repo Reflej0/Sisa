@@ -59,6 +59,7 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="js" runat="server">
+    <script>
     var grupo_predeterminado_id; // Variable global de JS que contiene la id del grupo predeterminado del usuario.
     var array_sanciones = []; // Variable global de JS que contiene las sanciones del grupo predeterminado del usuario.
     var array_mis_sanciones = []; // Variable global de JS que contiene MIS sanciones, osea las que me hicieron.
