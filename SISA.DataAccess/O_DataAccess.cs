@@ -760,5 +760,38 @@ namespace SISA.DataAccess
             return null; // Acá no llega.
 
         }
+
+        //Obtiene las sanciones de todos los grupos donde está un usuario, del mes actual.
+        public List<Sancion> Get_Sanciones_Grupos_Mes(Usuario usuario, DateTime primerDia, DateTime ultimoDia)
+        {
+            List<Sancion> Sanciones = new List<Sancion>(); // Listado de sanciones a devolver.
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Sanciones_Grupos_Mes", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", usuario.Id); 
+            cmd.Parameters.AddWithValue("@v_PrimerDia", primerDia);
+            cmd.Parameters.AddWithValue("@v_UltimoDia", ultimoDia);
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Sancion s = new Sancion(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetInt32(3), reader.GetString(4), reader.GetInt32(5), reader.GetDateTime(6));
+                            Sanciones.Add(s);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return Sanciones; // Devuelvo los Sanciones
+        }
     }
 }

@@ -188,5 +188,12 @@ namespace Business
         {
             return this.bd.Get_Grupo(id_grupo);
         }
+
+        public List<Sancion> Get_Sanciones_Grupos_Mes(int usuario_id, DateTime primerDia, DateTime ultimoDia)
+        {
+            Usuario usuario = new Usuario();
+            usuario.Id = usuario_id;
+            return this.bd.Get_Sanciones_Grupos_Mes(usuario, primerDia, ultimoDia);
+        }
     }
 }
