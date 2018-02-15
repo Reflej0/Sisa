@@ -83,13 +83,6 @@
 
 <script type="text/javascript">
 
-    function mostrarNotificaciones() {
-        //var notificaciones = document.getElementById('texto-notificacion');
-        //notificaciones.textContent = "notificaciones";
-    }
-
-    setInterval(mostrarNotificaciones, 1000);
-
     $('#Grupos').click(function () {
 
         window.location.href = "Grupos.aspx";
@@ -160,11 +153,10 @@
                 dataType: 'json',
                 data: JSON.stringify(data),
                 success: function (response) {
-                    if (response.d == 0) {
 
+                        //alert("sancion aplicada");
                         // Muestro el modal.
                         $('#basicModal').modal();
-                    }
                 }
             });
         } else {
@@ -172,11 +164,11 @@
             $('#errorDiv').show();
         }   
 
-        // Cuando el modal se cierra, por tocar el boton o fuera de si redirijo al home.
-        $('#basicModal').on('hidden.bs.modal', function () {
-            window.location.href = "Home.aspx";
-        })
+    });
 
+    // Cuando el modal se cierra, por tocar el boton o fuera de si redirijo al home.
+    $('#basicModal').on('hidden.bs.modal', function () {
+        window.location.href = "Home.aspx";
     });
 </script>
 

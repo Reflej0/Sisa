@@ -15,7 +15,7 @@
     <!-- Contenido -->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         <div class="justify-content-center align-content-center">
-            <img id="loginLogo" class="d-block mx-auto" src="img/logo2.jpg" alt="logo"/>
+            <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="logo"/>
             <div class="form-group">
                 <br />
                 <input type="text" class="form-control no-border-radius" id="email" placeholder="Email" />
