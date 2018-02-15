@@ -226,7 +226,6 @@ namespace SISA.DataAccess
         //Método para crear un nuevo grupo.
         public string Set_Grupo(Grupo g, string usuarios)
         {
-
             //PRIMERO CREO EL GRUPO.
 
             this.OpenConnection(); // Primero abro la conexión.

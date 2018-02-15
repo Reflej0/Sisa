@@ -88,6 +88,15 @@ AND S.usuario_sancionado_id <> @v_Usuario_id
 AND S.usuario_creador_id <> @v_Usuario_id
 END
 
+CREATE PROCEDURE Get_Sanciones_Grupos_Mes @v_Usuario_id int, @v_PrimerDia date, @v_UltimoDia date
+AS
+BEGIN
+    SELECT S.id, S.grupo_id, S.usuario_creador_id, S.usuario_sancionado_id, S.motivo, S.estado, S.fecha_creacion
+    FROM Sanciones AS S
+    WHERE S.grupo_id IN (SELECT grupo_id FROM Grupos_usuarios WHERE usuario_id = @v_Usuario_id)
+    AND (S.fecha_creacion BETWEEN @v_PrimerDia AND @v_UltimoDia)
+END
+
 CREATE PROCEDURE Get_Grupo_Determinado_Usuario @v_Usuario_id int
 AS
 BEGIN
