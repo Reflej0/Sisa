@@ -45,9 +45,12 @@
                             %>
                             </tbody>
                         </table>
+
+                        <br />
+                        <button type="button" class="btn btn-success" id="newGroup">Nuevo grupo <i class="fas fa-plus"></i></button>
                     </div>
-                </div>
-            </div>
+                </div>    
+            </div>            
         </div>
     </div>
 
@@ -55,3 +58,11 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+
+    $('#newGroup').click(function () {
+        window.location = "nuevoGrupo.aspx";
+    });
+
+</script>
