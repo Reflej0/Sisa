@@ -88,6 +88,8 @@
                 //Se chequea así ya que si response.d es NULL.
                 if (response.d) {
                     grupo_predeterminado_id = response.d;
+                    Get_Sanciones_Activas_Grupos();
+                    Get_Sancion_Usuario();
                 }
                 else {
                     //Manejar acá lo de errores.
@@ -108,9 +110,6 @@
 
     });
 
-
-   setInterval(Get_Sanciones_Activas_Grupos, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de las sanciones activas.
-   setInterval(Get_Sancion_Usuario, 1000); //Establezco que cada 1000 segundos voy a hacer una llamada de Ajax que obtenga el listado de mis sanciones.
     //Método de JS.
     function Get_Sanciones_Activas_Grupos() 
     {

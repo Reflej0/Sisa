@@ -47,7 +47,10 @@
                         </table>
 
                         <br />
-                        <button type="button" class="btn btn-success" id="newGroup">Nuevo grupo <i class="fas fa-plus"></i></button>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-success" id="newGroup">Nuevo grupo <i class="fas fa-plus"></i></button>
+                        </div>
+                        
                     </div>
                 </div>    
             </div>            
