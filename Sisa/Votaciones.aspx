@@ -64,7 +64,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content contenido-modal">
                 <div class="modal-header titulo-modal ">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i> Información </h4>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>Información </h4>
                 </div>
                 <div class="modal-body">
                     <label id="mensajeModal"></label>
@@ -102,17 +102,21 @@
             });
         }
 
+        function hide_row_event(sancion_id) {
+            $("#row-" + sancion_id).fadeOut();
+            $("#row-" + sancion_id).fadeOut("slow");
+            $("#row-" + sancion_id).fadeOut(3000);
+        }
+
         $('#basicModal').on('hidden.bs.modal', function () {
             var sancion_id = $("#cerrarButton").attr("name");
-            $("#row-" + sancion_id).fadeOut();
-            $("#row-" + sancion_id).fadeOut("slow");
-            $("#row-" + sancion_id).fadeOut(3000);
+            hide_row_event(sancion_id);
         })
+
         $("#cerrarButton").on("click", function () {
             var sancion_id = $(this).attr("name");
-            $("#row-" + sancion_id).fadeOut();
-            $("#row-" + sancion_id).fadeOut("slow");
-            $("#row-" + sancion_id).fadeOut(3000);
+            hide_row_event(sancion_id);
         });
+
     </script>
 </asp:Content>
