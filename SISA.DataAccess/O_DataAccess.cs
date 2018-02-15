@@ -474,7 +474,7 @@ namespace SISA.DataAccess
 
             //VERIFICO EL 50%
 
-            float porcentaje = (cant_votos / cant_usuarios);
+            double porcentaje = (double)cant_votos / cant_usuarios;
             //SI LA SANCION YA TIENE +50% SANCIONADO !
             if (porcentaje > 0.5)
             {
