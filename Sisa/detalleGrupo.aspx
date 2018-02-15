@@ -19,7 +19,7 @@
         <div id="header" class="row">
             <div class="container">
                 <div class="text-center">
-                    <h2>Detalles del grupo: <span>Grupo</span></h2>
+                    <h2>Detalles del grupo: <span><% Response.Write(grupo.Nombre); %></span></h2>
                 </div>
                 <br />
                 <div class="row">
