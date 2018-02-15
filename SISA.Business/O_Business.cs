@@ -174,5 +174,10 @@ namespace Business
         {
             return this.bd.Delete_Grupo_Usuario(grupo_id, usuario_id);
         }
+
+        public Grupo Get_Grupo(int id_grupo)
+        {
+            return this.bd.Get_Grupo(id_grupo);
+        }
     }
 }

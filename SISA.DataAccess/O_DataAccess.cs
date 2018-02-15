@@ -254,7 +254,7 @@ namespace SISA.DataAccess
             this.OpenConnection();
             string[] id_usuarios = usuarios.Split(','); // VARIABLE SIMIL ARRAY CON LOS ID DE LOS USUARIOS.
             int k = 0;
-            for(k = 0; k <id_usuarios.Length; k++)
+            for (k = 0; k < id_usuarios.Length; k++)
             {
                 SqlCommand _cmd = new SqlCommand("Set_Usuario_Grupo", cnn);
                 _cmd.CommandType = CommandType.StoredProcedure;
@@ -476,7 +476,7 @@ namespace SISA.DataAccess
 
             float porcentaje = (cant_votos / cant_usuarios);
             //SI LA SANCION YA TIENE +50% SANCIONADO !
-            if(porcentaje > 0.5)
+            if (porcentaje > 0.5)
             {
                 this.OpenConnection(); // Primero abro la conexión.
                 SqlCommand cmd___ = new SqlCommand("Update_Sancion", cnn);
@@ -730,6 +730,36 @@ namespace SISA.DataAccess
             {
                 return e.ToString();
             }
+        }
+
+        public Grupo Get_Grupo(int id_grupo)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Get_Grupo", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@id_grupo", id_grupo); // Id del grupos.
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            try
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.HasRows) // Si el select devuelve algo.
+                    {
+                        while (reader.Read()) // Mientras voy leyendo todos los resultados.
+                        {
+                            //Creo una variable auxiliar que va leyendo registro por registro.
+                            Grupo g = new Grupo(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
+                            return g;
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e; //Tratamiento de la excepcion.
+            }
+            this.CloseConnection(); // Cierro la conexión.
+            return null; // Acá no llega.
+
         }
     }
 }

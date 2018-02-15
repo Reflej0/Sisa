@@ -40,8 +40,8 @@
                                     <tr id="grupo-<% Response.Write(grupo.Key);%>">
                                         <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Key);%>"><% Response.Write(grupo.Value);%></a></td>
                                         <td>
-                                            <!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" -->
                                             <a href="editarGrupo.aspx?id=<%Response.Write(grupo.Key);%>" class="btn btn-info editButton" id="edit-<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Editar"><span class="glyphicon glyphicon-edit"></span></a>
+                                            <!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" -->
                                         </td>
                                     </tr>
                             <%
