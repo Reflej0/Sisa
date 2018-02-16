@@ -17,7 +17,7 @@
     <!-- Contenido -->
     <div class="container pagina-contenido">
         <div class="titulo-formulario">
-            <h3>Reportar una sanción <i class="far fa-frown"></i></h3>
+            <h2>Reportar una sanción</h2>
         </div>
         <br />
         <div class="form-group">

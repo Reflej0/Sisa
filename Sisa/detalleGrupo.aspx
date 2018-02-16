@@ -18,8 +18,8 @@
     <div class="container-fluid pagina-contenido">
         <div id="header" class="row">
             <div class="container">
-                <div class="text-center">
-                    <h2>Detalles del grupo: <span><% Response.Write(grupo.Nombre); %></span></h2>
+                <div class="titulo-formulario">
+                    <h2><% Response.Write(grupo.Nombre); %></h2> <p>Detalles</p>
                 </div>
                 <br />
                 <div class="row">
@@ -40,8 +40,8 @@
                                 <tr>
                                     <td><% Response.Write(pair.Key); %></td>
                                     <td class="sancion">
-                                        <% Response.Write(pair.Value); %>
-                                            
+                                        <span class="badge"><% Response.Write(pair.Value); %> </span>
+
                                     </td>
                                     <td class="palitos">
                                         <ol id="count">&nbsp;</ol>
@@ -79,6 +79,18 @@
             cantidad = $(this).text();
             for (var i = 0; i < cantidad; i++) {
                 $(this).closest('td').next("td").find("ol").append('<li></li>');
+            }
+
+            // Colores despendiendo de la cantidad de sanciones.
+            if (cantidad <= 5 && cantidad >= 0) {
+                $(this).find("span").addClass('badge-lowest');
+
+            } else if (cantidad > 5 && cantidad <= 10) {
+
+                $(this).find("span").addClass('badge-middle');
+            } else {
+
+                $(this).find("span").addClass('badge-highest');
             }
         });
     });

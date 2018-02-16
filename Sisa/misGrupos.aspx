@@ -20,7 +20,9 @@
     <div class="container-fluid pagina-contenido">
         <div id="header" class="row">
             <div class="container">
-                <div class="text-center"><h2>Mis grupos</h2></div>
+              <div class="titulo-formulario">
+                  <h2>Mis grupos</h2>
+              </div>
                 <br/>
                 <div class="row">
                     <div class="col-md-6 offset-md-3">

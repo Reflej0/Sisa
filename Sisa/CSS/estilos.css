@@ -264,8 +264,13 @@ body {
 /* Formulario de sanciones */
 .titulo-formulario {
     color: #ff0000;
-    text-align: center;
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    padding-left: 3%;
     border-bottom: 2px solid red;
+}
+.titulo-formulario > h2, .titulo-formulario > p{
+    display: inline;
 }
 
 .contenido-centrado {
@@ -324,6 +329,22 @@ ol {
 .text-sanciones {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+/* Colores para cantidades de sanciones */
+.badge-lowest {
+    color: #ffffff;
+    background-color: #ff9900;
+}
+
+.badge-middle {
+    color: #ffffff;
+    background-color: #ff6600;
+}
+
+.badge-highest {
+    color: #ffffff;
+    background-color: #ff0000;
 }
 
 /* Color del sancionado del mes*/
