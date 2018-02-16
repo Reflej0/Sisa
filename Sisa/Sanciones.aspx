@@ -23,7 +23,7 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
+                    <div class="col-md-12">
                         <table class="table table-striped table-bordered text-center tabla">
                             <thead>
                                 <tr>
@@ -36,24 +36,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%--<% 
-                                    foreach (var pair in sanciones)
-                                    {
-                                %>
-                                <tr>
-                                    <td><% Response.Write(pair.Key); %></td>
-                                    <td class="sancion">
-                                        <% Response.Write(pair.Value); %>
-                                            
-                                    </td>
-                                    <td class="palitos">
-                                        <ol id="count">&nbsp;</ol>
-                                    </td>
-
-                                </tr>
+                                <% foreach (List<string> item in StringSanciones)
+                                {%>
+                                    <tr>
+                                        <td><% Response.Write(Grupos[Convert.ToInt32(item[0])]);%></td>
+                                        <td><% Response.Write(item[1]);%></td>
+                                        <td><% Response.Write(item[2]);%></td>
+                                        <td><% Response.Write(item[3]);%></td>
+                                        <% String estado = (Int32.Parse(item[4]) == 1) ? "En votación" : "Aceptada" ;%>
+                                        <td><% Response.Write(estado);%></td>
+                                        <td><% Response.Write(item[5]);%></td>
+                                   </tr>             
                                 <%
-                                    }
-                                %>--%>
+                                }%>
                             </tbody>
                         </table>
                     </div>
