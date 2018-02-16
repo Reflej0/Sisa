@@ -17,18 +17,18 @@
         <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="Logo" />
         <div class="form-group">
             <br />
-            <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
+            <input type="text" class="form-control no-border-radius form-colored" id="user" placeholder="Usuario" />
         </div>
         <div class="form-group">
-            <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
+            <input type="password" class="form-control no-border-radius form-colored" id="password" placeholder="Contraseña" />
         </div>
         <button type="button" class="btn no-border-radius btn-general" id="loginButton">Ingresar</button>
         <div class="error text-center" id="errorDiv"></div>
         <br />
         <hr class="linea-separadora" />
-        <p class="text-center"><a href="Registro.aspx">Registrate</a> para comenzar a sancionar gente</p>
+        <p class="text-center"><a href="Registro.aspx">Registrate para comenzar a sancionar gente.</a></p>
         <hr class="linea-separadora" />
-        <p class="text-center"><a href="RestablecerContrasena.aspx">Olvidé</a> mi contraseña</p>
+        <p class="text-center"><a href="RestablecerContrasena.aspx">Olvidé mi contraseña.</a></p>
     </div>
 </body>
 </html>

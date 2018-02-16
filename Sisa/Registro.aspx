@@ -30,6 +30,8 @@
         </div>
         
         <div class="error text-center" id="errorDiv"></div>
+        <hr class="linea-separadora" />
+        <p class="text-center"><a href="Login.aspx">Ya tengo</a> una cuenta.</p>
     </div>
 </body>
 </html>

@@ -21,9 +21,7 @@
 }
 
 .fondo-coloreado {
-    background: linear-gradient(to bottom right, #fef7e6, #dd9d08);
-}
-
+    background: linear-gradient(to bottom right, #ffad33, #4d2e00);
 }
 
 .linea-separadora {
@@ -47,8 +45,29 @@
     padding-bottom: 20px;
     padding-left: 25px;
     padding-right: 25px;
-    background-color: white;
 }
+
+.contenido-login a {
+    color: #f6b315;
+}
+
+.contenido-login a:hover {
+    color: #fbd784;
+    text-decoration: none;
+}
+
+/* Inputs del login y registro */
+.form-colored {
+    border-color: #ff9900;
+    background-color: #ffcc80;
+}
+
+.form-colored:focus {
+    border-color: #993300;
+    outline: none;
+    box-shadow: none;
+    background-color: #ffcc80;  
+} 
 
 #loginLogo {
     max-width: 75px;
@@ -233,20 +252,6 @@ body {
         display: none;
     }
 }
-
-
-/* Indicadores del carousel */
-.indicador {
-    background-color: #ff0000 !important;
-}
-
-    .indicador:active {
-        background-color: #ff6666 !important;
-    }
-
-    .indicador:hover {
-        cursor: pointer;
-    }
 
 /* Formulario de sanciones */
 .titulo-formulario {
