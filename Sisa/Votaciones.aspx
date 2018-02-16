@@ -17,7 +17,7 @@
             <%}
                 else
                 {%>
-            <table class="table table-hover text-center">
+            <table id="resultados" class="table table-hover text-center">
                 <thead>
                     <tr>
                         <th>Grupo</th>
@@ -58,6 +58,10 @@
                 </tbody>
             </table>
             <%}%>
+            <div id="divNoSanciones" class="text-center d-none">
+                <img class="img-responsive pull-left altura-error" src="img/errorLogo.png" />
+                <h3 class="pull-right d-inline">No hay sanciones pendientes</h3>
+            </div>
         </div>
     </div>
 
@@ -66,7 +70,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content contenido-modal">
                 <div class="modal-header titulo-modal ">
-                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i> Información </h4>
+                    <h4 class="modal-title" id="myModalLabel"><i class="fas fa-info-circle"></i>Información </h4>
                 </div>
                 <div class="modal-body">
                     <label id="mensajeModal"></label>
@@ -108,11 +112,19 @@
             $("#row-" + sancion_id).fadeOut();
             $("#row-" + sancion_id).fadeOut("slow");
             $("#row-" + sancion_id).fadeOut(3000);
+
         }
 
         $('#basicModal').on('hidden.bs.modal', function () {
             var sancion_id = $("#cerrarButton").attr("name");
             hide_row_event(sancion_id);
+            //Cuento la cantida de sanciones visibles
+            var count = $('tbody>tr:visible').length - 2;
+
+            if (count === 0) {
+                $("#resultados").addClass("d-none");
+                $("#divNoSanciones").removeClass("d-none");
+            }
         })
 
         $("#cerrarButton").on("click", function () {
