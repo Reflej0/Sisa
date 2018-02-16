@@ -20,11 +20,11 @@
     </div>
     <div class="container pagina-contenido">
         <div class="loading">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
+  <span>s</span>
+  <span>i</span>
+  <span>s</span>
+  <span>a</span>
+  
 </div>
         <div class="row"  id="informacionHome">
             <div class="col-md-4">
