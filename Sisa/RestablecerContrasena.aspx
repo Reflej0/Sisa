@@ -11,26 +11,21 @@
     <script src="JS/bootstrap.min.js"></script>
     <link href="CSS/estilos.css" rel="stylesheet" />
 </head>
-<body class="container-fluid fondo-coloreado">
+<body class="body-sin-footer fondo-coloreado">
     <!-- Contenido -->
     <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 contenido-login">
         <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" />
         <div class="form-group">
             <br />
-            <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
+            <input type="text" class="form-control no-border-radius form-colored" id="user" placeholder="Usuario" />
         </div>
         <div class="form-group">
-            <input type="text" class="form-control no-border-radius" id="email" placeholder="E-Mail" />
+            <input type="text" class="form-control no-border-radius form-colored" id="email" placeholder="E-Mail" />
         </div>
-        <div class="row">
-            <div class="col-9">
-                <button type="button" class="btn no-border-radius btn-general" id="restablecerButton">Restablecer</button>
-            </div>
-            <div class="col">
-                <button type="button" class="btn no-border-radius btn-general" id="volverButton">Volver</button>
-            </div>
-        </div>
+            <button type="button" class="btn no-border-radius btn-general" id="restablecerButton">Restablecer contraseña</button>
         <div class="error text-center" id="errorDiv"></div>
+        <hr class="linea-separadora" />
+        <p class="text-center"><a href="Login.aspx">Volver</a></p>
     </div>
 </body>
 </html>
@@ -53,11 +48,6 @@
                 alert(response.d);
             }
         });
-    });
-
-
-    $('#volverButton').click(function () {
-        window.location.href = "Login.aspx";
     });
 
 </script>

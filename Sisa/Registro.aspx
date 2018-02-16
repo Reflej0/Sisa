@@ -18,20 +18,20 @@
             <img id="loginLogo" class="d-block mx-auto" src="img/logoCompletoNaranja.png" alt="logo"/>
             <div class="form-group">
                 <br />
-                <input type="text" class="form-control no-border-radius" id="email" placeholder="Email" />
+                <input type="text" class="form-control no-border-radius form-colored" id="email" placeholder="Email" />
             </div>
             <div class="form-group">
-                <input type="text" class="form-control no-border-radius" id="user" placeholder="Usuario" />
+                <input type="text" class="form-control no-border-radius form-colored" id="user" placeholder="Usuario" />
             </div>
             <div class="form-group">
-                <input type="password" class="form-control no-border-radius" id="password" placeholder="Contraseña" />
+                <input type="password" class="form-control no-border-radius form-colored" id="password" placeholder="Contraseña" />
             </div>
             <button type="button" class="btn no-border-radius btn-general" id="addButton">Crear usuario</button>
         </div>
         
         <div class="error text-center" id="errorDiv"></div>
         <hr class="linea-separadora" />
-        <p class="text-center"><a href="Login.aspx">Ya tengo</a> una cuenta.</p>
+        <p class="text-center"><a href="Login.aspx">Ya tengo una cuenta.</a></p>
     </div>
 </body>
 </html>
