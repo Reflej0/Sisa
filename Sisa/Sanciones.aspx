@@ -44,7 +44,8 @@
                                         <td><% Response.Write(item[2]);%></td>
                                         <td><% Response.Write(item[3]);%></td>
                                         <% String estado = (Int32.Parse(item[4]) == 1) ? "En votación" : "Aceptada" ;%>
-                                        <td><% Response.Write(estado);%></td>
+                                        <% String clase = (Int32.Parse(item[4]) == 1) ? "bg-yellow" : "bg-red" ;%>
+                                        <td><div class="<% Response.Write(clase);%>"><% Response.Write(estado);%></div></td>
                                         <td><% Response.Write(item[5]);%></td>
                                    </tr>             
                                 <%
