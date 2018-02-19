@@ -7,7 +7,7 @@
             <h3>Sanciones Pendientes</h3>
         </div>
         <br />
-        <div class="form-group">
+        <div class="form-group separacionFooter">
             <%if (StringSanciones.Count.Equals(0))
                 {%>
             <div class="text-center">

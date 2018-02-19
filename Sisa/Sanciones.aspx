@@ -23,7 +23,7 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 separacionFooter">
                         <table class="table table-striped table-bordered text-center tabla">
                             <thead>
                                 <tr>

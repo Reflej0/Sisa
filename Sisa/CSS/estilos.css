@@ -63,14 +63,14 @@
     padding-right: 25px;
 }
 
-.contenido-login a {
-    color: #f6b315;
-}
+    .contenido-login a {
+        color: #f6b315;
+    }
 
-.contenido-login a:hover {
-    color: #fbd784;
-    text-decoration: none;
-}
+        .contenido-login a:hover {
+            color: #fbd784;
+            text-decoration: none;
+        }
 
 /* Inputs del login y registro */
 .form-colored {
@@ -78,12 +78,12 @@
     background-color: #ffcc80;
 }
 
-.form-colored:focus {
-    border-color: #993300;
-    outline: none;
-    box-shadow: none;
-    background-color: #ffcc80;  
-} 
+    .form-colored:focus {
+        border-color: #993300;
+        outline: none;
+        box-shadow: none;
+        background-color: #ffcc80;
+    }
 
 #loginLogo {
     max-width: 75px;
@@ -94,10 +94,10 @@
     background-color: #f6b315;
 }
 
-.btn-general:hover {
-    background-color: #dda113;
-    color: white;
-}
+    .btn-general:hover {
+        background-color: #dda113;
+        color: white;
+    }
 
 @media (max-width: 768px) {
     .contenido-login {
@@ -277,9 +277,10 @@ body {
     padding-left: 3%;
     border-bottom: 2px solid red;
 }
-.titulo-formulario > h2, .titulo-formulario > p{
-    display: inline;
-}
+
+    .titulo-formulario > h2, .titulo-formulario > p {
+        display: inline;
+    }
 
 .contenido-centrado {
     width: 100%;
@@ -391,32 +392,32 @@ ol {
     height: 50%;
 }
 
-.loading span {
-    font-size: 10px;
-    color: #ffffff;
-    -webkit-animation: loading 1s infinite alternate;
-    background: #ff0000;
-    border-radius: 30px;
-    display: inline-block;
-    height: 30px;
-    margin: 60px auto;
-    width: 30px;
-}
+    .loading span {
+        font-size: 10px;
+        color: #ffffff;
+        -webkit-animation: loading 1s infinite alternate;
+        background: #ff0000;
+        border-radius: 30px;
+        display: inline-block;
+        height: 30px;
+        margin: 60px auto;
+        width: 30px;
+    }
 
-.loading span:nth-of-type(2) {
-    -webkit-animation-delay: 0.2s;
-    background: #33cc33;
-}
+        .loading span:nth-of-type(2) {
+            -webkit-animation-delay: 0.2s;
+            background: #33cc33;
+        }
 
-.loading span:nth-of-type(3) {
-    -webkit-animation-delay: 0.4s;
-    background: #42c2e7;
-}
+        .loading span:nth-of-type(3) {
+            -webkit-animation-delay: 0.4s;
+            background: #42c2e7;
+        }
 
-.loading span:nth-of-type(4) {
-    -webkit-animation-delay: 0.6s;
-    background: #69c7b4;
-}
+        .loading span:nth-of-type(4) {
+            -webkit-animation-delay: 0.6s;
+            background: #69c7b4;
+        }
 
 
 @-webkit-keyframes loading {
@@ -433,4 +434,9 @@ ol {
         width: 40px;
         font-size: 25px;
     }
+}
+
+.separacionFooter {
+    overflow: auto;
+    height: 742px;
 }
