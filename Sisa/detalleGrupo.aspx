@@ -24,12 +24,12 @@
                 <br />
                 <div class="row">
                     <div class="col-md-6 offset-md-3">
-                        <table class="table table-striped table-bordered text-center tabla">
+                        <table class="table table-striped table-bordered text-center tabla-pizarra">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Numero</th>
-                                    <th>Sanciones</th>
+                                    <th></th>
+                                    <th>Pizarra de sanciones</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,7 @@
                                 <tr>
                                     <td><% Response.Write(pair.Key); %></td>
                                     <td class="sancion">
-                                        <span class="badge"><% Response.Write(pair.Value); %> </span>
+                                        <span ><% Response.Write(pair.Value); %> </span>
 
                                     </td>
                                     <td class="palitos">

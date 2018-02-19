@@ -154,7 +154,7 @@ body {
     text-align: center;
     position: absolute;
     bottom: 0;
-    height: 8%;
+    height: 55px;
     padding: 13px;
 }
 
@@ -303,7 +303,7 @@ ol {
     ol > li {
         display: inline-block;
         height: 20px;
-        border: 1px solid #000;
+        border: 1px solid #ffffff;
         margin-right: 4px;
     }
 
@@ -343,17 +343,35 @@ ol {
 /* Colores para cantidades de sanciones */
 .badge-lowest {
     color: #ffffff;
-    background-color: #ff9900;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 13px;
+    padding-right: 13px;
+    background-color: inherit;
 }
 
 .badge-middle {
     color: #ffffff;
-    background-color: #ff6600;
+    border-radius: 50%;
+    border: 1px solid #ff6600;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 13px;
+    padding-right: 13px;
+    background-color: inherit;
 }
 
 .badge-highest {
     color: #ffffff;
-    background-color: #ff0000;
+    border-radius: 50%;
+    border: 1px solid #ff0000;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 13px;
+    padding-right: 13px;
+    background-color: inherit;
 }
 
 /* Color del sancionado del mes*/
@@ -436,7 +454,24 @@ ol {
     }
 }
 
+/* Tabla de detalle de grupos */
+.tabla-pizarra {
+    border: 6px solid #cc6600;
+    background-color: #003300;
+    color: #ffffff;
+    box-shadow: 5px 10px 8px #888888;
+}
+
+    .tabla-pizarra td {
+        border: none;
+    }
+
+    .tabla-pizarra th {
+        border: none;
+    }
+
 .separacionFooter {
-    overflow: auto;
-    height: 742px;
+     overflow: auto;
+     height: 742px;
+    
 }

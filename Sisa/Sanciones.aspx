@@ -15,7 +15,7 @@
 <body>
  <!-- #include file="~/Element/_Navbar.aspx" -->
     <!-- Contenido -->
-    <div class="container-fluid pagina-contenido">
+    <div class="container-fluid pagina-contenido contenido-sanciones">
         <div id="header" class="row">
             <div class="container">
                 <div class="text-center">
