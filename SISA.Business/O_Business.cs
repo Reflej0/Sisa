@@ -195,5 +195,11 @@ namespace Business
             usuario.Id = usuario_id;
             return this.bd.Get_Sanciones_Grupos_Mes(usuario, primerDia, ultimoDia);
         }
+
+        public string Update_Grupo(int grupo_id, string grupo_nombre, string grupo_descripcion, int grupo_admin_id, string[] arrOrig, string[] arrFin)
+        {
+            //voy a comparar el array original y el array final para saber qué datos debo modificar:
+            return "";
+        }
     }
 }

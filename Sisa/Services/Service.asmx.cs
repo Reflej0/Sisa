@@ -206,5 +206,37 @@ namespace Sisa.Services
             O_Business = new O_Business(); //Inicializo el objeto global.
             return JsonConvert.SerializeObject(O_Business.Get_Grupo(grupo_id), Formatting.Indented);
         }
+
+        [WebMethod(CacheDuration = 1, BufferResponse = false, EnableSession = true)]
+        public string Update_Grupo(int grupo_id, string nombre, string descripcion, string admin_id, string[] listaIntegrOrig, string[] listaIntegrsFinal)
+        {
+            int tamano = 0;
+            //tengo que recorrer las listas para saber si tengo que agregar o quitar usuarios al grupo:
+            if (listaIntegrOrig.Length > listaIntegrsFinal.Length)
+            {
+                tamano = listaIntegrOrig.Length;
+            }
+            else
+                tamano = listaIntegrsFinal.Length;
+            //los ordeno y comparo:
+            
+            Array.Sort(listaIntegrOrig);
+            Array.Sort(listaIntegrsFinal);
+            
+            for (int x=0; x<tamano; x++)
+            {
+                
+                if(System.Convert.ToInt32(listaIntegrOrig) < System.Convert.ToInt32(listaIntegrsFinal[x]))
+                {
+
+                }
+            }
+
+        
+
+            
+            //Response.Write("grupo: " + grupo_id);
+            return "1";
+        }
     }
 }
