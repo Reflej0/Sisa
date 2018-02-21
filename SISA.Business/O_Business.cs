@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using System.Threading.Tasks;
 using SISA.Common;
+using System.Data.SqlClient;
 
 //Esta capa sería el controlador de MVC, a Business le llegan los datos de UI.
 namespace Business
@@ -196,10 +197,81 @@ namespace Business
             return this.bd.Get_Sanciones_Grupos_Mes(usuario, primerDia, ultimoDia);
         }
 
-        public string Update_Grupo(int grupo_id, string grupo_nombre, string grupo_descripcion, int grupo_admin_id, string[] arrOrig, string[] arrFin)
+        public string Update_Grupo(int grupo_id, string grupo_nombre, string grupo_descripcion, string grupo_admin_id, string[] arrOrig, string[] arrFin)
         {
-            //voy a comparar el array original y el array final para saber qué datos debo modificar:
-            return "";
+            
+            //listas para saber qúé quitar y qué agregar:
+
+            List<int> listQuitar = new List<int>();
+            List<int> listAgregar = new List<int>();
+
+            Dictionary<string, int> diccionario = new Dictionary<string, int>();
+
+            //uso dictionary para comparar.
+            foreach(string equis in arrOrig)
+            {
+                diccionario.Add(equis, 1);
+            }
+
+            foreach(string i in arrFin)
+            {
+                try
+                {
+                    //si se encuentra la referencia se resta, sino se agrega al diccionario.
+                    diccionario[i]--;
+                }
+                catch(Exception)
+                {
+                    diccionario.Add(i, -1);
+                }
+                    
+            }
+            /* cuando se completa el diccionario, los valores deberían ser: 
+             * -1: hay que agregar la clave.
+             *  0: el usuario se mantiene, no hay que modificar
+             *  1: Hay que quitar el usuario.
+             *  */
+            //Debo recorrer el diccionario para agregar a las listas:
+            foreach (KeyValuePair<string, int> elemento in diccionario)
+            {
+                if (elemento.Value == 1)
+                {
+                    listQuitar.Add(Int32.Parse(elemento.Key));
+                }else if(elemento.Value == -1)
+                {
+                    listAgregar.Add(Int32.Parse(elemento.Key));
+                }
+            }
+
+            List<SqlCommand> listaComandos = new List<SqlCommand>();
+            //acá es donde tengo que hacer varias consultas a la bd:
+            try
+            {
+                //primero modifico el grupo: 
+                listaComandos.Add(this.bd.generarComandoUpdate_Grupo(grupo_id, grupo_nombre, grupo_descripcion, Int32.Parse(grupo_admin_id)));
+
+                foreach (int usuario in listQuitar)
+                {
+                    listaComandos.Add(this.bd.generarComandoDelete_Grupo_Usuario(grupo_id, usuario));
+                    //this.bd.Delete_Grupo_Usuario();
+                }
+
+                foreach(int usu in listAgregar)
+                {
+                    Usuario usuario = new Usuario(usu);
+                    Grupo grupo = new Grupo(grupo_id);
+                    listaComandos.Add(this.bd.generarComandoSet_Usuario_Grupo(usuario, grupo));
+                    //this.bd.Set_Usuario_Grupo(usuario, grupo);
+                }
+
+                return this.bd.Update_Grupo(listaComandos);
+
+            }
+            catch (Exception)
+            {
+                return "error";
+            }
+            
         }
     }
 }

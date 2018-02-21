@@ -28,6 +28,13 @@ namespace SISA.Common
             this.password = password;
             this.email = email;
         }
+
+        //cuando quiero usar solo el id del usuario:
+        public Usuario(int id)
+        {
+            this.id = id;
+        }
+
         //Por defecto.
         public Usuario()
         {

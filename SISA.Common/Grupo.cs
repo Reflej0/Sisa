@@ -28,6 +28,10 @@ namespace SISA.Common
             this.administrador_id = administrador_id;
         }
 
+        public Grupo(int id)
+        {
+            this.id = id;
+        }
         public Grupo()
         {
 

@@ -208,6 +208,9 @@
                     iTrash.setAttribute('class', 'fa fa-trash');
                     iTrash.setAttribute('aria-hidden', 'true');
                     btnEliminar.append(iTrash);
+
+                    $('#admin').append('<option value="' + listaIdUsuario[indice] + '">' + ui.item.value + '</option>');
+
                 }
                 else {
                     //informo el error:
@@ -239,7 +242,7 @@
             }    
         }
         var dataGrupo = {};
-        dataGrupo.grupo_id = 1;
+        dataGrupo.grupo_id = 2;
         dataGrupo.nombre = $("#nombre").val();
         dataGrupo.descripcion = $("#descrip").val();
         dataGrupo.admin_id = $("#admin :selected").val();
@@ -252,31 +255,15 @@
             dataType: 'json',
             data: JSON.stringify(dataGrupo),
             contentType: 'application/json;charset=utf-8',
-            success: function () {
-                alert("funciono!");
+            success: function (response) {
+                alert(response.d);
               //  window.location.replace("/misGrupos.aspx");
             },
             error: function () {
-                alert("ha fallao en modificar el grupo D:");
+                alert(response.d);
             }
             //vuelvo a misgrupoz
         });
-
-
-
-//REVISAR DESDE ACÁ
-        /*for (var x in listatmp) {
-            listaIntegrsFinal[x] = listatmp[x].getAttribute("id");
-        }*/
-        /*
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Usuarios_Grupos',
-            dataType: 'json',
-            data: JSON.stringify(data),
-            contentType: 'application/json;charset=utf-8',
-        });*/
-
     });
 
 </script>

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SISA.Common;
 using System.Data;
+using System.Transactions;
 
 namespace SISA.DataAccess
 {
@@ -767,7 +768,7 @@ namespace SISA.DataAccess
             List<Sancion> Sanciones = new List<Sancion>(); // Listado de sanciones a devolver.
             this.OpenConnection(); // Primero abro la conexión.
             SqlCommand cmd = new SqlCommand("Get_Sanciones_Grupos_Mes", cnn); // Nombre del SP a Ejecutar.
-            cmd.Parameters.AddWithValue("@v_Usuario_id", usuario.Id); 
+            cmd.Parameters.AddWithValue("@v_Usuario_id", usuario.Id);
             cmd.Parameters.AddWithValue("@v_PrimerDia", primerDia);
             cmd.Parameters.AddWithValue("@v_UltimoDia", ultimoDia);
             cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
@@ -792,6 +793,73 @@ namespace SISA.DataAccess
             }
             this.CloseConnection(); // Cierro la conexión.
             return Sanciones; // Devuelvo los Sanciones
+        }
+
+        public String Update_Grupo(List<SqlCommand> listaComandos)
+        {
+            //tengo que abrir una transacción:
+
+            using (var txscope = new TransactionScope(TransactionScopeOption.RequiresNew))
+            {
+                try
+                {
+
+                    this.OpenConnection();
+                    foreach (SqlCommand comando in listaComandos)
+                    {
+                        comando.ExecuteNonQuery();
+                    }
+                    //The Transaction will be completed    
+                    txscope.Complete();
+                    return ("se ha completado correctamente");
+                }
+                catch (Exception)
+                {
+                    // Log error    
+                    txscope.Dispose();
+                    return ("error");
+                }
+            }
+
+            
+        }
+       
+
+        public SqlCommand generarComandoSet_Usuario_Grupo(Usuario u, Grupo g)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+
+            SqlCommand cmd = new SqlCommand("Set_Usuario_Grupo", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Grupo_id", g.Id); ;
+            cmd.Parameters.AddWithValue("@v_Usuario_id", u.Id);
+            return cmd;
+        }
+
+        public SqlCommand generarComandoDelete_Grupo_Usuario(int grupo_id, int usuario_id)
+        {
+            this.OpenConnection(); // Primero abro la conexión.
+
+            SqlCommand cmd = new SqlCommand("Delete_Grupo_Usuario", cnn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //Añado los parámetros.
+            cmd.Parameters.AddWithValue("@v_Usuario_id", usuario_id); ;
+            cmd.Parameters.AddWithValue("@v_Grupo_id", grupo_id);
+            return cmd;
+        }
+
+        public SqlCommand generarComandoUpdate_Grupo(int id_grupo, string nombre_grupo, string grupo_descripcion, int id_admin)
+        {
+            
+            this.OpenConnection(); // Primero abro la conexión.
+            SqlCommand cmd = new SqlCommand("Update_Grupo", cnn); // Nombre del SP a Ejecutar.
+            cmd.Parameters.AddWithValue("@v_id_grupo", id_grupo); // Id del grupos.
+            cmd.Parameters.AddWithValue("@v_nombre_grupo", nombre_grupo);
+            cmd.Parameters.AddWithValue("@v_descripcion", grupo_descripcion);
+            cmd.Parameters.AddWithValue("@v_administrador_id", id_admin);
+            cmd.CommandType = CommandType.StoredProcedure; // Tipo de comando.
+            return cmd;
         }
     }
 }
