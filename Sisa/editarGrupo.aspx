@@ -103,8 +103,6 @@
         var tempUsuarios = {};
         var listaIdUsuario = [];
 
-        alert(data.grupo_id);
-
         //obtengo datos del grupo:
         $.ajax({
             type: 'POST',
@@ -116,7 +114,6 @@
                 o = JSON.parse(e.d);
                 $('#nombre').val(o.Nombre);
                 $('#descrip').val(o.Descripcion);
-                alert("id admin: " + o.Administrador_id);
             }
         });
 
@@ -265,7 +262,6 @@
 
     $(document).on('click', '.eliminarButton', function () {
         var value = $(this).attr('id');
-        alert(value);
         $('#tr-' + value).remove();
         var id = value.split('-')[0];
 
@@ -332,7 +328,6 @@
 
         //agrego botón:
         //el indice lo tengo del aterior: 
-        //alert("INDICE: " + indiceAdminActual + "nombre: " + adminActual);
         var trIntegrante = document.getElementById('tr-' + indiceAdminActual + '-' + adminActual);
         
         var tdEliminar = document.createElement('td');
@@ -390,6 +385,17 @@
             $("#error-descrip").html("Debe ingresar caractéres válidos");
             $("#error-descrip").show();
         }
+    });
+
+    $('#Salir').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: 'Services/Service.asmx/Logout',
+            contentType: 'application/json;charset=utf-8',
+            success: function (response) {
+                window.location.href = "Login.aspx";
+            }
+        });
     });
 </script>
 
