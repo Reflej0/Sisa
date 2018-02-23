@@ -23,62 +23,64 @@
     <!-- #include file="~/Element/_Navbar.aspx" -->
 
     <!-- Contenido -->
-    <div class="pagina-contenido">
-        <div class="titulo-formulario">
-            <h3>Editar grupo</h3>
-            <br/>
-        </div>
-        <div>
-            <div class="form-group col col-md-6">
-            
-                <div>
-            
-                    <p>Nombre grupo: </p>
-                    <input class="form-control" id="nombre"/>
-                    <div class="error text-center" id="error-nombre"></div>
-
-                </div>
-                <div>
-            
-                    <p>Descripción: </p>
-                    <input class="form-control" id="descrip"/>
-                    <div class="error text-center" id="error-descrip"></div>
-
-                </div>
-                <div>
-            
-                    <p>Administrador: </p>
-                    <select class="form-control" style="height: 34px" id="admin">
-
-                    </select>
-                </div>
-                <hr />
-                <div>
-                    <p>Agregar usuario: </p>
-                    <input class="form-control" id="usuario"/>
-                </div>
+    <div class=" container-fluid pagina-contenido">
+        <div style="display: block">
+            <div class="titulo-formulario">
+                <h3>Editar grupo</h3>
+                <br />
             </div>
+            <div>
+                <div class="form-group col col-md-6">
+                    <div>
+                    
+                        <p>Nombre grupo: </p>
+                        <input class="form-control" id="nombre"/>
+                        <div class="error text-center" id="error-nombre"></div>
 
-            <div class="form-group col col-md-6">
-                <h4>Integrantes</h4>
-                <table id="table">
-                           <!-- <thead>
-                                <tr>
-                                    <th>Integrantes</th>
-                                </tr>
-                            </thead> -->
-                            <tbody id="integrantes" class="integrantes">
+                    </div>
+                    
+                    <div>
+            
+                        <p>Descripción: </p>
+                        <input class="form-control" id="descrip"/>
+                        <div class="error text-center" id="error-descrip"></div>
+
+                    </div>
+
+                    <div>
+            
+                        <p>Administrador: </p>
+                        <select class="form-control" style="height: 34px" id="admin"></select>
+                    </div>
+
+                    <hr />
+                    <div>
+                        <p>Agregar usuario: </p>
+                        <input class="form-control" id="usuario"/>
+                    </div>
+                </div>
+
+                <div class="form-group col col-md-6">
+                    <h4>Integrantes</h4>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="integrantes" class="integrantes">
                                 <!-- Se llena por JS cuando se van agregando integrantes -->
-                            </tbody>
-                        </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
-        <br />
-        <div class="text-center">
-                <button type="button" title="Guardar" class="btn btn-success" id="saveButton">Guardar <i class="fas fa-pen-square"></i></button>
+        <div class="text-center" style="clear:both">
+            <hr />
+            <button type="button" title="Guardar" class="btn btn-success" id="saveButton">Guardar <i class="fas fa-pen-square"></i></button>
         </div>
     </div>
-
 </body>
 </html>
 
@@ -90,13 +92,18 @@
     var listaUsuarios = [];
     var regex = /^[a-z0-9 ]+$/i;
     var flagNombre = true;
+    var flagDescr = true;
 
     $(document).ready(function () {
 
         var data = {};
-        data.grupo_id = 2;
+        data.grupo_id = <%=var_id_grupo%>;
         var o = {};
         var listaIntegr = {};
+        var tempUsuarios = {};
+        var listaIdUsuario = [];
+
+        alert(data.grupo_id);
 
         //obtengo datos del grupo:
         $.ajax({
@@ -183,20 +190,12 @@
                         iQueen.setAttribute('aria-hidden', 'true');
 
                         tdAdmin.append(iQueen);
-                        //e.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
-                        //trIntegrante.append('<i class="fas fa-chess-queen"></i>');
-                        
-                        //trIntegrante.innerHTML = '<i class="fas fa-chess-queen"></i>';
                     }
                 } 
             }
         });
 
-        //listo los usuarios existentes en el sistema.
-        
-        var tempUsuarios = {};
-        var listaIdUsuario = [];
-
+        //obtengo y cargo en select los usuarios existentes en el sistema.
         $.ajax({
             type: 'POST',
             url: 'Services/Service.asmx/Get_Usuarios',
@@ -205,6 +204,7 @@
             contentType: 'application/json;charset=utf-8',
             success: function (response) {
                 tempUsuarios = JSON.parse(response.d);
+
                 for (var x in tempUsuarios) {
                     listaUsuarios.push(tempUsuarios[x]._Usuario);
                     listaIdUsuario.push(tempUsuarios[x].Id);
@@ -216,27 +216,31 @@
         $('#usuario').autocomplete({
             source: listaUsuarios,
             select: function (event, ui) {
-                var indice = listaUsuarios.indexOf(ui.item.value);
-                alert(listaIdUsuario[indice]);
-                var idTr = 'tr-' + listaIdUsuario[indice] +'-' + ui.item.value;
 
+                var indice = listaUsuarios.indexOf(ui.item.value);
+                var idTr = 'tr-' + listaIdUsuario[indice] +'-' + ui.item.value;
                 var elemExistente = document.getElementById(idTr);
+
                 //si no existe un elemento con ese id, se puede agregar al grupo.
                 if (elemExistente == null) {
+
                     //creo una fila.
                     var trIntegrante = document.createElement('tr');
                     trIntegrante.setAttribute('id', 'tr-' + listaIdUsuario[indice] + '-' + ui.item.value);
                     $('#integrantes').append(trIntegrante);
 
-                    //le agrego una columna:
+                    //le agrego una columna para ícono:
+                    var tdAdmin = document.createElement('td');
+                    tdAdmin.setAttribute('style', 'width: 5px');
+                    trIntegrante.append(tdAdmin);
+
+                    //le agrego una columna para el nombre:
                     var tdIntegrante = document.createElement('td');
-                    //tdIntegrante.setAttribute('class', 'integrantes');
                     tdIntegrante.append(ui.item.value);
                     trIntegrante.append(tdIntegrante);
 
-                    //tengo que agregar el botón "Eliminar"
+                    //agrego el botón "Eliminar"
                     var tdEliminar = document.createElement('td');
-                    //tdEliminar.setAttribute('class', 'integrantes');
                     var btnEliminar = document.createElement('button');
                     btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
                     btnEliminar.setAttribute('id', listaIdUsuario[indice] + '-' + ui.item.value);
@@ -264,7 +268,6 @@
         alert(value);
         $('#tr-' + value).remove();
         var id = value.split('-')[0];
-        alert(id);
 
         //lo elimino del select de admins.
         $('#admin option[value=' + id + ']').remove();
@@ -277,15 +280,13 @@
         //dentro del success, vuelve a "misGrupos.aspx".
 
         var listaIntegrsFinal = [];
-
-        //var algo = {};
         var algo = document.getElementsByTagName("tr");
-        
+
         for (var x in algo) {
+            var al = algo[x];
             if (x > 0) {
-                listaIntegrsFinal[x-1] = algo[x].getAttribute("id").split("-")[1];
-                console.log(listaIntegrsFinal[x-1]);
-            }    
+                listaIntegrsFinal[x - 1] = algo[x].getAttribute("id").split("-")[1];
+            }              
         }
 
         var dataGrupo = {};
@@ -294,34 +295,32 @@
         dataGrupo.descripcion = $("#descrip").val();
         dataGrupo.admin_id = $("#admin :selected").val();
 
-        var ndescr = dataGrupo.descripcion.search(/^[a-z0-9 ]+$/i);
-        var nnom = dataGrupo.nombre.search(/^[a-z0-9 ]+$/i);
-
-        
         dataGrupo.listaIntegrOrig = listaIntegrOrig;
         dataGrupo.listaIntegrsFinal = listaIntegrsFinal;
-        console.log(dataGrupo.listaIntegrsFinal);
-        //alert("nombre: " + ndescr + " descrip: " + nnom + " admin: " + dataGrupo.admin_id + " orig: " + listaIntegrOrig.length + " fin: " + listaIntegrsFinal.length);
-        if (ndescr >= 0 && nnom >= 0 && dataGrupo.admin_id != null && listaIntegrOrig.length > 0 && listaIntegrsFinal.length > 0) {
-            alert("entro!");
+
+        console.log(listaIntegrOrig);
+        console.log(listaIntegrsFinal);
+
+        
+        if (flagNombre && flagDescr && dataGrupo.admin_id != null && listaIntegrOrig.length > 0 && listaIntegrsFinal.length > 0) {
+           $.ajax({
+                type: 'POST',
+                url: 'Services/Service.asmx/Update_Grupo',
+                dataType: 'json',
+                data: JSON.stringify(dataGrupo),
+                contentType: 'application/json;charset=utf-8',
+                success: function (response) {
+                    alert(response.d);
+                    //  window.location.replace("/misGrupos.aspx");
+                },
+                error: function () {
+                    alert(response.d);
+                }
+
+            });
         } else {
             alert("NO ENTROO!");
         }
-      /*  $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Update_Grupo',
-            dataType: 'json',
-            data: JSON.stringify(dataGrupo),
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                alert(response.d);
-              //  window.location.replace("/misGrupos.aspx");
-            },
-            error: function () {
-                alert(response.d);
-            }
-            //vuelvo a misgrupoz
-        });*/
     });
 
     $('#admin').change(function () {
@@ -372,30 +371,27 @@
         if ($('#nombre').val().search(/^[a-z0-9 ]+$/i) >= 0) {
             flagNombre = true;
             $("#error-nombre").hide();
-            
+
         } else {
             flagNombre = false;
             $("#error-nombre").html("Debe ingresar caractéres válidos");
             $("#error-nombre").show();
-           
+
         }
-    })
+    });
 
     $('#descrip').change(function () {
 
         if ($('#descrip').val().search(/^[a-z0-9 ]+$/i) >= 0) {
-            flagNombre = true;
+            flagDescr = true;
             $("#error-descrip").hide();
-
         } else {
-            flagNombre = false;
+            flagDescr = false;
             $("#error-descrip").html("Debe ingresar caractéres válidos");
             $("#error-descrip").show();
-
         }
-    })
-
-
+    });
 </script>
+
 
 
