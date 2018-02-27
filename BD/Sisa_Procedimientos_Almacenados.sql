@@ -190,3 +190,11 @@ BEGIN
 	FROM Grupos G
 	WHERE G.id = @id_grupo
 END
+
+CREATE PROCEDURE Update_Grupo @v_id_grupo int, @v_nombre_grupo varchar(255), @v_descripcion varchar(255), @v_administrador_id int
+AS
+BEGIN
+	UPDATE Grupos 
+	SET nombre = @v_nombre_grupo, descripcion = @v_descripcion, administrador_id = @v_administrador_id
+	WHERE id = @v_id_grupo
+END

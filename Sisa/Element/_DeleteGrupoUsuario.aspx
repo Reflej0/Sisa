@@ -1,5 +1,5 @@
 ﻿<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-danger" id="<% Response.Write(grupo.Key);%>" data-toggle="modal" data-target="#myModal"><i class="fas fa-sign-out-alt" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"></i></button>
+<button type="button" class="btn btn-danger" id="<% Response.Write(grupo.Id);%>" data-toggle="modal" data-target="#myModal"><i class="fas fa-sign-out-alt" data-toggle="tooltip" data-placement="auto" title="Salir del grupo"></i></button>
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">

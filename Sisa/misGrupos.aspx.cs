@@ -15,6 +15,7 @@ namespace Sisa
         public Dictionary<int, String> nombresGrupos;
         public List<Grupo> Grupos { get { return grupos; } }
         public Dictionary<int, String> NombresGrupos { get { return nombresGrupos; } }
+        public int idAdminSession;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +25,7 @@ namespace Sisa
             }
             else
             {
+                idAdminSession = (int)(Session["Usuario_id"]);
                 Response.Write("<div class='msg-welcome'><div class='navbar-brand text-welcome'> <i class='fas fa-user-circle'></i> " + Session["Nombre"] + "</div><p>");
                 Response.Write(DateTime.Now.ToString() + "</p></div>");
                 O_Business objBusiness = new O_Business(); // Inicializo el objeto global.

@@ -35,13 +35,20 @@
                             </thead>
                             <tbody>
                             <% 
-                                foreach (var grupo in nombresGrupos)
+                                foreach (var grupo in grupos)
                                 {
                             %>
-                                    <tr id="grupo-<% Response.Write(grupo.Key);%>">
-                                        <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Key);%>"><% Response.Write(grupo.Value);%></a></td>
+                                    <tr id="grupo-<% Response.Write(grupo.Id);%>">
+                                        <td><a href="detalleGrupo.aspx?<% Response.Write(grupo.Id);%>"><% Response.Write(grupo.Nombre);%></a></td>
                                         <td>
-                                            <a href="editarGrupo.aspx?id=<%Response.Write(grupo.Key);%>" class="btn btn-info editButton" id="edit-<% Response.Write(grupo.Key);%>" data-toggle="tooltip" data-placement="auto" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <%if (grupo.Administrador_id == idAdminSession)
+                                                    { %>
+                                            <a style="visibility:visible" href="editarGrupo.aspx?id=<%Response.Write(grupo.Id);%>" class="btn btn-info editButton" id="edit-<% Response.Write(grupo.Id);%>" data-toggle="tooltip" data-placement="auto" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <% }
+                                                else {%>
+                                            <a style="visibility:hidden" href="editarGrupo.aspx?id=<%Response.Write(grupo.Id);%>" class="btn btn-info editButton" id="edit-<% Response.Write(grupo.Id);%>" data-toggle="tooltip" data-placement="auto" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <%
+                                                } %>
                                             <!-- #include file="~/Element/_DeleteGrupoUsuario.aspx" -->
                                         </td>
                                     </tr>
@@ -72,5 +79,16 @@
     $('#newGroup').click(function () {
         window.location = "nuevoGrupo.aspx";
     });
+    /*
+    $('.editButton').click(function () {
+        var value = $(this).attr('id');
+        var idAdmin = value.split('-')[2];
+        if (idAdmin == ){
+            $(this).show();
+        }
+        else {
+            alert("Debes ser admin para editar!");
+        }
+    });*/
 
 </script>

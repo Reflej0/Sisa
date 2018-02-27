@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editarGrupo.aspx.cs" Inherits="Sisa.editarGrupo" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editarGrupo.aspx.cs" Inherits="Sisa.EditarGrupo" %>
 
 <!DOCTYPE html>
 
@@ -32,9 +32,8 @@
             <div>
                 <div class="form-group col col-md-6">
                     <div>
-                    
                         <p>Nombre grupo: </p>
-                        <input class="form-control" id="nombre"/>
+                        <input class="form-control" type="text" runat="server" id="nombre"/>
                         <div class="error text-center" id="error-nombre"></div>
 
                     </div>
@@ -97,117 +96,88 @@
     $(document).ready(function () {
 
         var data = {};
-        data.grupo_id = <%=var_id_grupo%>;
+        //data.grupo_id = =var_id_grupo%>;
         var o = {};
         var listaIntegr = {};
         var tempUsuarios = {};
         var listaIdUsuario = [];
 
-        //obtengo datos del grupo:
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Grupo',
-            dataType: 'json',
-            data: JSON.stringify(data),
-            contentType: 'application/json;charset=utf-8',
-            success: function (e) {
-                o = JSON.parse(e.d);
-                $('#nombre').val(o.Nombre);
-                $('#descrip').val(o.Descripcion);
+        var grupo = {};
+        grupo = <%=grupoString%>;
+        $('#nombre').val(grupo.Nombre);
+        $('#descrip').val(grupo.Descripcion);
+
+        listaIntegr = <%=integrOrig%>;
+        console.log(<%=integrOrig%>);
+        console.log(listaIntegr);
+        indiceAdminActual = grupo.Administrador_id;
+
+        for (var x in listaIntegr) {
+            if (listaIntegr[x].Id == grupo.Administrador_id) {
+                adminActual = listaIntegr[x]._Usuario;
+                $('#admin').append('<option value="' + listaIntegr[x].Id + '" selected>' + listaIntegr[x]._Usuario + '</option>');
+                
+            } else {
+                $('#admin').append('<option value="' + listaIntegr[x].Id + '">' + listaIntegr[x]._Usuario + '</option>');
             }
-        });
 
-        //obtengo los integrantes del grupo para mostrar y seleccionar al administrador.
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Usuarios_Grupos',
-            dataType: 'json',
-            data: JSON.stringify(data),
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                listaIntegr = JSON.parse(response.d);
+            //esta lista es auxiliar para mandar los datos y saber quién quedó agregado al final.
+            listaIntegrOrig[x] = listaIntegr[x].Id;
+        }
 
-                indiceAdminActual = o.Administrador_id;
+        //luego cargo todos los integrantes en la columna "Integrantes"
+        for (var x in listaIntegr) {
 
-                //muestro en la lista los integrantes y el Admin queda seleccionado.
-                for (var x in listaIntegr) {
-                    if (listaIntegr[x].Id == o.Administrador_id) {
-                        $('#admin').append('<option value="' + listaIntegr[x].Id + '" selected>' + listaIntegr[x]._Usuario + '</option>');
-                        adminActual = listaIntegr[x]._Usuario;
-                    } else {
-                        $('#admin').append('<option value="' + listaIntegr[x].Id + '">' + listaIntegr[x]._Usuario + '</option>');
-                    }
+            //creo una fila.
+            var trIntegrante = document.createElement('tr');
+            trIntegrante.setAttribute('id', 'tr-' + listaIntegr[x].Id + '-' + listaIntegr[x]._Usuario);
+            $('#integrantes').append(trIntegrante);
 
-                    //esta lista es auxiliar para mandar los datos y saber quién quedó agregado al final.
-                    listaIntegrOrig[x] = listaIntegr[x].Id;
-                }
-                //luego cargo todos los integrantes en la columna "Integrantes"
-                for (var x in listaIntegr) {
+            //le agrego una columna para ícono:
+            var tdAdmin = document.createElement('td');
+            tdAdmin.setAttribute('style', 'width: 5px');
+            trIntegrante.append(tdAdmin);
 
-                    
-                    //creo una fila.
-                    var trIntegrante = document.createElement('tr');
-                    trIntegrante.setAttribute('id', 'tr-' + listaIntegr[x].Id +'-' + listaIntegr[x]._Usuario);
-                    $('#integrantes').append(trIntegrante);
+            //agrego columna para nombre.
+            var tdIntegrante = document.createElement('td');
+            tdIntegrante.append(listaIntegr[x]._Usuario);
+            trIntegrante.append(tdIntegrante);
 
-                    //le agrego una columna para ícono:
-                    var tdAdmin = document.createElement('td');
-                    tdAdmin.setAttribute('style', 'width: 5px');
-                    trIntegrante.append(tdAdmin);
+            //si no es admin, agrego los botones:
+            if (listaIntegr[x].Id != grupo.Administrador_id) {
 
-                    //agrego columna para nombre.
-                    var tdIntegrante = document.createElement('td');
-                    tdIntegrante.append(listaIntegr[x]._Usuario);
-                    trIntegrante.append(tdIntegrante);
+                //agrego columna para botón "Eliminar".
+                var tdEliminar = document.createElement('td');
 
-                    //si no es admin, agrego los botones:
-                    if (listaIntegr[x].Id != o.Administrador_id) {
+                //creo botón "Eliminar"
+                var btnEliminar = document.createElement('button');
+                btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
+                btnEliminar.setAttribute('id', listaIntegr[x].Id + '-' + listaIntegr[x]._Usuario);
+                //agrego elementos
+                tdEliminar.append(btnEliminar);
+                trIntegrante.append(tdEliminar);
 
-                        //agrego columna para botón "Eliminar".
-                        var tdEliminar = document.createElement('td');
+                //agrego ícono.
+                var iTrash = document.createElement('i');
+                iTrash.setAttribute('class', 'fa fa-trash');
+                iTrash.setAttribute('aria-hidden', 'true');
+                btnEliminar.append(iTrash);
+            } else {
 
-                        //creo botón "Eliminar"
-                        var btnEliminar = document.createElement('button');
-                        btnEliminar.setAttribute('class', 'btn btn-sm btn-danger eliminarButton');
-                        btnEliminar.setAttribute('id', listaIntegr[x].Id + '-' + listaIntegr[x]._Usuario);
-                        //agrego elementos
-                        tdEliminar.append(btnEliminar);
-                        trIntegrante.append(tdEliminar);
+                //agrego ícono de admin:
+                var iQueen = document.createElement('i');
+                iQueen.setAttribute('class', 'iconoAdmin fas fa-chess-queen');
+                iQueen.setAttribute('aria-hidden', 'true');
 
-                        //agrego ícono.
-                        var iTrash = document.createElement('i');
-                        iTrash.setAttribute('class', 'fa fa-trash');
-                        iTrash.setAttribute('aria-hidden', 'true');
-                        btnEliminar.append(iTrash);
-                    } else {
-
-                        //agrego ícono de admin:
-                        var iQueen = document.createElement('i');
-                        iQueen.setAttribute('class', 'iconoAdmin fas fa-chess-queen');
-                        iQueen.setAttribute('aria-hidden', 'true');
-
-                        tdAdmin.append(iQueen);
-                    }
-                } 
+                tdAdmin.append(iQueen);
             }
-        });
+        }
 
-        //obtengo y cargo en select los usuarios existentes en el sistema.
-        $.ajax({
-            type: 'POST',
-            url: 'Services/Service.asmx/Get_Usuarios',
-            dataType: 'json',
-            data: JSON.stringify(),
-            contentType: 'application/json;charset=utf-8',
-            success: function (response) {
-                tempUsuarios = JSON.parse(response.d);
-
-                for (var x in tempUsuarios) {
-                    listaUsuarios.push(tempUsuarios[x]._Usuario);
-                    listaIdUsuario.push(tempUsuarios[x].Id);
-                }
-           }
-        });
+        tempUsuarios = <%=usuarios%>;
+        for (var x in tempUsuarios) {
+            listaUsuarios.push(tempUsuarios[x]._Usuario);
+            listaIdUsuario.push(tempUsuarios[x].Id);
+        }
 
         //autocomplete de todos los usuarios.
         $('#usuario').autocomplete({
@@ -306,8 +276,7 @@
                 data: JSON.stringify(dataGrupo),
                 contentType: 'application/json;charset=utf-8',
                 success: function (response) {
-                    alert(response.d);
-                    //  window.location.replace("/misGrupos.aspx");
+                    window.location.replace("/misGrupos.aspx");
                 },
                 error: function () {
                     alert(response.d);
@@ -328,6 +297,7 @@
 
         //agrego botón:
         //el indice lo tengo del aterior: 
+        
         var trIntegrante = document.getElementById('tr-' + indiceAdminActual + '-' + adminActual);
         
         var tdEliminar = document.createElement('td');
